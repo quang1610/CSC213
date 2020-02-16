@@ -1,0 +1,109 @@
+nguyenqu2@burroughs:shell$ make
+clang -g -Wall -Werror -o mysh mysh.c
+nguyenqu2@burroughs:shell$ ./mysh
+$ ls
+Makefile  mysh	mysh.c	mysh.c~
+Child process 5500 exited with status 0
+
+$ cd ../
+
+$ ls
+analysis-lab.rkt~	    eclipse-java-google-style.xml
+association-lists-lab.rkt~  google-chrome.desktop
+CaesarCipher.java~	    insertion-sort-lab.rkt~
+csc207			    nguyenqu2-exam-02-master.zip
+csc207-hw4		    project-nba-2.rkt~
+csc207-hw5		    project-nba.rkt~
+CSC 211			    shell
+CSC-214			    shell.tar.gz
+datapath		    White-Background-HQ-Desktop-Wallpaper-16574.jpg
+datapath-part3CD.tar.gz
+Child process 5503 exited with status 0
+
+$ cd shell; ls
+Makefile  mysh	mysh.c	mysh.c~
+Child process 5504 exited with status 0
+
+$ 
+
+$ cd ..; pwd; ls
+/home/nguyenqu2/Desktop
+Child process 5512 exited with status 0
+analysis-lab.rkt~	    eclipse-java-google-style.xml
+association-lists-lab.rkt~  google-chrome.desktop
+CaesarCipher.java~	    insertion-sort-lab.rkt~
+csc207			    nguyenqu2-exam-02-master.zip
+csc207-hw4		    project-nba-2.rkt~
+csc207-hw5		    project-nba.rkt~
+CSC 211			    shell
+CSC-214			    shell.tar.gz
+datapath		    White-Background-HQ-Desktop-Wallpaper-16574.jpg
+datapath-part3CD.tar.gz
+Child process 5513 exited with status 0
+
+$ sleep 1& sleep 1; sleep 1
+Child process 5617 exited with status 0
+Child process 5618 exited with status 0
+Child process 5619 exited with status 0
+
+// changing directory to home
+$ cd
+
+$ ls			// we are at home
+ArrayProblems.class	       lab-unit-testing-2019
+ArrayProblems.java	       MPLABXProjects
+ArrayProblems.java~	       Music
+assignment1		       perf.data
+Assignment6.rkt		       Pictures
+Assignment6.rkt~	       Presentation.pptx
+datapath-part2.tar.gz	       Public
+datapath-part3CD-error.tar.gz  randomness-lab.rkt
+datapath-part3CD.tar.gz        randomness-lab.rkt~
+Desktop			       recursion with helpers.rkt
+Documents		       recursion with helpers.rkt~
+Downloads		       Templates
+intro-classes-2019	       Videos
+lab-polymorphism-2019
+Child process 28614 exited with status 0
+
+// go to Desktop
+$ cd Desktop
+$ ls
+analysis-lab.rkt~	    eclipse-java-google-style.xml
+association-lists-lab.rkt~  google-chrome.desktop
+CaesarCipher.java~	    insertion-sort-lab.rkt~
+csc207			    nguyenqu2-exam-02-master.zip
+csc207-hw4		    project-nba-2.rkt~
+csc207-hw5		    project-nba.rkt~
+CSC 211			    shell
+CSC-214			    shell.tar.gz
+datapath		    White-Background-HQ-Desktop-Wallpaper-16574.jpg
+datapath-part3CD.tar.gz
+Child process 28619 exited with status 0
+
+// back to home
+$ cd ~
+$ ls
+ArrayProblems.class	       lab-unit-testing-2019
+ArrayProblems.java	       MPLABXProjects
+ArrayProblems.java~	       Music
+assignment1		       perf.data
+Assignment6.rkt		       Pictures
+Assignment6.rkt~	       Presentation.pptx
+datapath-part2.tar.gz	       Public
+datapath-part3CD-error.tar.gz  randomness-lab.rkt
+datapath-part3CD.tar.gz        randomness-lab.rkt~
+Desktop			       recursion with helpers.rkt
+Documents		       recursion with helpers.rkt~
+Downloads		       Templates
+intro-classes-2019	       Videos
+lab-polymorphism-2019
+Child process 28622 exited with status 0
+
+$ exit
+nguyenqu2@kleene:shell$ 
+
+
+
+$ exit
+

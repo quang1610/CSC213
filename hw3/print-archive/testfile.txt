@@ -1,0 +1,134 @@
+# Author Quang Nguyen
+# NOTICE THAT inputs/test4.txt is supposed to be empty
+
+nguyenqu2@davies:print-archive$ ./print-archive inputs/input1.ar
+original size 98
+a.txt
+Greetings from the file a.txt
+
+nguyenqu2@davies:print-archive$ ./print-archive inputs/input2.ar
+original size 184
+a.txt
+Greetings from the file a.txt
+
+b.txt
+Hello from b.txt as well!
+
+nguyenqu2@davies:print-archive$ ./print-archive inputs/input3.ar
+original size 286
+a.txt
+Greetings from the file a.txt
+
+b.txt
+Hello from b.txt as well!
+
+c.txt
+Yet another hello, this time from c.txt.
+
+nguyenqu2@davies:print-archive$ ./print-archive inputs/input4.ar
+original size 384
+a.txt
+Greetings from the file a.txt
+
+b.txt
+Hello from b.txt as well!
+
+c.txt
+Yet another hello, this time from c.txt.
+
+d.txt
+An again, here's a hello from d.txt.
+
+nguyenqu2@davies:print-archive$ ./print-archive inputs/input5.ar
+original size 490
+a.txt
+Greetings from the file a.txt
+
+b.txt
+Hello from b.txt as well!
+
+c.txt
+Yet another hello, this time from c.txt.
+
+d.txt
+An again, here's a hello from d.txt.
+
+e.txt
+This is getting a bit old, but here's e.txt.
+
+nguyenqu2@davies:print-archive$ ./print-archive inputs/output-test.ar
+original size 374
+test1.txt
+Hi
+This
+is
+the
+first 
+test
+file
+
+
+test2.txt
+This is a 
+						normal
+										test file 2
+
+test3.txt
+This is 3rd test file 1234567890 !@#$%^&*()_+
+
+test4.txt
+
+nguyenqu2@davies:print-archive$ ./print-archive inputs/output-test2.ar
+original size 268
+test1.txt
+Hi
+This
+is
+the
+first 
+test
+file
+
+
+test2.txt
+This is a 
+						normal
+										test file 2
+
+test4.txt
+
+nguyenqu2@davies:print-archive$ ./print-archive inputs/output-test3.ar
+original size 374
+test1.txt
+Hi
+This
+is
+the
+first 
+test
+file
+
+
+test2.txt
+This is a 
+						normal
+										test file 2
+
+test4.txt
+
+test3.txt
+This is 3rd test file 1234567890 !@#$%^&*()_+
+
+nguyenqu2@davies:print-archive$ ./print-archive inputs/output-test4.ar
+original size 280
+test4.txt
+
+test2.txt
+This is a 
+						normal
+										test file 2
+
+test3.txt
+This is 3rd test file 1234567890 !@#$%^&*()_+
+
+

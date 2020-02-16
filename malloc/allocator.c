@@ -1,5 +1,4 @@
 #define _GNU_SOURCE
-#define _XOPEN_SOURCE
 
 #include <assert.h>
 #include <malloc.h>
@@ -17,6 +16,31 @@
 
 // The size of a single page of memory, in bytes
 #define PAGE_SIZE 0x1000
+
+/**
+ * Calculate the object size based on the input integer. The return value should be a multiple of 16 and
+ * exponent of 2 and smallest possible such that it is >= input integer
+ */
+int round_up_multiple_16(int size) {
+  int return_value = 16;
+  while (size > return_value) {
+    return_value *= 2;
+  }
+  return return_value;
+}
+
+/**
+ * find_free_list_ind_base_16 calculate which type of object does input size fall into. if size <= 16 then 
+ * return 0. If 16 < size <= 32, return 1. If 32 < size <= 64, return 2...
+ */
+int find_free_list_ind_base16 (int size) {
+  int return_value = 0;
+  while (size > 16) {
+    size = size / 2;
+    return_value ++;
+  }
+  return return_value;
+}
 
 /**
  * Allocate space on the heap.
