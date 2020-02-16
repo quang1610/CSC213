@@ -1,0 +1,3 @@
+/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles/CSC213.dir
