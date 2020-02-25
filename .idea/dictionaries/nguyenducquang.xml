@@ -2,6 +2,8 @@
   <dictionary name="nguyenducquang">
     <words>
       <w>uniquelist</w>
+      <w>xxfree</w>
+      <w>xxmalloc</w>
     </words>
   </dictionary>
 </component>
