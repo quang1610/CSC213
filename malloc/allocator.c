@@ -32,12 +32,12 @@ size_t xxmalloc_usable_size(void *ptr);
 
 /// support data structures
 typedef struct header {
-    size_t size;
-    long magic_number;
+  size_t size;
+  long magic_number;
 } header_t;
 
 typedef struct node {
-    struct node *next;
+  struct node *next;
 } node_t;
 
 node_t *free_lists[8] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
@@ -50,37 +50,43 @@ node_t *free_lists[8] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
  * @param size the size of object
  */
 void init_new_chunk_for_size(size_t size) {
-    // round up the size to multiple of 16 then find the appropriate index in free_lists array.
-    // if the free list array entry is not NULL, we still have memory to allocate, not need a new chunk
-    size = round_up_x16(size);
-    int i = find_free_lists_index(size);
-    if (free_lists[i] == NULL) {
-        printf("There is still place in the heap, not need to allocate new chunk yet!\n");
-        return;
-    }
+  // round up the size to multiple of 16 then find the appropriate index in free_lists array.
+  // if the free list array entry is not NULL, we still have memory to allocate, not need a new chunk
+  size = round_up_x16(size);
+  int i = find_free_lists_index(size);
+  if (free_lists[i] != NULL) {
+    return;
+  }
 
-    assert(size <= 2048);
+  assert(size <= 2048);
 
-    void *new_chunk = mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
-    // initialize the header
-    header_t *head = (header_t *) new_chunk;
-    head->size = size;
-    head->magic_number = (long) size;
+  // allocate new chunk using mmap
+  void *new_chunk = mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
+  // Check for errors
+  if(new_chunk == MAP_FAILED) {
+    fputs("mmap failed! Giving up.\n", stderr);
+    exit(2);
+  }
+  
+  // initialize the header
+  header_t *head = (header_t *) new_chunk;
+  head->size = size;
+  head->magic_number = (long) size;
 
-    // set the array elem point to first elem of free linked list
-    free_lists[i] = (node_t *) ((char *) new_chunk + size);
+  // set the array elem point to first elem of free linked list
+  free_lists[i] = (node_t *) ((char *) new_chunk + size);
 
-    // init a cursor to traverse down the list
-    node_t *cursor = free_lists[i];
-    long n_block = (long) ((size_t) PAGE_SIZE / size - 1);
-    printf("Debug, Allocating chunk for %zu, looping %lu time\n", size, n_block);
+  // init a cursor to traverse down the list
+  node_t *cursor = free_lists[i];
+  long n_block = (long) ((size_t) PAGE_SIZE / size - 1);
 
-    // start with 1 because we already allocate 1 block
-    for (long j = 1; j < n_block; j++) {
-        cursor->next = (node_t *) ((char *) cursor + size);
-        cursor = cursor->next;
-    }
-    cursor->next = NULL;
+
+  // start with 1 because we already allocate 1 block
+  for (long j = 1; j < n_block; j++) {
+    cursor->next = (node_t *) ((char *) cursor + size);
+    cursor = cursor->next;
+  }
+  cursor->next = NULL;
 }
 
 //****************************************************************************************************************
@@ -89,11 +95,11 @@ void init_new_chunk_for_size(size_t size) {
  * exponent of 2 and smallest possible such that it is >= input integer
  */
 size_t round_up_x16(size_t size) {
-    size_t return_value = MIN_MALLOC_SIZE;
-    while (size > return_value) {
-        return_value *= 2;
-    }
-    return return_value;
+  size_t return_value = MIN_MALLOC_SIZE;
+  while (size > return_value) {
+    return_value *= 2;
+  }
+  return return_value;
 }
 
 /**
@@ -101,14 +107,14 @@ size_t round_up_x16(size_t size) {
  * return 0. If 16 < size <= 32, return 1. If 32 < size <= 64, return 2...
  */
 int find_free_lists_index(size_t size) {
-    size = round_up_x16(size);
-    int return_value = 0;
+  size = round_up_x16(size);
+  int return_value = 0;
 
-    while (size > MIN_MALLOC_SIZE) {
-        size = size / 2;
-        return_value++;
-    }
-    return return_value;
+  while (size > MIN_MALLOC_SIZE) {
+    size = size / 2;
+    return_value++;
+  }
+  return return_value;
 }
 
 //****************************************************************************************************************
@@ -119,33 +125,42 @@ int find_free_lists_index(size_t size) {
  *              This function may return NULL when an error occurs.
  */
 void *xxmalloc(size_t size) {
-    if (size > PAGE_SIZE / 2) {
-        // allocate object > 2048
-        // Round the size up to the next multiple of the page size
-        size = ROUND_UP(size, PAGE_SIZE);
-        return mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
-    } else {
-        // allocate object <= 2048, trying to find a block to allocate new object
-        size = round_up_x16(size);
+  if (size > PAGE_SIZE / 2) {
+    // allocate object > 2048
+    // Round the size up to the next multiple of the page size
+    size = ROUND_UP(size, PAGE_SIZE);
+    void *p = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
 
-        int i = find_free_lists_index(size);
-        node_t *p = free_lists[i];
-
-        // remove the list from the current linked_list
-        if (p != NULL) {
-            free_lists[i] = p->next;
-            return p;
-        } else {
-            // realize that we run out of space, allocate using mmap
-            init_new_chunk_for_size(size);
-
-            // set return value
-            p = free_lists[i];
-            free_lists[i] = p->next;
-
-            return p;
-        }
+    // Check for errors
+    if(p == MAP_FAILED) {
+      fputs("mmap failed! Giving up.\n", stderr);
+      exit(2);
     }
+  
+    return p;
+  } else {
+    // allocate object <= 2048, trying to find a block to allocate new object
+    size = round_up_x16(size);
+
+    int i = find_free_lists_index(size);
+    node_t *p = free_lists[i];
+
+    // remove the list from the current linked_list
+    if (p != NULL) {
+      free_lists[i] = free_lists[i]->next;
+      return (void *)p;
+    } else {
+      // realize that we run out of space, allocate using mmap
+     
+      init_new_chunk_for_size(size);
+     
+      // set return value
+      p = free_lists[i];
+      free_lists[i] = free_lists[i]->next;
+
+      return (void*)p;
+    }
+  }
 }
 
 /**
@@ -153,20 +168,21 @@ void *xxmalloc(size_t size) {
  * \param ptr   A pointer somewhere inside the object that is being freed
  */
 void xxfree(void *ptr) {
-    // Don't free NULL!
-    if (ptr == NULL) return;
+  // Don't free NULL!
+  if (ptr == NULL) return;
 
-    // find the chunk
-    size_t object_size = xxmalloc_usable_size(ptr);
+  // find the chunk
+  size_t object_size = xxmalloc_usable_size(ptr);
 
-    if (object_size != 0) {
-        int i = find_free_lists_index(object_size);
+  if (object_size != 0) {
+    // find the head of the object
+    int i = find_free_lists_index(object_size);
 
-        // add the freed node back into the file
-        node_t *freed_node = (node_t *) ptr;
-        freed_node->next = free_lists[i]->next;
-        free_lists[i] = freed_node;
-    }
+    // add the freed node back into the file
+    node_t *freed_node = (node_t *) (uinptr_t)ptr;
+    freed_node->next = free_lists[i]->next;
+    free_lists[i] = freed_node;
+  }
 }
 
 /**
@@ -175,13 +191,13 @@ void xxfree(void *ptr) {
  * \returns     The number of bytes available for use in this object
  */
 size_t xxmalloc_usable_size(void *ptr) {
-    header_t *head = (header_t *) ((char *) ptr - ((uintptr_t) ptr % PAGE_SIZE));
-    size_t object_size = head->size;
+  header_t *head = (header_t *) ((char *) ptr - ((uintptr_t) ptr % PAGE_SIZE));
+  size_t object_size = head->size;
 
-    if (head->magic_number == (long) object_size) {
-        return object_size;
-    } else {
-        return 0;
-    }
+  if (head->magic_number == (long) object_size) {
+    return object_size;
+  } else {
+    return 0;
+  }
 }
 
