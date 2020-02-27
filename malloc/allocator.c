@@ -125,6 +125,7 @@ int find_free_lists_index(size_t size) {
  *              This function may return NULL when an error occurs.
  */
 void *xxmalloc(size_t size) {
+  fputs("Start malloc *****\n", stderr);
     if (size > PAGE_SIZE / 2) {
         // allocate object > 2048
         // Round the size up to the next multiple of the page size
@@ -134,9 +135,10 @@ void *xxmalloc(size_t size) {
         // Check for errors
         if (p == MAP_FAILED) {
             fputs("mmap failed! Giving up.\n", stderr);
+            fputs("Start malloc *****\n", stderr);
             exit(2);
         }
-
+         fputs("done mallocing size > 2048\n", stderr);
         return p;
     } else {
         // allocate object <= 2048, trying to find a block to allocate new object
@@ -148,6 +150,7 @@ void *xxmalloc(size_t size) {
         // remove the list from the current linked_list
         if (p != NULL) {
             free_lists[i] = free_lists[i]->next;
+            fputs("done mallocing size <= 2048 normal\n", stderr);
             return (void *) p;
         } else {
             // realize that we run out of space, allocate using mmap
@@ -157,7 +160,8 @@ void *xxmalloc(size_t size) {
             // set return value
             p = free_lists[i];
             free_lists[i] = free_lists[i]->next;
-
+            
+            fputs("done mallocing size <= 2048 run out of space\n", stderr);
             return (void *) p;
         }
     }
@@ -168,25 +172,26 @@ void *xxmalloc(size_t size) {
  * \param ptr   A pointer somewhere inside the object that is being freed
  */
 void xxfree(void *ptr) {
+  fputs("Star free **** \n", stderr);
     // Don't free NULL!
     if (ptr == NULL) return;
 
     // find the header
     uintptr_t int_ptr = (uintptr_t) ptr;
-    uintptr_t int_head = int_ptr - int_ptr % PAGE_SIZE;
+    uintptr_t int_head = int_ptr - int_ptr % (uintptr_t)PAGE_SIZE;
 
     // find the chunk
     size_t object_size = xxmalloc_usable_size(ptr);
 
     if (object_size != 0) {
-        // find the head of the object
         int i = find_free_lists_index(object_size);
 
         // add the freed node back into the file
-        node_t *freed_node = (node_t *) (int_ptr - (int_ptr - int_head) % object_size);
-        freed_node->next = free_lists[i]->next;
+        node_t *freed_node = (node_t *) (int_ptr - (int_ptr - int_head) % (uintptr_t) object_size);
+        freed_node->next = free_lists[i];
         free_lists[i] = freed_node;
     }
+    fputs("done! freeing\n",stderr);
 }
 
 /**
@@ -195,14 +200,17 @@ void xxfree(void *ptr) {
  * \returns     The number of bytes available for use in this object
  */
 size_t xxmalloc_usable_size(void *ptr) {
+  fputs("Start getting size\n", stderr);
     uintptr_t int_ptr = (uintptr_t) ptr;
 
     header_t *head = (header_t *) (int_ptr - int_ptr % PAGE_SIZE);
     size_t object_size = head->size;
 
     if (head->magic_number == (long) object_size) {
+       fputs("finish getting size\n", stderr);
         return object_size;
     } else {
+      fputs("finish getting size 1\n", stderr);
         return 0;
     }
 }
