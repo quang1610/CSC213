@@ -1,0 +1,95 @@
+Script started on Thu 27 Feb 2020 09:13:06 PM CST
+nguyenqu2@wilkinson:malloc$ exitLD_PRELOAD=./myallocator.so ./malloc-test/malloc-testt 
+hi
+BiBoP Allocator Test Results:
+
+1. Is allocated memory writable?
+  malloc(4) returned at least 4 bytes of writable memory. (+1 point)
+  malloc(15) returned at least 15 bytes of writable memory. (+1 point)
+  malloc(18) returned at least 18 bytes of writable memory. (+1 point)
+  malloc(23) returned at least 23 bytes of writable memory. (+1 point)
+  malloc(32) returned at least 32 bytes of writable memory. (+1 point)
+  malloc(36) returned at least 36 bytes of writable memory. (+1 point)
+  malloc(150) returned at least 150 bytes of writable memory. (+1 point)
+  malloc(447) returned at least 447 bytes of writable memory. (+1 point)
+  malloc(1025) returned at least 1025 bytes of writable memory. (+1 point)
+  malloc(2000) returned at least 2000 bytes of writable memory. (+1 point)
+ Tests Passed: 10/10
+
+2. Are allocated objects the right size?
+  malloc(4) returned space for 16 bytes. (+1 point)
+  malloc(16) returned space for 16 bytes. (+1 point)
+  malloc(18) returned space for 32 bytes. (+1 point)
+  malloc(35) returned space for 64 bytes. (+1 point)
+  malloc(66) returned space for 128 bytes. (+1 point)
+  malloc(128) returned space for 128 bytes. (+1 point)
+  malloc(200) returned space for 256 bytes. (+1 point)
+  malloc(511) returned space for 512 bytes. (+1 point)
+  malloc(600) returned space for 1024 bytes. (+1 point)
+  malloc(1025) returned space for 2048 bytes. (+1 point)
+ Tests Passed: 10/10
+
+3. Are allocated objects size-aligned?
+  malloc(1531) returned a properly-aligned pointer.
+  malloc(1534) returned a properly-aligned pointer.
+  malloc(2001) returned a properly-aligned pointer.
+  malloc(947) returned a properly-aligned pointer.
+  malloc(509) returned a properly-aligned pointer.
+  malloc(7) returned a properly-aligned pointer.
+  malloc(854) returned a properly-aligned pointer.
+  malloc(1084) returned a properly-aligned pointer.
+  malloc(1825) returned a properly-aligned pointer.
+  malloc(721) returned a properly-aligned pointer.
+ Tests Passed: 10/10
+
+4. Do allocated objects overlap? (they shouldn't)
+  Allocating one thousand 32 byte objects...
+ No overlapping objects. (+10 points)
+
+5. Does malloc return previously-freed objects?
+  Allocating 47 objects of 59 bytes. 47 will be freed...
+  All freed objects were returned by malloc. (+2 points)
+
+  Allocating 161 objects of 124 bytes. 23 will be freed...
+  All freed objects were returned by malloc. (+2 points)
+
+  Allocating 258 objects of 125 bytes. 86 will be freed...
+  All freed objects were returned by malloc. (+2 points)
+
+  Allocating 279 objects of 121 bytes. 31 will be freed...
+  All freed objects were returned by malloc. (+2 points)
+
+  Allocating 147 objects of 104 bytes. 49 will be freed...
+  All freed objects were returned by malloc. (+2 points)
+
+ Test Score: 10/10
+
+6. Does the allocator expand blocks appropriately?
+  malloc(16) moved to a new page and did not waste too much space. (+2 points)
+  malloc(32) moved to a new page and did not waste too much space. (+2 points)
+  malloc(64) moved to a new page and did not waste too much space. (+2 points)
+  malloc(128) moved to a new page and did not waste too much space. (+2 points)
+  malloc(256) moved to a new page and did not waste too much space. (+2 points)
+  malloc(512) moved to a new page and did not waste too much space. (+2 points)
+  malloc(1024) moved to a new page and did not waste too much space. (+2 points)
+  malloc(2048) moved to a new page and did not waste too much space. (+2 points)
+ Test Score: 16/16
+
+7. Does malloc work for large objects?
+  malloc(3419) returned writable, non-overlapping memory. (+1 point)
+  malloc(8495) returned writable, non-overlapping memory. (+1 point)
+  malloc(6756) returned writable, non-overlapping memory. (+1 point)
+  malloc(2612) returned writable, non-overlapping memory. (+1 point)
+  malloc(8096) returned writable, non-overlapping memory. (+1 point)
+  malloc(3274) returned writable, non-overlapping memory. (+1 point)
+  malloc(3995) returned writable, non-overlapping memory. (+1 point)
+  malloc(9063) returned writable, non-overlapping memory. (+1 point)
+  malloc(9523) returned writable, non-overlapping memory. (+1 point)
+  malloc(6158) returned writable, non-overlapping memory. (+1 point)
+ Test Score: 10/10
+
+Total Score: 76/76 (100.0%)
+nguyenqu2@wilkinson:malloc$ exit
+exit
+
+Script done on Thu 27 Feb 2020 09:13:14 PM CST
