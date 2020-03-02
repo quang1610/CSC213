@@ -32,7 +32,7 @@ typedef struct task_info {
   // is exiting.
   ucontext_t exit_context;
 
-  int task_state;
+  int state;
   size_t wake_up_time;
   task_t wait_ID;
   int input;
@@ -49,12 +49,73 @@ int current_task = 0; //< The handle of the currently-executing task
 int num_tasks = 1;    //< The number of tasks created so far
 task_info_t tasks[MAX_TASKS]; //< Information for every task
 
+task_t schedule_new_task() {
+  // check the next ready task
+  int new_task_ID = current_task;
+
+  task_info_t *cur_task = tasks[current_task];
+  task_info_t *new_task = NULL;
+  
+  do {
+    new_task = tasks[new_task_ID];
+    
+    switch (new_task->state) {
+    case RUNNING:
+      return new_task_ID;
+      
+    case READY:
+      if (new_task_ID != current_task) {
+        new_task->state = RUNNING;
+        contextswap (&(cur_task->context), &(new_task->context));
+      }
+      return new_task_ID;
+      
+    case WAITING_FOR_TASK:
+      if(tasks[new_task->wait_ID]->state = EXIT) {
+        new_task->state = RUNNING;
+        contextswap (&(cur_task->context), &(new_task->context));
+
+        return new_task_ID;
+      }
+      break;
+      
+    case WAITING_FOR_INPUT:
+      int input = getch();
+      if (getch() != ERR) {
+        new_task->state = RUNNING;
+        contextswap (&(cur_task->context), &(new_task->context));
+        new_tack->input = input;
+
+        return new_task_ID;
+      }
+      break;
+
+    case WAITING_FOR_WAKE_UP:
+      if (time_ms() >= new_task->wake_up_time) {
+        new_task->state = RUNNING;
+        contextswap (&(cur_task->context), &(new_task->context));
+        new_tack->wake_up_time = 0;
+
+        return new_task_ID;
+      }
+      break;
+
+    default: break;
+    }
+  
+    new_task_ID = (new_task_ID + 1) % num_tasks;
+  } while (new_task_ID != current_task);
+
+  // should not execute this line
+  return -1;
+}
+
 /**
  * Initialize the scheduler. Programs should call this before calling any other
  * functiosn in this file.
  */
 void scheduler_init() {
-  tasks[current_task].task_state = RUNNING;
+  tasks[current_task].state = RUNNING;
 }
 
 
@@ -64,10 +125,9 @@ void scheduler_init() {
  * because of how the contexts are set up in the task_create function.
  */
 void task_exit() {
-  // TODO: Handle the end of a task's execution here
-  task[current_task].task_state = EXITED;
+  task[current_task].state = EXITED;
   
-  // find new task to run
+  current_task = schedule_new_task();
 }
 
 /**
@@ -109,7 +169,8 @@ void task_create(task_t* handle, task_fn_t fn) {
   // And finally, set up the context to execute the task function
   makecontext(&tasks[index].context, fn, 0);
 
-  tasks[index].task_state = READY;
+  tasks[index].state = READY;
+  tasks[index].input = ERR;
 }
 
 /**
@@ -120,13 +181,11 @@ void task_create(task_t* handle, task_fn_t fn) {
  */
 void task_wait(task_t handle) {
   // TODO: Block this task until the specified task has exited.
-  if(tasks[handle].task_state != EXITED) {
-    tasks[current_task].task_state = WAIT_FOR_TASK;
+  if(tasks[handle].state != EXITED) {
+    tasks[current_task].state = WAIT_FOR_TASK;
     tasks[current_task].wait_ID = handle;
-  } else {
-    tasks[current_task].task_state = READY;
-    tasks[current_task].wait_ID = -1;
   }
+  current_task = schedule_new_task();
 }
 
 /**
@@ -141,8 +200,10 @@ void task_sleep(size_t ms) {
   // Hint: Record the time the task should wake up instead of the time left for it to sleep. The bookkeeping is easier this way.
   size_t wake_up_time = time_ms() + ms;
   
-  tasks[current_task].task_state = WAIT_FOR_WAKE_UP;
+  tasks[current_task].state = WAIT_FOR_WAKE_UP;
   tasks[current_task].wake_up_time = wake_up_time;
+
+  current_task = schedule_new_task();
 }
 
 /**
@@ -156,12 +217,8 @@ int task_readchar() {
   // TODO: Block this task until there is input available.
   // To check for input, call getch(). If it returns ERR, no input was available.
   // Otherwise, getch() will returns the character code that was read.
-  char input = getch();
-  if (input != ERR) {
-    tasks[current_task].task_state = READY;
-    tasks[current_task].input = input;
-  } else {
-    tasks[current_task].task_state = WAIT_FOR_INPUT;
-  }
-  return input;
+  tasks[current_task]->state = WAITING_FOR_INPUT;
+  current_task = schedule_new_task();
+  
+  return tasks[new_task_ID]->input;
 }

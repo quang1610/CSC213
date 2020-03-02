@@ -1,6 +1,6 @@
-Script started on Thu 27 Feb 2020 09:13:06 PM CST
-nguyenqu2@wilkinson:malloc$ exitLD_PRELOAD=./myallocator.so ./malloc-test/malloc-testt 
-hi
+Script started on Fri 28 Feb 2020 03:51:41 PM CST
+
+nguyenqu2@bellman:malloc$ LD_PRELOAD=./myallocator.so ./malloc-test/malloc-test 
 BiBoP Allocator Test Results:
 
 1. Is allocated memory writable?
@@ -89,7 +89,6 @@ BiBoP Allocator Test Results:
  Test Score: 10/10
 
 Total Score: 76/76 (100.0%)
-nguyenqu2@wilkinson:malloc$ exit
-exit
+nguyenqu2@bellman:malloc$ 
 
-Script done on Thu 27 Feb 2020 09:13:14 PM CST
+Script done on Fri 28 Feb 2020 03:51:50 PM CST
