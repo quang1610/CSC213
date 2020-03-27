@@ -82,7 +82,7 @@ void count_letters(int num_threads, char *file_data, off_t file_size) {
         }
 
         // start a thread
-        pthread_create((pthread_t *) threads + i, NULL, count_letters_worker, (myargs_t *) args_arr + i);
+        pthread_create(((pthread_t *) threads) + i, NULL, count_letters_worker, ((myargs_t *) args_arr) + i);
 
         // update start pointer
         start = args_arr[i].end;
