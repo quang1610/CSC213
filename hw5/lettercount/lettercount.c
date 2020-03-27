@@ -39,7 +39,7 @@ void *count_letters_worker(void *args) {
         // update start pointer;
         start = (void *) ((char *) start + 1);
     }
-    //printf("f is %d\n", worker_counts[5]);
+    printf("f is %d\n", worker_counts[5]);
     return worker_counts;
 }
 
