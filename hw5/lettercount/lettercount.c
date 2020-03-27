@@ -37,7 +37,7 @@ void *count_letters_worker(void *args) {
             worker_counts[c - 'A']++;
         }
         // update start pointer;
-        start = (void *) (((char *) start) + 1);
+        start = (void *) (((uintptr_t) start) + 1);
     }
     printf("f is %d\n", worker_counts[5]);
     return worker_counts;
@@ -76,9 +76,9 @@ void count_letters(int num_threads, char *file_data, off_t file_size) {
         // set the start point
         args_arr[i].start = start;
         if (i == num_threads - 1) {
-            args_arr[i].end = (void *) (start + work_load + leftover);
+            args_arr[i].end = (void *) (((uintptr_t)start) + work_load + leftover);
         } else {
-            args_arr[i].end = (void *) (start + work_load);
+            args_arr[i].end = (void *) (((uintptr_t)start) + work_load);
         }
         // update start pointer
         start = args_arr[i].end;
