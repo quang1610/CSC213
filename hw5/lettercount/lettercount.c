@@ -37,7 +37,7 @@ void *count_letters_worker(void *args) {
             worker_counts[c - 'A']++;
         }
         // update start pointer;
-        start = (void *) ((char *) start + 1);
+        start = (void *) (((char *) start) + 1);
     }
     printf("f is %d\n", worker_counts[5]);
     return worker_counts;
