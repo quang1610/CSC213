@@ -15,6 +15,7 @@
 size_t letter_counts[26] = {0};
 
 typedef struct args {
+    int id;
     void *start;
     void *end;
 } myargs_t;
@@ -23,11 +24,19 @@ typedef struct args {
  * Thread worker. This function handle reading a chunk of the text in file_data from args->start to (exclude) args->end
  */
 void *count_letters_worker(void *args) {
-    int *worker_counts = malloc(sizeof(int) * 26);
+    /// initialize local letter counts
+    int worker_counts[26];
+    for (int i = 0; i < 26; i++) {
+        worker_counts[i] = 0;
+    }
+
+    /// set the start and the end from args
     void *start = ((myargs_t *) args)->start;
     void *end = ((myargs_t *) args)->end;
+    printf("this is thread %d, start from %p to %p \n", ((myargs_t *)args)->id, start, end);
 
     /// count letters from start to end (exclude)
+    int counter = 0;
     while (start < end) {
         // read char at start and count accordingly
         char c = *((char *) start);
@@ -38,9 +47,24 @@ void *count_letters_worker(void *args) {
         }
         // update start pointer;
         start = (void *) (((uintptr_t) start) + 1);
+
+        // update counter;
+        counter++;
+        // update shared letter_counts if counter == 100 or the loop is about to terminate
+        if (counter >= 100 || start >= end) {
+            pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
+
+            for (int i = 0; i < 26; i++) {
+                pthread_mutex_lock(&lock);
+                letter_counts[i] += worker_counts[i];
+                pthread_mutex_unlock(&lock);
+
+                worker_counts[i] = 0;
+            }
+            counter = 0;
+        }
     }
-    printf("f is %d\n", worker_counts[5]);
-    return worker_counts;
+    return NULL;
 }
 
 
@@ -71,8 +95,9 @@ void count_letters(int num_threads, char *file_data, off_t file_size) {
         work_load = 1;
         leftover = 0;
     }
-    void *start = file_data;
+    void *start = (void *)file_data;
     for (int i = 0; i < num_threads; i++) {
+        args_arr[i].id = i;
         // set the start point
         args_arr[i].start = start;
         if (i == num_threads - 1) {
@@ -89,20 +114,9 @@ void count_letters(int num_threads, char *file_data, off_t file_size) {
         pthread_create(&(threads[i]), NULL, count_letters_worker, &(args_arr[i]));
     }
 
-    /// wait the worker to finish the job
+    /// wait the workers to finish the job
     for (int i = 0; i < num_threads; i++) {
-        pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
-        pthread_mutex_lock(&lock);
-        int *worker_counts;
-        pthread_join(threads[i], (void **) &worker_counts);
-        for (int j = 0; j < 26; j++) {
-            letter_counts[j] += worker_counts[j];
-        }
-
-        // free worker_count
-        free(worker_counts);
-        worker_counts = NULL;
-        pthread_mutex_unlock(&lock);
+        pthread_join(threads[i], NULL);
     }
 
 }
