@@ -12,7 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/hw5/lettercount/testfile.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw5/lettercount/lettercount" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/hw5/lettercount/lettercount.c" beforeDir="false" afterPath="$PROJECT_DIR$/hw5/lettercount/lettercount.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -92,7 +94,7 @@
       <workItem from="1581754929666" duration="6707000" />
       <workItem from="1582888751619" duration="331000" />
       <workItem from="1583616020439" duration="165000" />
-      <workItem from="1585294833978" duration="14119000" />
+      <workItem from="1585294833978" duration="14797000" />
     </task>
     <servers />
   </component>

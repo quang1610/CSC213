@@ -13,6 +13,7 @@
 
 /// The number of times we've seen each letter in the input, initially zero
 size_t letter_counts[26] = {0};
+pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
 typedef struct args {
     int id;
@@ -52,7 +53,6 @@ void *count_letters_worker(void *args) {
         counter++;
         // update shared letter_counts if counter == 100 or the loop is about to terminate
         if (counter >= 100 || start >= end) {
-            pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
             for (int i = 0; i < 26; i++) {
                 pthread_mutex_lock(&lock);
