@@ -39,6 +39,7 @@ void *count_letters_worker(void *args) {
         // update start pointer;
         start = (void *) ((char *) start + 1);
     }
+    //printf("f is %d\n", worker_counts[5]);
     return worker_counts;
 }
 
@@ -89,14 +90,12 @@ void count_letters(int num_threads, char *file_data, off_t file_size) {
 
     /// wait the worker to finish the job
     for (int i = 0; i < num_threads; i++) {
-        int *worker_counts;
-        pthread_join(threads[i], (void **) &worker_counts);
         pthread_mutex_t lock;
         pthread_mutex_lock(&lock);
-        int a = 0;
+        int *worker_counts;
+        pthread_join(threads[i], (void **) &worker_counts);
         for (int j = 0; j < 26; j++) {
             letter_counts[j] += worker_counts[j];
-            if (j == 0) a += worker_counts[j];
         }
 
         // free worker_count
@@ -162,15 +161,6 @@ int main(int argc, char **argv) {
 
     // Call the function to count letter frequencies
     count_letters(num_threads, file_data, file_size);
-//    time_t start_time = time(NULL);
-//    for (int i = 0; i < 1000; i++) {
-//        count_letters(num_threads, file_data, file_size);
-//    }
-//    time_t end_time = time(NULL);
-//
-//    printf("start time: %lu\n", start_time);
-//    printf("end time: %lu\n", end_time);
-//    printf("total thread run time: %lu\n", end_time - start_time);
 
     // Print the letter counts
     for (int i = 0; i < 26; i++) {
