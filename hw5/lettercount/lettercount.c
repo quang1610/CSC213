@@ -11,6 +11,9 @@
 #define PAGE_SIZE 0x1000
 #define ROUND_UP(x, y) ((x) % (y) == 0 ? (x) : (x) + ((y) - (x) % (y)))
 
+/**
+ * author Quang Nguyen
+ */
 /// The number of times we've seen each letter in the input, initially zero
 size_t letter_counts[26] = {0};
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;

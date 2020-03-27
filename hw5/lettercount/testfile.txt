@@ -1,0 +1,405 @@
+nguyenqu2@shaw:lettercount$ lettercount 1 inputs/input3.txt
+this is thread 0, start from 0x7f7479e8b000 to 0x7f747a3bce02
+a: 288594
+b: 61788
+c: 87839
+d: 149127
+e: 446147
+f: 80333
+g: 68054
+h: 236584
+i: 253329
+j: 4752
+k: 35362
+l: 169657
+m: 111219
+n: 242751
+o: 313890
+p: 58249
+q: 3577
+r: 237250
+s: 248518
+t: 328987
+u: 128697
+v: 37497
+w: 89286
+x: 5217
+y: 94173
+z: 1626
+nguyenqu2@shaw:lettercount$ lettercount 2 inputs/input3.txt
+this is thread 1, start from 0x7f9d896f3f01 to 0x7f9d8998ce02
+this is thread 0, start from 0x7f9d8945b000 to 0x7f9d896f3f01
+a: 288594
+b: 61788
+c: 87839
+d: 149127
+e: 446147
+f: 80333
+g: 68054
+h: 236584
+i: 253329
+j: 4752
+k: 35362
+l: 169657
+m: 111219
+n: 242751
+o: 313890
+p: 58249
+q: 3577
+r: 237250
+s: 248518
+t: 328987
+u: 128697
+v: 37497
+w: 89286
+x: 5217
+y: 94173
+z: 1626
+nguyenqu2@shaw:lettercount$ lettercount 4 inputs/input3.txt
+this is thread 0, start from 0x7f49073a3000 to 0x7f49074ef780
+this is thread 1, start from 0x7f49074ef780 to 0x7f490763bf00
+this is thread 2, start from 0x7f490763bf00 to 0x7f4907788680
+this is thread 3, start from 0x7f4907788680 to 0x7f49078d4e02
+a: 288594
+b: 61788
+c: 87839
+d: 149127
+e: 446147
+f: 80333
+g: 68054
+h: 236584
+i: 253329
+j: 4752
+k: 35362
+l: 169657
+m: 111219
+n: 242751
+o: 313890
+p: 58249
+q: 3577
+r: 237250
+s: 248518
+t: 328987
+u: 128697
+v: 37497
+w: 89286
+x: 5217
+y: 94173
+z: 1626
+nguyenqu2@shaw:lettercount$ lettercount 8 inputs/input3.txt
+this is thread 0, start from 0x7ff9ff513000 to 0x7ff9ff5b93c0
+this is thread 7, start from 0x7ff9ff99ea40 to 0x7ff9ffa44e02
+this is thread 5, start from 0x7ff9ff8522c0 to 0x7ff9ff8f8680
+this is thread 4, start from 0x7ff9ff7abf00 to 0x7ff9ff8522c0
+this is thread 1, start from 0x7ff9ff5b93c0 to 0x7ff9ff65f780
+this is thread 2, start from 0x7ff9ff65f780 to 0x7ff9ff705b40
+this is thread 3, start from 0x7ff9ff705b40 to 0x7ff9ff7abf00
+this is thread 6, start from 0x7ff9ff8f8680 to 0x7ff9ff99ea40
+a: 288594
+b: 61788
+c: 87839
+d: 149127
+e: 446147
+f: 80333
+g: 68054
+h: 236584
+i: 253329
+j: 4752
+k: 35362
+l: 169657
+m: 111219
+n: 242751
+o: 313890
+p: 58249
+q: 3577
+r: 237250
+s: 248518
+t: 328987
+u: 128697
+v: 37497
+w: 89286
+x: 5217
+y: 94173
+z: 1626
+nguyenqu2@shaw:lettercount$ lettercount 1 inputs/input2.txt
+this is thread 0, start from 0x7fa745e53000 to 0x7fa745e53422
+a: 71
+b: 8
+c: 35
+d: 42
+e: 104
+f: 22
+g: 21
+h: 42
+i: 69
+j: 0
+k: 7
+l: 49
+m: 14
+n: 60
+o: 67
+p: 11
+q: 4
+r: 49
+s: 50
+t: 70
+u: 27
+v: 10
+w: 16
+x: 2
+y: 13
+z: 0
+nguyenqu2@shaw:lettercount$ lettercount 2 inputs/input2.txt
+this is thread 0, start from 0x7f158543b000 to 0x7f158543b211
+this is thread 1, start from 0x7f158543b211 to 0x7f158543b422
+a: 71
+b: 8
+c: 35
+d: 42
+e: 104
+f: 22
+g: 21
+h: 42
+i: 69
+j: 0
+k: 7
+l: 49
+m: 14
+n: 60
+o: 67
+p: 11
+q: 4
+r: 49
+s: 50
+t: 70
+u: 27
+v: 10
+w: 16
+x: 2
+y: 13
+z: 0
+nguyenqu2@shaw:lettercount$ lettercount 4 inputs/input2.txt
+this is thread 1, start from 0x7f6ee91fb108 to 0x7f6ee91fb210
+this is thread 0, start from 0x7f6ee91fb000 to 0x7f6ee91fb108
+this is thread 2, start from 0x7f6ee91fb210 to 0x7f6ee91fb318
+this is thread 3, start from 0x7f6ee91fb318 to 0x7f6ee91fb422
+a: 71
+b: 8
+c: 35
+d: 42
+e: 104
+f: 22
+g: 21
+h: 42
+i: 69
+j: 0
+k: 7
+l: 49
+m: 14
+n: 60
+o: 67
+p: 11
+q: 4
+r: 49
+s: 50
+t: 70
+u: 27
+v: 10
+w: 16
+x: 2
+y: 13
+z: 0
+nguyenqu2@shaw:lettercount$ lettercount 8 inputs/input2.txt
+this is thread 1, start from 0x7f92d6ddb084 to 0x7f92d6ddb108
+this is thread 0, start from 0x7f92d6ddb000 to 0x7f92d6ddb084
+this is thread 2, start from 0x7f92d6ddb108 to 0x7f92d6ddb18c
+this is thread 3, start from 0x7f92d6ddb18c to 0x7f92d6ddb210
+this is thread 4, start from 0x7f92d6ddb210 to 0x7f92d6ddb294
+this is thread 5, start from 0x7f92d6ddb294 to 0x7f92d6ddb318
+this is thread 6, start from 0x7f92d6ddb318 to 0x7f92d6ddb39c
+this is thread 7, start from 0x7f92d6ddb39c to 0x7f92d6ddb422
+a: 71
+b: 8
+c: 35
+d: 42
+e: 104
+f: 22
+g: 21
+h: 42
+i: 69
+j: 0
+k: 7
+l: 49
+m: 14
+n: 60
+o: 67
+p: 11
+q: 4
+r: 49
+s: 50
+t: 70
+u: 27
+v: 10
+w: 16
+x: 2
+y: 13
+z: 0
+nguyenqu2@shaw:lettercount$ lettercount 8 inputs/input2.txt
+this is thread 1, start from 0x7f3395d63084 to 0x7f3395d63108
+this is thread 0, start from 0x7f3395d63000 to 0x7f3395d63084
+this is thread 2, start from 0x7f3395d63108 to 0x7f3395d6318c
+this is thread 3, start from 0x7f3395d6318c to 0x7f3395d63210
+this is thread 4, start from 0x7f3395d63210 to 0x7f3395d63294
+this is thread 5, start from 0x7f3395d63294 to 0x7f3395d63318
+this is thread 6, start from 0x7f3395d63318 to 0x7f3395d6339c
+this is thread 7, start from 0x7f3395d6339c to 0x7f3395d63422
+a: 71
+b: 8
+c: 35
+d: 42
+e: 104
+f: 22
+g: 21
+h: 42
+i: 69
+j: 0
+k: 7
+l: 49
+m: 14
+n: 60
+o: 67
+p: 11
+q: 4
+r: 49
+s: 50
+t: 70
+u: 27
+v: 10
+w: 16
+x: 2
+y: 13
+z: 0
+nguyenqu2@shaw:lettercount$ lettercount 1 inputs/input1.txt
+this is thread 0, start from 0x7f6e4f4b3000 to 0x7f6e4f4b302b
+a: 1
+b: 1
+c: 1
+d: 1
+e: 3
+f: 1
+g: 1
+h: 2
+i: 1
+j: 1
+k: 1
+l: 1
+m: 1
+n: 1
+o: 4
+p: 1
+q: 1
+r: 2
+s: 1
+t: 2
+u: 2
+v: 1
+w: 1
+x: 1
+y: 1
+z: 1
+nguyenqu2@shaw:lettercount$ lettercount 2 inputs/input1.txt
+this is thread 0, start from 0x7f4ddeca3000 to 0x7f4ddeca3015
+this is thread 1, start from 0x7f4ddeca3015 to 0x7f4ddeca302b
+a: 1
+b: 1
+c: 1
+d: 1
+e: 3
+f: 1
+g: 1
+h: 2
+i: 1
+j: 1
+k: 1
+l: 1
+m: 1
+n: 1
+o: 4
+p: 1
+q: 1
+r: 2
+s: 1
+t: 2
+u: 2
+v: 1
+w: 1
+x: 1
+y: 1
+z: 1
+nguyenqu2@shaw:lettercount$ lettercount 4 inputs/input1.txt
+this is thread 1, start from 0x7fb56467b00a to 0x7fb56467b014
+this is thread 0, start from 0x7fb56467b000 to 0x7fb56467b00a
+this is thread 2, start from 0x7fb56467b014 to 0x7fb56467b01e
+this is thread 3, start from 0x7fb56467b01e to 0x7fb56467b02b
+a: 1
+b: 1
+c: 1
+d: 1
+e: 3
+f: 1
+g: 1
+h: 2
+i: 1
+j: 1
+k: 1
+l: 1
+m: 1
+n: 1
+o: 4
+p: 1
+q: 1
+r: 2
+s: 1
+t: 2
+u: 2
+v: 1
+w: 1
+x: 1
+y: 1
+z: 1
+nguyenqu2@shaw:lettercount$ lettercount 8 inputs/input1.txt
+this is thread 0, start from 0x7f161f5a3000 to 0x7f161f5a3005
+this is thread 1, start from 0x7f161f5a3005 to 0x7f161f5a300a
+this is thread 6, start from 0x7f161f5a301e to 0x7f161f5a3023
+this is thread 2, start from 0x7f161f5a300a to 0x7f161f5a300f
+this is thread 7, start from 0x7f161f5a3023 to 0x7f161f5a302b
+this is thread 5, start from 0x7f161f5a3019 to 0x7f161f5a301e
+this is thread 3, start from 0x7f161f5a300f to 0x7f161f5a3014
+this is thread 4, start from 0x7f161f5a3014 to 0x7f161f5a3019
+a: 1
+b: 1
+c: 1
+d: 1
+e: 3
+f: 1
+g: 1
+h: 2
+i: 1
+j: 1
+k: 1
+l: 1
+m: 1
+n: 1
+o: 4
+p: 1
+q: 1
+r: 2
+s: 1
+t: 2
+u: 2
+v: 1
+w: 1
+x: 1
+y: 1
+z: 1
+nguyenqu2@shaw:lettercount$
