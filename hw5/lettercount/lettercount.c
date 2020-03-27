@@ -91,7 +91,7 @@ void count_letters(int num_threads, char *file_data, off_t file_size) {
 
     /// wait the worker to finish the job
     for (int i = 0; i < num_threads; i++) {
-        pthread_mutex_t lock;
+        pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
         pthread_mutex_lock(&lock);
         int *worker_counts;
         pthread_join(threads[i], (void **) &worker_counts);
