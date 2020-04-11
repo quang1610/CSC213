@@ -13,8 +13,10 @@
   <component name="ChangeListManager">
     <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CSC213" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CSC213" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/password-cracker/password-cracker" beforeDir="false" afterPath="$PROJECT_DIR$/password-cracker/password-cracker" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/password-cracker/password-cracker.c" beforeDir="false" afterPath="$PROJECT_DIR$/password-cracker/password-cracker.c" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,12 +31,17 @@
   </component>
   <component name="ProjectId" id="1WzgyGmuI4a2ApkfIq3pI3PikVu" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../CSC214" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -46,18 +53,6 @@
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/hw2" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="CSC213" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CSC213" TARGET_NAME="CSC213" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CSC213" RUN_TARGET_NAME="CSC213">
@@ -92,7 +87,10 @@
       <workItem from="1582888751619" duration="331000" />
       <workItem from="1583616020439" duration="165000" />
       <workItem from="1585294833978" duration="15747000" />
-      <workItem from="1586218828746" duration="179000" />
+      <workItem from="1586218828746" duration="8820000" />
+      <workItem from="1586595367606" duration="3641000" />
+      <workItem from="1586599276976" duration="124000" />
+      <workItem from="1586599466326" duration="1077000" />
     </task>
     <servers />
   </component>
@@ -111,5 +109,58 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586600559454">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1586600559454" />
+    <state width="699" height="303" key="GridCell.Tab.0.bottom" timestamp="1586600618026">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="699" height="303" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586600618026" />
+    <state width="699" height="303" key="GridCell.Tab.0.center" timestamp="1586600618025">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="699" height="303" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586600618025" />
+    <state width="699" height="303" key="GridCell.Tab.0.left" timestamp="1586600618024">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="699" height="303" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586600618024" />
+    <state width="699" height="303" key="GridCell.Tab.0.right" timestamp="1586600618025">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="699" height="303" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586600618025" />
+    <state width="699" height="303" key="GridCell.Tab.1.bottom" timestamp="1586600618027">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="699" height="303" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586600618027" />
+    <state width="699" height="303" key="GridCell.Tab.1.center" timestamp="1586600618027">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="699" height="303" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1586600618027" />
+    <state width="699" height="303" key="GridCell.Tab.1.left" timestamp="1586600618026">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="699" height="303" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1586600618026" />
+    <state width="699" height="303" key="GridCell.Tab.1.right" timestamp="1586600618027">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state width="699" height="303" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1586600618027" />
+    <state x="209" y="88" key="SettingsEditor" timestamp="1586599629041">
+      <screen x="0" y="23" width="1440" height="842" />
+    </state>
+    <state x="209" y="88" key="SettingsEditor/0.23.1440.842@0.23.1440.842" timestamp="1586599629041" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/password-cracker/password-cracker.c</url>
+          <line>161</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
