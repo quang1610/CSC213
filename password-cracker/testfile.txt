@@ -1,0 +1,22 @@
+Quang Nguyen
+nguyenducquang@Nguyens-MacBook-Pro password-cracker % ./password-cracker list inputs/input3.txt
+user1 aaaaaa
+user2 topoki
+user5 grinel
+user7 tyhbvf
+user3 batman
+user6 talkie
+user4 zzzzzz
+Cracked 7 of 7 passwords.
+nguyenducquang@Nguyens-MacBook-Pro password-cracker % ./password-cracker list inputs/input2.txt
+wolz oliver
+weinman vizwiz
+vostinar cached
+klinge chmcls
+kington divest
+stone xaqznl
+walker robots
+curtsinger evlprf
+osera snthtc
+rebelsky glimmr
+Cracked 10 of 10 passwords.

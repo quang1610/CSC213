@@ -1,3 +1,4 @@
+/// @author Quang Nguyen nguyenqu2
 #define _GNU_SOURCE
 
 #include <openssl/md5.h>
@@ -121,7 +122,7 @@ void add_password(password_set_t *passwords, char *username, uint8_t *password_h
     /// add new user
     new_user->next = passwords->head;
     passwords->head = new_user;
-    passwords->user_num += 1;
+    passwords->user_num ++;
 }
 /**
  * Cracking list password worker. These function will be called by a thread, with expected input to be a struct contains
@@ -133,12 +134,12 @@ void add_password(password_set_t *passwords, char *username, uint8_t *password_h
 void* crack_password_list_worker (void * args) {
     // get the parameters
     password_set_t *passwords = ((password_cracker_args_t *) args)->passwords;
-    int job_index = (( password_cracker_args_t *) args)->job_index;
+    int job_index = ((password_cracker_args_t *) args)->job_index;
 
     // set up candidate password
     char *candidate_password = malloc(sizeof(char) * (PASSWORD_LENGTH + 1));
     strcpy(candidate_password, "aaaaaa");
-    // this works since password space size % num threads = 0
+    // !this works since password space size % num threads = 0
     int start_candidate_password_index = PASSWORD_SPACE_SIZE / NUM_THREADS * job_index;
     int end_candidate_password_index = PASSWORD_SPACE_SIZE / NUM_THREADS * (job_index + 1);
     for (int i = start_candidate_password_index; i < end_candidate_password_index; i ++) {
@@ -148,7 +149,6 @@ void* crack_password_list_worker (void * args) {
             candidate_password[j] = (char) ('a' + div % CHAR_NUM);
             div = div / CHAR_NUM;
         }
-
         // checking password hash
         uint8_t candidate_hash[MD5_DIGEST_LENGTH]; //< This will hold the hash of the candidate password
         MD5((unsigned char *) candidate_password, strlen(candidate_password),
@@ -156,15 +156,24 @@ void* crack_password_list_worker (void * args) {
 
         // Now check if the hash of the candidate password matches the input hash
         user_password_t *cursor = passwords->head;
-        while (cursor != NULL && cursor->cracked_password == NOT_CRACKED) {
+        while (cursor != NULL) {
+            if (cursor->cracked_password == CRACKED) {
+                // if this user has already been cracked, we don't need to check it
+                cursor = cursor->next;
+                continue;
+            }
             if (memcmp(cursor->password_hash, candidate_hash, MD5_DIGEST_LENGTH) == 0) {
-                // Match! print the candidate password
+                // Match! print the candidate password then continue with new candidate
                 pthread_mutex_lock(&lock);
                 cursor->cracked_password = CRACKED;
                 cracked_password_num += 1;
                 pthread_mutex_unlock(&lock);
                 printf("%s %s\n", cursor->username, candidate_password);
                 break;
+            }
+            if (cracked_password_num == passwords->user_num) {
+                // return early as we cracked all the passwords
+                return  NULL;
             }
             cursor = cursor->next;
         }
