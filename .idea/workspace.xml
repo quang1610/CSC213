@@ -11,13 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/password-cracker/testfile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password-cracker/inputs/input3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/password-cracker/inputs/input3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password-cracker/password-cracker" beforeDir="false" afterPath="$PROJECT_DIR$/password-cracker/password-cracker" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password-cracker/password-cracker.c" beforeDir="false" afterPath="$PROJECT_DIR$/password-cracker/password-cracker.c" afterDir="false" />
-    </list>
+    <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
