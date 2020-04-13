@@ -1,4 +1,12 @@
-/// @author Quang Nguyen nguyenqu2
+/** @author Quang Nguyen nguyenqu2
+ * Contents:
+ * SUPPORT STRUCTURE
+ * GLOBAL VARIABLE
+ * PART A
+ * PARTS B & C
+ * PROVIDED CODE
+ */
+
 #define _GNU_SOURCE
 
 #include <openssl/md5.h>
@@ -8,6 +16,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <time.h>
 
 #define MAX_USERNAME_LENGTH 64
 #define PASSWORD_LENGTH 6
@@ -90,7 +99,7 @@ int crack_single_password(uint8_t *input_hash, char *output) {
 
 /********************* Parts B & C ************************/
 /**
- * Initialize a password set.
+ * Initialize a password set. passwords->head act like a stack in this case.
  * Complete this implementation for part B of the lab.
  *
  * \param passwords  A pointer to allocated memory that will hold a password set
@@ -101,8 +110,7 @@ void init_password_set(password_set_t *passwords) {
 }
 
 /**
- * Add a password to a password set
- * Complete this implementation for part B of the lab.
+ * Add a password to a password set add new user password to the passwords set as a stack
  *
  * \param passwords   A pointer to a password set initialized with the function above.
  * \param username    The name of the user being added. The memory that holds this string's
@@ -124,6 +132,51 @@ void add_password(password_set_t *passwords, char *username, uint8_t *password_h
     passwords->head = new_user;
     passwords->user_num ++;
 }
+/**
+ * Crack list passwords without using multi-threads
+ */
+ void crack_password_list_non_parallel(password_set_t* passwords) {
+    // set up candidate password
+    int password_counter = 0;
+    char *candidate_password = malloc(sizeof(char) * (PASSWORD_LENGTH + 1));
+    strcpy(candidate_password, "aaaaaa");
+    // !this works since password space size % num threads = 0
+    for (int i = 0; i < PASSWORD_SPACE_SIZE; i ++) {
+        // generate candidate password
+        int div = i;
+        for (int j = 5; j >= 0; j--) {
+            candidate_password[j] = (char) ('a' + div % CHAR_NUM);
+            div = div / CHAR_NUM;
+        }
+        // checking password hash
+        uint8_t candidate_hash[MD5_DIGEST_LENGTH]; //< This will hold the hash of the candidate password
+        MD5((unsigned char *) candidate_password, strlen(candidate_password),
+            candidate_hash); //< Do the hash
+
+        // Now check if the hash of the candidate password matches the input hash
+        user_password_t *cursor = passwords->head;
+        while (cursor != NULL) {
+            if (cursor->cracked_password == CRACKED) {
+                // if this user has already been cracked, we don't need to check it
+                cursor = cursor->next;
+                continue;
+            }
+            if (memcmp(cursor->password_hash, candidate_hash, MD5_DIGEST_LENGTH) == 0) {
+                // Match! print the candidate password then continue with new candidate
+                printf("%s %s\n", cursor->username, candidate_password);
+                cursor->cracked_password = CRACKED;
+                password_counter += 1;
+                break;
+            }
+            if (password_counter == passwords->user_num) {
+                // return early as we cracked all the passwords
+                return;
+            }
+            cursor = cursor->next;
+        }
+    }
+ }
+
 /**
  * Cracking list password worker. These function will be called by a thread, with expected input to be a struct contains
  * list of the users' password to be cracked and a job_index, indicating which part of candidate passwords list it is
@@ -307,9 +360,25 @@ int main(int argc, char **argv) {
         }
 
         // Now run the password list cracker
+
+        long current_time = time(NULL);
         int cracked = crack_password_list(&passwords);
+        current_time = time(NULL) - current_time;
+
+        printf("%ld \n", current_time);
 
         printf("Cracked %d of %d passwords.\n", cracked, password_count);
+        user_password_t *cursor1 = passwords.head;
+        while (cursor1 != NULL) {
+            cursor1->cracked_password = NOT_CRACKED;
+            cursor1 = cursor1->next;
+        }
+
+        current_time = time(NULL);
+        crack_password_list_non_parallel(&passwords);
+        current_time = time(NULL) - current_time;
+
+        printf("%ld \n", current_time);
 
         // free passwords set
         user_password_t *cursor = passwords.head;

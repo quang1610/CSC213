@@ -12,9 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/password-cracker/testfile.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password-cracker/inputs/input3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/password-cracker/inputs/input3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/password-cracker/password-cracker" beforeDir="false" afterPath="$PROJECT_DIR$/password-cracker/password-cracker" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/password-cracker/password-cracker.c" beforeDir="false" afterPath="$PROJECT_DIR$/password-cracker/password-cracker.c" afterDir="false" />
     </list>
@@ -91,7 +89,8 @@
       <workItem from="1586218828746" duration="8820000" />
       <workItem from="1586595367606" duration="3641000" />
       <workItem from="1586599276976" duration="124000" />
-      <workItem from="1586599466326" duration="2882000" />
+      <workItem from="1586599466326" duration="2909000" />
+      <workItem from="1586775936426" duration="1728000" />
     </task>
     <servers />
   </component>
@@ -116,22 +115,26 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1586600559454" />
-    <state width="1398" height="326" key="GridCell.Tab.0.bottom" timestamp="1586601029902">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="291" key="GridCell.Tab.0.bottom" timestamp="1586777278396">
+      <screen x="0" y="23" width="1440" height="842" />
     </state>
-    <state width="1398" height="326" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586601029902" />
-    <state width="1398" height="326" key="GridCell.Tab.0.center" timestamp="1586601029900">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="326" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586602380242" />
+    <state width="1398" height="291" key="GridCell.Tab.0.bottom/0.23.1440.842@0.23.1440.842" timestamp="1586777278396" />
+    <state width="1398" height="291" key="GridCell.Tab.0.center" timestamp="1586777278395">
+      <screen x="0" y="23" width="1440" height="842" />
     </state>
-    <state width="1398" height="326" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586601029900" />
-    <state width="1398" height="326" key="GridCell.Tab.0.left" timestamp="1586601029899">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="326" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586602380241" />
+    <state width="1398" height="291" key="GridCell.Tab.0.center/0.23.1440.842@0.23.1440.842" timestamp="1586777278395" />
+    <state width="1398" height="291" key="GridCell.Tab.0.left" timestamp="1586777278395">
+      <screen x="0" y="23" width="1440" height="842" />
     </state>
-    <state width="1398" height="326" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586601029899" />
-    <state width="1398" height="326" key="GridCell.Tab.0.right" timestamp="1586601029901">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="326" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586602380241" />
+    <state width="1398" height="291" key="GridCell.Tab.0.left/0.23.1440.842@0.23.1440.842" timestamp="1586777278395" />
+    <state width="1398" height="291" key="GridCell.Tab.0.right" timestamp="1586777278396">
+      <screen x="0" y="23" width="1440" height="842" />
     </state>
-    <state width="1398" height="326" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586601029901" />
+    <state width="1398" height="326" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586602380242" />
+    <state width="1398" height="291" key="GridCell.Tab.0.right/0.23.1440.842@0.23.1440.842" timestamp="1586777278396" />
     <state width="699" height="303" key="GridCell.Tab.1.bottom" timestamp="1586600618027">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -152,5 +155,16 @@
       <screen x="0" y="23" width="1440" height="842" />
     </state>
     <state x="209" y="88" key="SettingsEditor/0.23.1440.842@0.23.1440.842" timestamp="1586599629041" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/password-cracker/password-cracker.c</url>
+          <line>11</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
