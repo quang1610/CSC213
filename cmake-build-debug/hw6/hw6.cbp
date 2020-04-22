@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="hw6"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\hw6\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/hw6"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/hw6/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/hw6/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/hw6/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/hw6/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/hw6/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\hw6\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -5,13 +5,22 @@
       <config projectName="CSC213" targetName="CSC213" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="" />
+    <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/hw6/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw6/parallel-data-structures/stack-tests" beforeDir="false" afterPath="$PROJECT_DIR$/hw6/parallel-data-structures/stack-tests" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw6/parallel-data-structures/stack.cc" beforeDir="false" afterPath="$PROJECT_DIR$/hw6/parallel-data-structures/stack.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hw6/parallel-data-structures/stack.hh" beforeDir="false" afterPath="$PROJECT_DIR$/hw6/parallel-data-structures/stack.hh" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +30,13 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CMakeLists.txt" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -39,14 +55,15 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/hw3/print-archive" />
-      <recent name="$PROJECT_DIR$/virtual-address-lab" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hw6" />
       <recent name="$PROJECT_DIR$/hw5" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/hw2" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/hw3/print-archive" />
+      <recent name="$PROJECT_DIR$/virtual-address-lab" />
     </key>
   </component>
   <component name="RunManager">
@@ -86,6 +103,8 @@
       <workItem from="1586595367606" duration="3641000" />
       <workItem from="1586599276976" duration="124000" />
       <workItem from="1586599466326" duration="2882000" />
+      <workItem from="1587511776136" duration="709000" />
+      <workItem from="1587513739793" duration="551000" />
     </task>
     <servers />
   </component>
