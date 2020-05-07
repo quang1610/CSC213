@@ -3,14 +3,19 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 
 #include "message.h"
+#include "socket.h"
+#include "ui.h"
 
 /// RECORD BLOCK FUNCTIONS
 
 
 /// MESSAGE RECORD FUNCTIONS
-void mess_record_init (mess_record_t *record) {
+void mess_record_init(mess_record_t *record, const char *my_username) {
+    strcpy(&record->my_username[0], my_username);
     for (int i = 0; i < MESS_RECORD_TABLE_SIZE; i++) {
         pthread_mutex_init(&record->mutex[i], NULL);
         record->table[i] = NULL;
@@ -18,7 +23,7 @@ void mess_record_init (mess_record_t *record) {
     }
 }
 
-void mess_record_destroy (mess_record_t *record) {
+void mess_record_destroy(mess_record_t *record) {
     for (int i = 0; i < MESS_RECORD_TABLE_SIZE; i++) {
         pthread_mutex_lock(&record->mutex[i]);
         mess_record_block_t *cursor = record->table[i];
@@ -35,14 +40,14 @@ void mess_record_destroy (mess_record_t *record) {
     }
 }
 
-int mess_record_check_present (mess_record_t *record, unsigned long hashcode, time_t time_stamp) {
+int mess_record_check_present(mess_record_t *record, unsigned long hashcode, long time_stamp) {
     int index = (int) (hashcode % MESS_RECORD_TABLE_SIZE);
 
     pthread_mutex_lock(&record->mutex[index]);
 
     mess_record_block_t *cursor = record->table[index];
 
-    while(cursor != NULL) {
+    while (cursor != NULL) {
         /// check if any message record block has same time stamp and same hashcode
         if (cursor->hash_code == hashcode && cursor->time_stamp == time_stamp) {
             pthread_mutex_unlock(&record->mutex[index]);
@@ -55,7 +60,34 @@ int mess_record_check_present (mess_record_t *record, unsigned long hashcode, ti
     return NEW_MESSAGE;
 }
 
-int mess_record_add(mess_record_t *record, unsigned long hashcode, time_t time_stamp) {
+int mess_record_add(mess_record_t *record, message_t *message) {
+    /// empty message
+    if (message == NULL) {
+        return MESS_RECORD_ADD_FAIL;
+    }
+
+    /// avoid sending message to yourself
+    if (strcmp(record->my_username, message->sender_username) == 0) {
+        return MESS_RECORD_DUPLICATE_ADD;
+    }
+
+    /// set up variable and find the right index
+    unsigned hashcode = message->hash_code;
+    long time_stamp = message->time_stamp;
+    int index = (int) (hashcode % MESS_RECORD_TABLE_SIZE);
+
+    pthread_mutex_lock(&record->mutex[index]);
+
+    /// we need to check if the message record block has already been added ie this is an old message
+    mess_record_block_t *cursor = record->table[index];
+    while (cursor != NULL) {
+        if (cursor->hash_code == hashcode && cursor->time_stamp == time_stamp) {
+            pthread_mutex_unlock(&record->mutex[index]);
+            return MESS_RECORD_DUPLICATE_ADD;
+        }
+        cursor = cursor->next;
+    }
+
     /// create new message record block
     mess_record_block_t *new_mess_record_block = malloc(sizeof(mess_record_block_t));
     if (new_mess_record_block == NULL)
@@ -64,27 +96,13 @@ int mess_record_add(mess_record_t *record, unsigned long hashcode, time_t time_s
     new_mess_record_block->hash_code = hashcode;
     new_mess_record_block->time_stamp = time_stamp;
 
-    /// add new message record block to the table
-    int index = hashcode % MESS_RECORD_TABLE_SIZE;
-    pthread_mutex_lock(&record->mutex[index]);
-
-    if(record->table[index] == NULL) {
+    /// Adding to the table
+    if (record->table[index] == NULL) {
         /// if the current table entry is empty
         record->table[index] = new_mess_record_block;
         record->size[index] += 1;
         pthread_mutex_unlock(&record->mutex[index]);
     } else {
-        mess_record_block_t *cursor = record->table[index];
-
-        /// we need to check if the message record block has already been added ie this is an old message
-        while (cursor != NULL) {
-            if (cursor->hash_code == hashcode && cursor->time_stamp == time_stamp) {
-                pthread_mutex_unlock(&record->mutex[index]);
-                return MESS_RECORD_DUPLICATE_ADD;
-            }
-            cursor = cursor->next;
-        }
-
         /// add new record block to the beginning of the bucket
         new_mess_record_block->next = record->table[index];
         record->table[index]->previous = new_mess_record_block;
@@ -111,7 +129,7 @@ void mess_record_clean_up(mess_record_t *record) {
                 counter++;
             }
         }
-        record->size[i] = NUM_OLD_MESSAGES_ALLOW/2 -1; /// we minus 1 because we free the current cursor
+        record->size[i] = NUM_OLD_MESSAGES_ALLOW / 2 - 1; /// we minus 1 because we free the current cursor
         pthread_mutex_unlock(&record->mutex[i]);
 
         /// cleaning
@@ -125,10 +143,117 @@ void mess_record_clean_up(mess_record_t *record) {
 }
 
 /// MESSAGE FUNCTIONS
-message_t *message_generate(int type, const char *sender_username, const char *message_content, const char *sender_server_name,
-                            unsigned port);
+message_t *
+message_generate(int type, const char *sender_username, const char *message_content, const char *sender_server_name,
+                 unsigned port) {
+    message_t *message = malloc(sizeof(message_t));
 
-int message_type(message_t *message);
+    /// set type
+    message->type = type;
 
-int send_message(message_t *message, FILE *fd);
+    /// set time stamp
+    struct timespec time;
+    clock_gettime(CLOCK_REALTIME, &time);
+    message->time_stamp = time.tv_nsec;
+
+    /// set hashcode
+    char buffer[USERNAME_LEN + 50];
+    sprintf(buffer, "%ld", message->time_stamp);
+    strcat(buffer, sender_username);
+    message->hash_code = hashcode(buffer);
+
+    /// set sender's username
+    strcpy(&message->sender_username[0], sender_username);
+
+    /// set message's content
+    strcpy(&message->message_content[0], message_content);
+
+    /// set sender's servername/IP address
+    strcpy(&message->sender_server_name[0], sender_server_name);
+
+    /// set sender's server's port
+    message->sender_port = port;
+
+    return message;
+}
+
+int message_type(message_t *message) {
+    return message->type;
+}
+
+ssize_t send_message(message_t *message, int fd) {
+    ssize_t result = write(fd, message, sizeof(message_t));
+
+    return result;
+}
+
+ssize_t read_message(message_t *message, int fd) {
+    if (message == NULL) {
+        return 0;
+    }
+    ssize_t result = read(fd, message, sizeof(message_t));
+    return result;
+}
+
+int process_message(message_t *message, mess_record_t *record, peer_list_t *list) {
+    if (mess_record_add(record, message) == MESS_PROCESS_SUCCESSFUL) {
+        if (message->type == TYPE_NORMAL) {
+            /// this is a new message
+            /// first we display the message
+            ui_display(message->sender_username, message->message_content);
+
+            /// then we broadcast it to our peer
+            for (int i = 0; i < PEER_LIST_TABLE_SIZE; i++) {
+                pthread_mutex_lock(&list->mutex[i]);
+                peer_t *cursor = list->table[i];
+
+                while (cursor != NULL) {
+                    send_message(message, cursor->to_peer);
+                    cursor = cursor->next;
+                }
+                pthread_mutex_unlock(&list->mutex[i]);
+            }
+        } else if (message->type == TYPE_ADD_PEER) {
+            /// this is a new peer request
+            /// first we try to broadcast it to our peers
+            for (int i = 0; i < PEER_LIST_TABLE_SIZE; i++) {
+                pthread_mutex_lock(&list->mutex[i]);
+                peer_t *cursor = list->table[i];
+
+                while(cursor != NULL) {
+                    send_message(message, cursor->to_peer);
+                    cursor = cursor->next;
+                }
+                pthread_mutex_unlock(&list->mutex[i]);
+            }
+
+            /// then try adding new peer if I haven't
+            int socket_fd = socket_connect(message->sender_server_name, message->sender_port);
+            if (socket_fd == -1)
+                return MESS_PROCESS_FAIL;
+            peer_list_add_peer(list, socket_fd, message->sender_username);
+
+        } else if (message->type == TYPE_REMOVE_PEER) {
+            /// this is a new peer removal request
+            /// first we try to broadcast this message to our peer
+            for (int i = 0; i < PEER_LIST_TABLE_SIZE; i++) {
+                pthread_mutex_lock(&list->mutex[i]);
+                peer_t *cursor = list->table[i];
+
+                while(cursor != NULL) {
+                    send_message(message, cursor->to_peer);
+                    cursor = cursor->next;
+                }
+                pthread_mutex_unlock(&list->mutex[i]);
+            }
+
+            /// then we try to remove current peer
+            peer_list_remove_peer(list, message->sender_username);
+        }
+        return MESS_PROCESS_SUCCESSFUL;
+    } else {
+        return MESS_PROCESS_FAIL;
+    }
+}
+
 

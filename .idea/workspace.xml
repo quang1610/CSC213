@@ -12,39 +12,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/networking/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/networking/client" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/networking/client.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/networking/server" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/networking/server.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/networking/socket.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/hashcode.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/hashcode.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/message.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/message.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/p2pchat.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/peer_list.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/peer_list.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/socket.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/ui.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/ui.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/utility.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CSC213" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CSC213" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CSC213.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CSC213.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2pchat/message.c" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/message.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2pchat/message.h" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/message.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2pchat/peer_list.c" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/peer_list.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2pchat/peer_list.h" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/peer_list.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/p2pchat/utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/utility.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +115,7 @@
       <workItem from="1587876206905" duration="639000" />
       <workItem from="1588021215226" duration="559000" />
       <workItem from="1588724126932" duration="17792000" />
-      <workItem from="1588794430919" duration="10914000" />
+      <workItem from="1588794430919" duration="20181000" />
     </task>
     <servers />
   </component>
@@ -169,26 +144,26 @@
       <screen x="0" y="23" width="1440" height="842" />
     </state>
     <state x="430" y="254" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.842@0.23.1440.842" timestamp="1588799633998" />
-    <state width="1398" height="291" key="GridCell.Tab.0.bottom" timestamp="1588023586481">
+    <state width="1398" height="291" key="GridCell.Tab.0.bottom" timestamp="1588834203521">
       <screen x="0" y="23" width="1440" height="842" />
     </state>
     <state width="1398" height="326" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586601029902" />
-    <state width="1398" height="291" key="GridCell.Tab.0.bottom/0.23.1440.842@0.23.1440.842" timestamp="1588023586481" />
-    <state width="1398" height="291" key="GridCell.Tab.0.center" timestamp="1588023586481">
+    <state width="1398" height="291" key="GridCell.Tab.0.bottom/0.23.1440.842@0.23.1440.842" timestamp="1588834203521" />
+    <state width="1398" height="291" key="GridCell.Tab.0.center" timestamp="1588834203520">
       <screen x="0" y="23" width="1440" height="842" />
     </state>
     <state width="1398" height="326" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586601029900" />
-    <state width="1398" height="291" key="GridCell.Tab.0.center/0.23.1440.842@0.23.1440.842" timestamp="1588023586481" />
-    <state width="1398" height="291" key="GridCell.Tab.0.left" timestamp="1588023586480">
+    <state width="1398" height="291" key="GridCell.Tab.0.center/0.23.1440.842@0.23.1440.842" timestamp="1588834203520" />
+    <state width="1398" height="291" key="GridCell.Tab.0.left" timestamp="1588834203520">
       <screen x="0" y="23" width="1440" height="842" />
     </state>
     <state width="1398" height="326" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586601029899" />
-    <state width="1398" height="291" key="GridCell.Tab.0.left/0.23.1440.842@0.23.1440.842" timestamp="1588023586480" />
-    <state width="1398" height="291" key="GridCell.Tab.0.right" timestamp="1588023586481">
+    <state width="1398" height="291" key="GridCell.Tab.0.left/0.23.1440.842@0.23.1440.842" timestamp="1588834203520" />
+    <state width="1398" height="291" key="GridCell.Tab.0.right" timestamp="1588834203521">
       <screen x="0" y="23" width="1440" height="842" />
     </state>
     <state width="1398" height="326" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586601029901" />
-    <state width="1398" height="291" key="GridCell.Tab.0.right/0.23.1440.842@0.23.1440.842" timestamp="1588023586481" />
+    <state width="1398" height="291" key="GridCell.Tab.0.right/0.23.1440.842@0.23.1440.842" timestamp="1588834203521" />
     <state width="699" height="303" key="GridCell.Tab.1.bottom" timestamp="1586600618027">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -209,5 +184,9 @@
       <screen x="0" y="23" width="1440" height="842" />
     </state>
     <state x="209" y="88" key="SettingsEditor/0.23.1440.842@0.23.1440.842" timestamp="1586599629041" />
+    <state x="385" y="189" width="670" height="676" key="search.everywhere.popup" timestamp="1588831538727">
+      <screen x="0" y="23" width="1440" height="842" />
+    </state>
+    <state x="385" y="189" width="670" height="676" key="search.everywhere.popup/0.23.1440.842@0.23.1440.842" timestamp="1588831538727" />
   </component>
 </project>
