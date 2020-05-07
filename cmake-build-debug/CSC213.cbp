@@ -85,6 +85,24 @@
 		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/main.c">
 			<Option target="CSC213"/>
 		</Unit>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/hashcode.c">
+			<Option target="CSC213"/>
+		</Unit>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/hashcode.h">
+			<Option target="CSC213"/>
+		</Unit>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/message.c">
+			<Option target="CSC213"/>
+		</Unit>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/message.h">
+			<Option target="CSC213"/>
+		</Unit>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/peer_list.c">
+			<Option target="CSC213"/>
+		</Unit>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/peer_list.h">
+			<Option target="CSC213"/>
+		</Unit>
 		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

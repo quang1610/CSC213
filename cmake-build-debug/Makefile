@@ -150,6 +150,87 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/main.c.s
 .PHONY : main.c.s
 
+p2pchat/hashcode.o: p2pchat/hashcode.c.o
+
+.PHONY : p2pchat/hashcode.o
+
+# target to build an object file
+p2pchat/hashcode.c.o:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/hashcode.c.o
+.PHONY : p2pchat/hashcode.c.o
+
+p2pchat/hashcode.i: p2pchat/hashcode.c.i
+
+.PHONY : p2pchat/hashcode.i
+
+# target to preprocess a source file
+p2pchat/hashcode.c.i:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/hashcode.c.i
+.PHONY : p2pchat/hashcode.c.i
+
+p2pchat/hashcode.s: p2pchat/hashcode.c.s
+
+.PHONY : p2pchat/hashcode.s
+
+# target to generate assembly for a file
+p2pchat/hashcode.c.s:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/hashcode.c.s
+.PHONY : p2pchat/hashcode.c.s
+
+p2pchat/message.o: p2pchat/message.c.o
+
+.PHONY : p2pchat/message.o
+
+# target to build an object file
+p2pchat/message.c.o:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/message.c.o
+.PHONY : p2pchat/message.c.o
+
+p2pchat/message.i: p2pchat/message.c.i
+
+.PHONY : p2pchat/message.i
+
+# target to preprocess a source file
+p2pchat/message.c.i:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/message.c.i
+.PHONY : p2pchat/message.c.i
+
+p2pchat/message.s: p2pchat/message.c.s
+
+.PHONY : p2pchat/message.s
+
+# target to generate assembly for a file
+p2pchat/message.c.s:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/message.c.s
+.PHONY : p2pchat/message.c.s
+
+p2pchat/peer_list.o: p2pchat/peer_list.c.o
+
+.PHONY : p2pchat/peer_list.o
+
+# target to build an object file
+p2pchat/peer_list.c.o:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o
+.PHONY : p2pchat/peer_list.c.o
+
+p2pchat/peer_list.i: p2pchat/peer_list.c.i
+
+.PHONY : p2pchat/peer_list.i
+
+# target to preprocess a source file
+p2pchat/peer_list.c.i:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/peer_list.c.i
+.PHONY : p2pchat/peer_list.c.i
+
+p2pchat/peer_list.s: p2pchat/peer_list.c.s
+
+.PHONY : p2pchat/peer_list.s
+
+# target to generate assembly for a file
+p2pchat/peer_list.c.s:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/peer_list.c.s
+.PHONY : p2pchat/peer_list.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -162,6 +243,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... p2pchat/hashcode.o"
+	@echo "... p2pchat/hashcode.i"
+	@echo "... p2pchat/hashcode.s"
+	@echo "... p2pchat/message.o"
+	@echo "... p2pchat/message.i"
+	@echo "... p2pchat/message.s"
+	@echo "... p2pchat/peer_list.o"
+	@echo "... p2pchat/peer_list.i"
+	@echo "... p2pchat/peer_list.s"
 .PHONY : help
 
 

@@ -12,14 +12,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/hw6/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/networking/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/networking/client" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/networking/client.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/networking/server" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/networking/server.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/networking/socket.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/hashcode.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/hashcode.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/message.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/message.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/p2pchat.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/peer_list.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/peer_list.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/socket.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/ui.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/ui.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/p2pchat/utility.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw6/parallel-data-structures/stack-tests" beforeDir="false" afterPath="$PROJECT_DIR$/hw6/parallel-data-structures/stack-tests" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw6/parallel-data-structures/stack.cc" beforeDir="false" afterPath="$PROJECT_DIR$/hw6/parallel-data-structures/stack.cc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw6/parallel-data-structures/stack.hh" beforeDir="false" afterPath="$PROJECT_DIR$/hw6/parallel-data-structures/stack.hh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/C.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/link.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CSC213" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CSC213" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CSC213.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CSC213.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,22 +73,26 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CSC214" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/hw6" />
-      <recent name="$PROJECT_DIR$/hw5" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/hw2" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/hw3/print-archive" />
       <recent name="$PROJECT_DIR$/virtual-address-lab" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/p2pchat" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/hw6" />
+      <recent name="$PROJECT_DIR$/hw5" />
+      <recent name="$PROJECT_DIR$/hw2" />
     </key>
   </component>
   <component name="RunManager">
@@ -104,7 +133,14 @@
       <workItem from="1586599276976" duration="124000" />
       <workItem from="1586599466326" duration="2882000" />
       <workItem from="1587511776136" duration="709000" />
-      <workItem from="1587513739793" duration="551000" />
+      <workItem from="1587513739793" duration="902000" />
+      <workItem from="1587514786281" duration="13000" />
+      <workItem from="1587515602553" duration="663000" />
+      <workItem from="1587620832594" duration="694000" />
+      <workItem from="1587876206905" duration="639000" />
+      <workItem from="1588021215226" duration="559000" />
+      <workItem from="1588724126932" duration="17792000" />
+      <workItem from="1588794430919" duration="10914000" />
     </task>
     <servers />
   </component>
@@ -129,26 +165,30 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1586600559454" />
-    <state width="1398" height="291" key="GridCell.Tab.0.bottom" timestamp="1586778804527">
+    <state x="430" y="254" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588799633998">
+      <screen x="0" y="23" width="1440" height="842" />
+    </state>
+    <state x="430" y="254" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.842@0.23.1440.842" timestamp="1588799633998" />
+    <state width="1398" height="291" key="GridCell.Tab.0.bottom" timestamp="1588023586481">
       <screen x="0" y="23" width="1440" height="842" />
     </state>
     <state width="1398" height="326" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1586601029902" />
-    <state width="1398" height="291" key="GridCell.Tab.0.bottom/0.23.1440.842@0.23.1440.842" timestamp="1586778804527" />
-    <state width="1398" height="291" key="GridCell.Tab.0.center" timestamp="1586778804526">
+    <state width="1398" height="291" key="GridCell.Tab.0.bottom/0.23.1440.842@0.23.1440.842" timestamp="1588023586481" />
+    <state width="1398" height="291" key="GridCell.Tab.0.center" timestamp="1588023586481">
       <screen x="0" y="23" width="1440" height="842" />
     </state>
     <state width="1398" height="326" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1586601029900" />
-    <state width="1398" height="291" key="GridCell.Tab.0.center/0.23.1440.842@0.23.1440.842" timestamp="1586778804526" />
-    <state width="1398" height="291" key="GridCell.Tab.0.left" timestamp="1586778804526">
+    <state width="1398" height="291" key="GridCell.Tab.0.center/0.23.1440.842@0.23.1440.842" timestamp="1588023586481" />
+    <state width="1398" height="291" key="GridCell.Tab.0.left" timestamp="1588023586480">
       <screen x="0" y="23" width="1440" height="842" />
     </state>
     <state width="1398" height="326" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1586601029899" />
-    <state width="1398" height="291" key="GridCell.Tab.0.left/0.23.1440.842@0.23.1440.842" timestamp="1586778804526" />
-    <state width="1398" height="291" key="GridCell.Tab.0.right" timestamp="1586778804526">
+    <state width="1398" height="291" key="GridCell.Tab.0.left/0.23.1440.842@0.23.1440.842" timestamp="1588023586480" />
+    <state width="1398" height="291" key="GridCell.Tab.0.right" timestamp="1588023586481">
       <screen x="0" y="23" width="1440" height="842" />
     </state>
     <state width="1398" height="326" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1586601029901" />
-    <state width="1398" height="291" key="GridCell.Tab.0.right/0.23.1440.842@0.23.1440.842" timestamp="1586778804526" />
+    <state width="1398" height="291" key="GridCell.Tab.0.right/0.23.1440.842@0.23.1440.842" timestamp="1588023586481" />
     <state width="699" height="303" key="GridCell.Tab.1.bottom" timestamp="1586600618027">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
