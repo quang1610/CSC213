@@ -3,17 +3,3 @@
 
 CMakeFiles/CSC213.dir/main.c.o: ../main.c
 
-CMakeFiles/CSC213.dir/p2pchat/hashcode.c.o: ../p2pchat/hashcode.c
-CMakeFiles/CSC213.dir/p2pchat/hashcode.c.o: ../p2pchat/hashcode.h
-
-CMakeFiles/CSC213.dir/p2pchat/message.c.o: ../p2pchat/hashcode.h
-CMakeFiles/CSC213.dir/p2pchat/message.c.o: ../p2pchat/message.c
-CMakeFiles/CSC213.dir/p2pchat/message.c.o: ../p2pchat/message.h
-CMakeFiles/CSC213.dir/p2pchat/message.c.o: ../p2pchat/peer_list.h
-CMakeFiles/CSC213.dir/p2pchat/message.c.o: ../p2pchat/utility.h
-
-CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o: ../p2pchat/hashcode.h
-CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o: ../p2pchat/peer_list.c
-CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o: ../p2pchat/peer_list.h
-CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o: ../p2pchat/utility.h
-

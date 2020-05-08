@@ -11,13 +11,15 @@
 
 /// SUPPORT STRUCT
 /// PTHREAD STRUCT
+
+/// Thread management
 typedef struct pthread_set {
     pthread_t **set;
     int capacity;
     int thread_count;
 }pthread_set_t;
 
-/// Server jobs
+/// Reception work
 typedef struct reception_args {
     int *terminate;
     int server_socket_fd;
@@ -26,7 +28,7 @@ typedef struct reception_args {
     mess_record_t *mess_record;
 } reception_args_t;
 
-/// Common job
+/// Message Listening job
 typedef struct message_listening {
     int *terminate;
     int from_fd;

@@ -5,11 +5,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/nguyenducquang/CLionProjects/CSC213/main.c" "/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles/CSC213.dir/main.c.o"
-  "/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/get_ip.c" "/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles/CSC213.dir/p2pchat/get_ip.c.o"
-  "/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/hashcode.c" "/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles/CSC213.dir/p2pchat/hashcode.c.o"
-  "/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/message.c" "/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles/CSC213.dir/p2pchat/message.c.o"
-  "/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/p2p_thread.c" "/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.o"
-  "/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/peer_list.c" "/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

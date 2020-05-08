@@ -13,6 +13,7 @@
 /// MESSAGE RECORD FUNCTIONS
 void mess_record_init(mess_record_t *record, const char *my_username) {
     strcpy(&record->my_username[0], my_username);
+    printf("set up record %s", record->my_username);
     for (int i = 0; i < MESS_RECORD_TABLE_SIZE; i++) {
         pthread_mutex_init(&record->mutex[i], NULL);
         record->table[i] = NULL;
@@ -154,7 +155,7 @@ message_generate(int type, const char *sender_username, const char *message_cont
     /// set time stamp
     struct timespec time;
     clock_gettime(CLOCK_REALTIME, &time);
-    message->time_stamp = time.tv_nsec;
+    message->time_stamp = ((long)time.tv_sec) * 1000000000  + time.tv_nsec;
 
     /// set hashcode
     char buffer[USERNAME_LEN + 50];
@@ -163,13 +164,21 @@ message_generate(int type, const char *sender_username, const char *message_cont
     message->hash_code = hashcode(buffer);
 
     /// set sender's username
-    strcpy(&message->sender_username[0], sender_username);
+    strcpy(&(message->sender_username[0]), sender_username);
 
     /// set message's content
-    strcpy(&message->message_content[0], message_content);
+    if (message_content == NULL) {
+        message->message_content[0] = '\0';
+    } else {
+        strcpy(&(message->message_content[0]), message_content);
+    }
 
     /// set sender's servername/IP address
-    strcpy(&message->sender_server_name[0], sender_server_name);
+    if (sender_server_name == NULL) {
+        message->sender_server_name[0] = '\0';
+    } else {
+        strcpy(&(message->sender_server_name[0]), sender_server_name);
+    }
 
     /// set sender's server's port
     message->sender_port = port;
@@ -250,7 +259,13 @@ int process_message(message_t *message, mess_record_t *record, peer_list_t *list
             if (socket_fd == -1)
                 return MESS_PROCESS_FAIL;
             if (peer_list_add_peer(list, socket_fd, message->sender_username) != PEER_LIST_ADD_SUCCESSFUL) {
+                /// already added as a peer
                 close(socket_fd);
+            } else {
+                /// NEW PEER, let's listen to him!
+                pthread_t *new_thread = (pthread_t*)malloc(sizeof(pthread_t));
+
+                /// set up args for new_thread
             }
 
             /// sending you username back to sender, we would hope that sender could read our name and add it to his peer_list.
@@ -258,7 +273,7 @@ int process_message(message_t *message, mess_record_t *record, peer_list_t *list
             send_message(my_name_message, peer_list_find_peer_fd(list, message->sender_username));
 
             /// print out the introduction message
-            ui_display(message->sender_username, message->message_content);
+            ui_display(message->sender_username, "Enter the room!\n");
 
         } else if (message->type == TYPE_REMOVE_PEER) {
             /// this is a new peer removal request
@@ -276,10 +291,15 @@ int process_message(message_t *message, mess_record_t *record, peer_list_t *list
 
             /// then we try to remove current peer
             peer_list_remove_peer(list, message->sender_username);
+
+            /// notice that a person leave the room
+            ui_display(message->sender_username, "Left room!\n");
         } else if (message->type == TYPE_MY_NAME) {
             /// this is a new my name message. For this type of message, we only need the sender username to add the from_fd
             /// this type of message is sent directly meaning from end to end, no middle man.
-            peer_list_add_peer(list, from_fd, message->sender_username);
+            if (peer_list_add_peer(list, from_fd, message->sender_username) == PEER_LIST_ADD_SUCCESSFUL) {
+                ui_display(message->sender_username, "We are peer now!\n");
+            }
         }
         return MESS_PROCESS_SUCCESSFUL;
     } else {

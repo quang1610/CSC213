@@ -70,92 +70,17 @@ CMakeFiles/CSC213.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CSC213.dir/main.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nguyenducquang/CLionProjects/CSC213/main.c -o CMakeFiles/CSC213.dir/main.c.s
 
-CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o: CMakeFiles/CSC213.dir/flags.make
-CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o: ../p2pchat/peer_list.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o   -c /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/peer_list.c
-
-CMakeFiles/CSC213.dir/p2pchat/peer_list.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CSC213.dir/p2pchat/peer_list.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/peer_list.c > CMakeFiles/CSC213.dir/p2pchat/peer_list.c.i
-
-CMakeFiles/CSC213.dir/p2pchat/peer_list.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CSC213.dir/p2pchat/peer_list.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/peer_list.c -o CMakeFiles/CSC213.dir/p2pchat/peer_list.c.s
-
-CMakeFiles/CSC213.dir/p2pchat/hashcode.c.o: CMakeFiles/CSC213.dir/flags.make
-CMakeFiles/CSC213.dir/p2pchat/hashcode.c.o: ../p2pchat/hashcode.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/CSC213.dir/p2pchat/hashcode.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC213.dir/p2pchat/hashcode.c.o   -c /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/hashcode.c
-
-CMakeFiles/CSC213.dir/p2pchat/hashcode.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CSC213.dir/p2pchat/hashcode.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/hashcode.c > CMakeFiles/CSC213.dir/p2pchat/hashcode.c.i
-
-CMakeFiles/CSC213.dir/p2pchat/hashcode.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CSC213.dir/p2pchat/hashcode.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/hashcode.c -o CMakeFiles/CSC213.dir/p2pchat/hashcode.c.s
-
-CMakeFiles/CSC213.dir/p2pchat/message.c.o: CMakeFiles/CSC213.dir/flags.make
-CMakeFiles/CSC213.dir/p2pchat/message.c.o: ../p2pchat/message.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/CSC213.dir/p2pchat/message.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC213.dir/p2pchat/message.c.o   -c /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/message.c
-
-CMakeFiles/CSC213.dir/p2pchat/message.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CSC213.dir/p2pchat/message.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/message.c > CMakeFiles/CSC213.dir/p2pchat/message.c.i
-
-CMakeFiles/CSC213.dir/p2pchat/message.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CSC213.dir/p2pchat/message.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/message.c -o CMakeFiles/CSC213.dir/p2pchat/message.c.s
-
-CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.o: CMakeFiles/CSC213.dir/flags.make
-CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.o: ../p2pchat/p2p_thread.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.o   -c /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/p2p_thread.c
-
-CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/p2p_thread.c > CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.i
-
-CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/p2p_thread.c -o CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.s
-
-CMakeFiles/CSC213.dir/p2pchat/get_ip.c.o: CMakeFiles/CSC213.dir/flags.make
-CMakeFiles/CSC213.dir/p2pchat/get_ip.c.o: ../p2pchat/get_ip.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/CSC213.dir/p2pchat/get_ip.c.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/CSC213.dir/p2pchat/get_ip.c.o   -c /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/get_ip.c
-
-CMakeFiles/CSC213.dir/p2pchat/get_ip.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/CSC213.dir/p2pchat/get_ip.c.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/get_ip.c > CMakeFiles/CSC213.dir/p2pchat/get_ip.c.i
-
-CMakeFiles/CSC213.dir/p2pchat/get_ip.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/CSC213.dir/p2pchat/get_ip.c.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/nguyenducquang/CLionProjects/CSC213/p2pchat/get_ip.c -o CMakeFiles/CSC213.dir/p2pchat/get_ip.c.s
-
 # Object files for target CSC213
 CSC213_OBJECTS = \
-"CMakeFiles/CSC213.dir/main.c.o" \
-"CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o" \
-"CMakeFiles/CSC213.dir/p2pchat/hashcode.c.o" \
-"CMakeFiles/CSC213.dir/p2pchat/message.c.o" \
-"CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.o" \
-"CMakeFiles/CSC213.dir/p2pchat/get_ip.c.o"
+"CMakeFiles/CSC213.dir/main.c.o"
 
 # External object files for target CSC213
 CSC213_EXTERNAL_OBJECTS =
 
 CSC213: CMakeFiles/CSC213.dir/main.c.o
-CSC213: CMakeFiles/CSC213.dir/p2pchat/peer_list.c.o
-CSC213: CMakeFiles/CSC213.dir/p2pchat/hashcode.c.o
-CSC213: CMakeFiles/CSC213.dir/p2pchat/message.c.o
-CSC213: CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.o
-CSC213: CMakeFiles/CSC213.dir/p2pchat/get_ip.c.o
 CSC213: CMakeFiles/CSC213.dir/build.make
 CSC213: CMakeFiles/CSC213.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking C executable CSC213"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/nguyenducquang/CLionProjects/CSC213/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable CSC213"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CSC213.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

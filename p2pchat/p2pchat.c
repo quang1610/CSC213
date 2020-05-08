@@ -11,7 +11,7 @@
 #include "get_ip.h"
 #include "p2p_thread.h"
 
-/// SUPPORT FUNCTIONS
+/// SUPPORT FUNCTIONS and GLOBAL VAR
 // Keep the username in a global so we can access it from the callback
 const char *username;
 
@@ -22,14 +22,17 @@ unsigned short my_port;
 int terminate = TRUE;
 peer_list_t my_peer_list;
 mess_record_t my_mess_record;
+pthread_set_t thread_set;
+mess_listening_args_t listening_args_set;
 
 // This function is run whenever the user hits enter after typing a message
 void input_callback(const char *message) {
     if (terminate == FALSE) {
         if (strcmp(message, ":quit") == 0 || strcmp(message, ":q") == 0) {
             /// sending removal request to peer
-            message_t *new_message = message_generate(TYPE_REMOVE_PEER, my_username, NULL, my_server_name, my_port);
+            message_t *new_message = message_generate(TYPE_REMOVE_PEER, &my_username[0], NULL, &my_server_name[0], my_port);
             send_all(new_message, &my_peer_list);
+            free(new_message);
 
             /// terminate the thread
             terminate = TRUE;
@@ -41,7 +44,7 @@ void input_callback(const char *message) {
             /// exit
             ui_exit();
         } else {
-            message_t *new_message = message_generate(TYPE_NORMAL, my_username, message, my_server_name, my_port);
+            message_t *new_message = message_generate(TYPE_NORMAL, &my_username[0], message, &my_server_name[0], my_port);
             send_all(new_message, &my_peer_list);
             free(new_message);
 
@@ -61,11 +64,11 @@ int main(int argc, char **argv) {
     // Save the username in a global
     /// set up username
     username = argv[1];
-    strcpy(my_username, argv[1]);
+    strcpy(&my_username[0], argv[1]);
 
     /// set up servername
     char *IP = get_ip();
-    strcpy(my_server_name, IP);
+    strcpy(&my_server_name[0], IP);
 
     /// set up some peer list and message record
     peer_list_init(&my_peer_list, my_username);
@@ -99,7 +102,6 @@ int main(int argc, char **argv) {
     pthread_t accepting_thread;
     pthread_create(&accepting_thread, NULL, receiving_new_connection_worker, &args);
 
-
     int peer_socket = -1;
     if (argc == 4) {
         /// connect to someone
@@ -126,9 +128,9 @@ int main(int argc, char **argv) {
 
     if (peer_socket != -1) {
         /// sending out peer request
-        message_t *new_peer_request = message_generate(TYPE_ADD_PEER, my_username, mess_buff, my_server_name, my_port);
+        message_t *peer_request = message_generate(TYPE_ADD_PEER, &(my_username[0]), NULL, &my_server_name[0], my_port);
 
-        send_message(new_peer_request, peer_socket);
+        send_message(peer_request, peer_socket);
     }
 
     // Run the UI loop. This function only returns once we call ui_stop() somewhere in the program.

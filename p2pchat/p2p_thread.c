@@ -7,6 +7,7 @@
 #include "p2p_thread.h"
 #include "socket.h"
 #include "time.h"
+#include "ui.h"
 
 /// MESSAGE_LISTENING_ARGS
 void mess_listening_args_init(mess_listening_args_t *set) {
@@ -68,14 +69,76 @@ void *listening_to_peer_worker(void *args) {
     peer_list_t *list = listening_args->list;
     mess_record_t *record = listening_args->record;
 
+    /// local pthread_set
+    pthread_set_t set;
+    pthread_set_init(&set);
+
+    /// local argument set for the threads
+    mess_listening_args_t args_set;
+    mess_listening_args_init(&args_set);
+
     /// waiting for the message, reset timeout everytime we read new message.
     message_t new_message;
-
     while (*listening_args->terminate == FALSE) {
         if (read_message(&new_message, from_fd) == sizeof(message_t)) {
-            process_message(&new_message, record, list, from_fd);
+            /// check if we have new peer request, which we need to connect to them and listen to them
+            if (new_message.type == TYPE_ADD_PEER) {
+                /// check if this is an old message first!
+                if (mess_record_add(record, &new_message) == MESS_RECORD_ADD_SUCCESS) {
+                    /// this is a new peer request
+                    /// first we try to broadcast it to our peers
+                    for (int i = 0; i < PEER_LIST_TABLE_SIZE; i++) {
+                        pthread_mutex_lock(&list->mutex[i]);
+                        peer_t *cursor = list->table[i];
+
+                        while (cursor != NULL) {
+                            send_message(&new_message, cursor->to_peer);
+                            cursor = cursor->next;
+                        }
+                        pthread_mutex_unlock(&list->mutex[i]);
+                    }
+
+                    /// then try adding new peer if I haven't
+                    int socket_fd = socket_connect(new_message.sender_server_name,
+                                                   new_message.sender_port);  // this is different from from_fd.
+                    if (socket_fd == -1)
+                        continue;
+                    if (peer_list_add_peer(list, socket_fd, new_message.sender_username) != PEER_LIST_ADD_SUCCESSFUL) {
+                        /// already added as a peer
+                        close(socket_fd);
+                    } else {
+                        /// NEW PEER, let's listen to him!
+                        pthread_t *new_thread = (pthread_t *) malloc(sizeof(pthread_t));
+                        pthread_set_add(&set, new_thread);
+
+                        /// set up args for new_thread
+                        message_listening_t *new_args = (message_listening_t *) malloc(sizeof(message_listening_t));
+                        new_args->terminate = listening_args->terminate;
+                        new_args->from_fd = socket_fd;
+                        new_args->record = record;
+                        new_args->list = list;
+                        mess_listening_args_add(&args_set, new_args);
+
+                        pthread_create(new_thread, NULL, listening_to_peer_worker, new_args);
+                    }
+
+                    /// sending you username back to sender, we would hope that sender could read our name and add it to his peer_list.
+                    message_t *my_name_message = message_generate(TYPE_MY_NAME, list->my_username, NULL, NULL, -1);
+                    send_message(my_name_message, peer_list_find_peer_fd(list, new_message.sender_username));
+
+                    /// print out the introduction message
+                    ui_display(new_message.sender_username, "Enter the room!\n");
+                }
+            } else {
+                /// This will skip the TYPE_ADD_PEER because we just process it
+                process_message(&new_message, record, list, from_fd);
+            }
         }
     }
+
+    pthread_set_destroy(&set);
+    mess_listening_args_destroy(&args_set);
+
     return NULL;
 }
 
@@ -105,8 +168,8 @@ void *receiving_new_connection_worker(void *args) {
             message_listening_t *new_listening_args = (message_listening_t *) malloc(sizeof(message_listening_t));
             new_listening_args->terminate = reception_args->terminate;
             new_listening_args->from_fd = client_socket;
-            new_listening_args->record = reception_args->mess_record;
-            new_listening_args->list = reception_args->peer_list;
+            new_listening_args->record = record;
+            new_listening_args->list = list;
             /// added to listening arg database
             mess_listening_args_add(&args_set, new_listening_args);
 
@@ -114,7 +177,6 @@ void *receiving_new_connection_worker(void *args) {
             pthread_create(new_thread, NULL, listening_to_peer_worker, (void *) new_listening_args);
         }
     }
-
     mess_listening_args_destroy(&args_set);
     pthread_set_destroy(&set);
     return NULL;
