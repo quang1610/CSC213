@@ -12,30 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/p2pchat/get_ip.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/get_ip.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/p2p_thread.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/p2pchat/p2p_thread.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CSC213.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CSC213.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CSC213.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/hashcode.c" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/hashcode.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/message.c" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/message.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/message.h" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/message.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p2pchat/p2pchat" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/p2pchat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p2pchat/p2pchat.c" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/p2pchat.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/peer_list.c" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/peer_list.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/peer_list.h" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/peer_list.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/socket.h" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/socket.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/p2pchat/utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/p2pchat/utility.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -139,6 +118,7 @@
       <workItem from="1588895183046" duration="532000" />
       <workItem from="1588916383484" duration="4227000" />
       <workItem from="1588920927292" duration="377000" />
+      <workItem from="1588921420696" duration="721000" />
     </task>
     <servers />
   </component>

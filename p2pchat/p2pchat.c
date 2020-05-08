@@ -100,6 +100,7 @@ int main(int argc, char **argv) {
     pthread_create(&accepting_thread, NULL, receiving_new_connection_worker, &args);
 
 
+    int peer_socket = -1;
     if (argc == 4) {
         /// connect to someone
         // Unpack arguments
@@ -107,18 +108,11 @@ int main(int argc, char **argv) {
         unsigned short peer_port = atoi(argv[3]);
 
         /// making the connection
-        int peer_socket = socket_connect(peer_hostname, peer_port);
+        peer_socket = socket_connect(peer_hostname, peer_port);
         if (peer_socket == -1) {
             perror("making friend fail!\n");
             exit(2);
         }
-
-        /// sending out peer request
-        char mess_buff[MESSAGE_LEN];
-        sprintf(mess_buff, "%s at address %s is listening at %d\n", my_username, my_server_name, my_port);
-        message_t *new_peer_request = message_generate(TYPE_ADD_PEER, my_username, mess_buff, my_server_name, my_port);
-
-        send_message(new_peer_request, peer_socket);
     }
 
     // Set up the user interface. The input_callback function will be called
@@ -129,6 +123,13 @@ int main(int argc, char **argv) {
     char mess_buff[MESSAGE_LEN];
     sprintf(mess_buff, "%s at address %s is listening at %d\n", my_username, my_server_name, my_port);
     ui_display("INFO", mess_buff);
+
+    if (peer_socket != -1) {
+        /// sending out peer request
+        message_t *new_peer_request = message_generate(TYPE_ADD_PEER, my_username, mess_buff, my_server_name, my_port);
+
+        send_message(new_peer_request, peer_socket);
+    }
 
     // Run the UI loop. This function only returns once we call ui_stop() somewhere in the program.
     ui_run();
