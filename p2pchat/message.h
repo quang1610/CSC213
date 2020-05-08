@@ -2,7 +2,7 @@
 // Created by Nguyễn Đức Quang on 5/6/20.
 //
 
-#include <ntsid.h>
+#include <unistd.h>
 #include <stdio.h>
 #include <pthread.h>
 
@@ -145,4 +145,3 @@ ssize_t read_message(message_t *message, int fd);
  * @return
  */
 int process_message(message_t *message, mess_record_t *record, peer_list_t *list, int from_fd);
-

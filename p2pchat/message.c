@@ -3,8 +3,8 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
+#include <string.h>
 
 #include "message.h"
 #include "socket.h"
@@ -306,5 +306,3 @@ int process_message(message_t *message, mess_record_t *record, peer_list_t *list
         return MESS_PROCESS_FAIL;
     }
 }
-
-
