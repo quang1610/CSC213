@@ -85,6 +85,12 @@
 		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/main.c">
 			<Option target="CSC213"/>
 		</Unit>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/get_ip.c">
+			<Option target="CSC213"/>
+		</Unit>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/get_ip.h">
+			<Option target="CSC213"/>
+		</Unit>
 		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/hashcode.c">
 			<Option target="CSC213"/>
 		</Unit>
@@ -95,6 +101,12 @@
 			<Option target="CSC213"/>
 		</Unit>
 		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/message.h">
+			<Option target="CSC213"/>
+		</Unit>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/p2p_thread.c">
+			<Option target="CSC213"/>
+		</Unit>
+		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/p2p_thread.h">
 			<Option target="CSC213"/>
 		</Unit>
 		<Unit filename="/Users/nguyenducquang/CLionProjects/CSC213/p2pchat/peer_list.c">

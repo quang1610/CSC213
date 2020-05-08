@@ -150,6 +150,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/main.c.s
 .PHONY : main.c.s
 
+p2pchat/get_ip.o: p2pchat/get_ip.c.o
+
+.PHONY : p2pchat/get_ip.o
+
+# target to build an object file
+p2pchat/get_ip.c.o:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/get_ip.c.o
+.PHONY : p2pchat/get_ip.c.o
+
+p2pchat/get_ip.i: p2pchat/get_ip.c.i
+
+.PHONY : p2pchat/get_ip.i
+
+# target to preprocess a source file
+p2pchat/get_ip.c.i:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/get_ip.c.i
+.PHONY : p2pchat/get_ip.c.i
+
+p2pchat/get_ip.s: p2pchat/get_ip.c.s
+
+.PHONY : p2pchat/get_ip.s
+
+# target to generate assembly for a file
+p2pchat/get_ip.c.s:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/get_ip.c.s
+.PHONY : p2pchat/get_ip.c.s
+
 p2pchat/hashcode.o: p2pchat/hashcode.c.o
 
 .PHONY : p2pchat/hashcode.o
@@ -204,6 +231,33 @@ p2pchat/message.c.s:
 	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/message.c.s
 .PHONY : p2pchat/message.c.s
 
+p2pchat/p2p_thread.o: p2pchat/p2p_thread.c.o
+
+.PHONY : p2pchat/p2p_thread.o
+
+# target to build an object file
+p2pchat/p2p_thread.c.o:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.o
+.PHONY : p2pchat/p2p_thread.c.o
+
+p2pchat/p2p_thread.i: p2pchat/p2p_thread.c.i
+
+.PHONY : p2pchat/p2p_thread.i
+
+# target to preprocess a source file
+p2pchat/p2p_thread.c.i:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.i
+.PHONY : p2pchat/p2p_thread.c.i
+
+p2pchat/p2p_thread.s: p2pchat/p2p_thread.c.s
+
+.PHONY : p2pchat/p2p_thread.s
+
+# target to generate assembly for a file
+p2pchat/p2p_thread.c.s:
+	$(MAKE) -f CMakeFiles/CSC213.dir/build.make CMakeFiles/CSC213.dir/p2pchat/p2p_thread.c.s
+.PHONY : p2pchat/p2p_thread.c.s
+
 p2pchat/peer_list.o: p2pchat/peer_list.c.o
 
 .PHONY : p2pchat/peer_list.o
@@ -243,12 +297,18 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... p2pchat/get_ip.o"
+	@echo "... p2pchat/get_ip.i"
+	@echo "... p2pchat/get_ip.s"
 	@echo "... p2pchat/hashcode.o"
 	@echo "... p2pchat/hashcode.i"
 	@echo "... p2pchat/hashcode.s"
 	@echo "... p2pchat/message.o"
 	@echo "... p2pchat/message.i"
 	@echo "... p2pchat/message.s"
+	@echo "... p2pchat/p2p_thread.o"
+	@echo "... p2pchat/p2p_thread.i"
+	@echo "... p2pchat/p2p_thread.s"
 	@echo "... p2pchat/peer_list.o"
 	@echo "... p2pchat/peer_list.i"
 	@echo "... p2pchat/peer_list.s"

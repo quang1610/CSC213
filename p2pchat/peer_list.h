@@ -64,6 +64,14 @@ void peer_list_destroy(peer_list_t *list);
 int peer_list_check_present(peer_list_t *list, const char *username);
 
 /**
+ * This function return the pointer to the peer with input username.
+ * @param list
+ * @param username
+ * @return
+ */
+int peer_list_find_peer_fd(peer_list_t *list, const char *username);
+
+/**
  * Add new peer into the list. This function would not add if the peer is current user or the peer was added.
  * @param list
  * @param new_peer_socket_fd

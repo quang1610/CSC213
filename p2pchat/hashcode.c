@@ -3,15 +3,16 @@
 //
 // This hash algorithm is created by Dan Bernstein.
 //
-
+#include <string.h>
 #include "hashcode.h"
 
 unsigned long hashcode(const char *str) {
     unsigned long hash = 5381;
-    int c;
+    int len = (int) strlen(str);
 
-    while (c = *str++)
-        hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
+    for (int i = 0; i < len; i++) {
+        hash = ((hash << 5) + hash) + str[i]; /* hash * 33 + c */
+    }
 
     return hash;
 }

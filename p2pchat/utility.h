@@ -33,3 +33,10 @@
 #define TYPE_NORMAL 1
 #define TYPE_ADD_PEER 2
 #define TYPE_REMOVE_PEER 3
+#define TYPE_MY_NAME 4
+
+#define MAX_QUEUE_CONNECTION 20
+#define LISTENING_TIME_OUT 3600
+#define PTHREAD_SET_INIT_CAP 4
+#define FALSE 0
+#define TRUE 1

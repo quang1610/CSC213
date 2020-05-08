@@ -35,8 +35,9 @@ void peer_list_destroy(peer_list_t *list) {
             peer_t *temp = cursor;
             cursor = cursor->next;
 
-            fclose(temp->to_peer);
-            fclose(temp->from_peer);
+            close(temp->to_peer);
+            close(temp->from_peer);
+            close(temp->socket_fd);
 
             free(temp);
         }
@@ -62,6 +63,31 @@ int peer_list_check_present(peer_list_t *list, const char *username) {
     return NOT_IN_PEER_LIST;
 }
 
+int peer_list_find_peer_fd(peer_list_t *list, const char *username) {
+    /// not gonna return myself
+    if (strcmp(list->my_username, username) == 0)
+        return 0;
+
+    /// setting hashcode and index
+    unsigned long username_hashcode = hashcode(username);
+    int index = (int) (username_hashcode % PEER_LIST_TABLE_SIZE);
+
+    pthread_mutex_lock(&list->mutex[index]);
+    peer_t *cursor = list->table[index];
+
+    while (cursor != 0) {
+        if (username_hashcode == cursor->hashcode && strcmp(cursor->peer_username, username) == 0) {
+            int return_fd = cursor->to_peer;
+            pthread_mutex_unlock(&list->mutex[index]);
+            return return_fd;
+        }
+        cursor = cursor->next;
+    }
+
+    pthread_mutex_unlock(&list->mutex[index]);
+    return -1;
+}
+
 int peer_list_add_peer(peer_list_t *list, int new_peer_socket_fd, const char *username) {
     /// avoid sending message to oneself
     if (strcmp(username, list->my_username) == 0) {
@@ -81,19 +107,20 @@ int peer_list_add_peer(peer_list_t *list, int new_peer_socket_fd, const char *us
             pthread_mutex_unlock(&list->mutex[index]);
             return PEER_LIST_DUPLICATE_ADD;
         }
+        cursor = cursor->next;
     }
 
     /// Now we are sure that this is a new peer, we need to add them
     /// set up to and from stream
     int to_peer = dup(new_peer_socket_fd);
     int from_peer = dup(new_peer_socket_fd);
-    if (to_peer == NULL || from_peer == NULL)
-        return PEER_LIST_ADD_FAIL;
 
     /// create new peer
-    peer_t *new_peer = malloc(sizeof(peer_t));
-    if (new_peer == NULL)
+    peer_t *new_peer = (peer_t *) malloc(sizeof(peer_t));
+    if (new_peer == NULL) {
+        pthread_mutex_unlock(&list->mutex[index]);
         return PEER_LIST_ADD_FAIL;
+    }
     new_peer->socket_fd = new_peer_socket_fd;
     new_peer->to_peer = to_peer;
     new_peer->from_peer = from_peer;
@@ -110,7 +137,7 @@ int peer_list_add_peer(peer_list_t *list, int new_peer_socket_fd, const char *us
     } else {
         /// adding
         new_peer->next = list->table[index];
-        new_peer->next->previous = new_peer;
+        list->table[index]->previous = new_peer;
         list->table[index] = new_peer;
 
         list->size[index] += 1;
@@ -120,6 +147,12 @@ int peer_list_add_peer(peer_list_t *list, int new_peer_socket_fd, const char *us
 }
 
 void peer_list_remove_peer(peer_list_t *list, const char *username) {
+    /// avoid removing yourself
+    if(strcmp(username, list->my_username) == 0) {
+        return;
+    }
+
+    // finding hashcode and index
     unsigned long username_hashcode = hashcode(username);
     int index = (int) (username_hashcode % PEER_LIST_TABLE_SIZE);
 
@@ -130,14 +163,12 @@ void peer_list_remove_peer(peer_list_t *list, const char *username) {
     while (cursor != NULL) {
         if (cursor->hashcode == username_hashcode && strcmp(username, cursor->peer_username) == 0) {
             /// if we found the one we need to remove!
-            /// if it is the only node in the table entry (aka a bucket)
-            if (cursor->previous == NULL && cursor->next == NULL) {
-                list->table[index] = NULL;
-            }
-
             /// check if it has previous node
             if (cursor->previous != NULL) {
                 cursor->previous->next = cursor->next;
+            } else {
+                /// we remove the first item of the bucket
+                list->table[index] = cursor->next;
             }
             /// check if it has next node
             if (cursor->next != NULL) {
@@ -145,8 +176,9 @@ void peer_list_remove_peer(peer_list_t *list, const char *username) {
             }
 
             /// after finishing wiring surrounding nodes, we remove the current cursor
-            fclose(cursor->to_peer);
-            fclose(cursor->from_peer);
+            close(cursor->to_peer);
+            close(cursor->from_peer);
+            close(cursor->socket_fd);
             free(cursor);
 
             list->size[index] -= 1;

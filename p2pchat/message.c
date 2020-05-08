@@ -10,9 +10,6 @@
 #include "socket.h"
 #include "ui.h"
 
-/// RECORD BLOCK FUNCTIONS
-
-
 /// MESSAGE RECORD FUNCTIONS
 void mess_record_init(mess_record_t *record, const char *my_username) {
     strcpy(&record->my_username[0], my_username);
@@ -89,19 +86,22 @@ int mess_record_add(mess_record_t *record, message_t *message) {
     }
 
     /// create new message record block
-    mess_record_block_t *new_mess_record_block = malloc(sizeof(mess_record_block_t));
-    if (new_mess_record_block == NULL)
+    mess_record_block_t *new_mess_record_block = (mess_record_block_t*) malloc(sizeof(mess_record_block_t));
+    if (new_mess_record_block == NULL) {
+        pthread_mutex_unlock(&record->mutex[index]);
         return MESS_RECORD_ADD_FAIL;
+    }
 
     new_mess_record_block->hash_code = hashcode;
     new_mess_record_block->time_stamp = time_stamp;
+    new_mess_record_block->next = NULL;
+    new_mess_record_block->previous = NULL;
 
     /// Adding to the table
     if (record->table[index] == NULL) {
         /// if the current table entry is empty
         record->table[index] = new_mess_record_block;
         record->size[index] += 1;
-        pthread_mutex_unlock(&record->mutex[index]);
     } else {
         /// add new record block to the beginning of the bucket
         new_mess_record_block->next = record->table[index];
@@ -145,8 +145,8 @@ void mess_record_clean_up(mess_record_t *record) {
 /// MESSAGE FUNCTIONS
 message_t *
 message_generate(int type, const char *sender_username, const char *message_content, const char *sender_server_name,
-                 unsigned port) {
-    message_t *message = malloc(sizeof(message_t));
+                 unsigned short port) {
+    message_t *message = (message_t*) malloc(sizeof(message_t));
 
     /// set type
     message->type = type;
@@ -182,21 +182,39 @@ int message_type(message_t *message) {
 }
 
 ssize_t send_message(message_t *message, int fd) {
+    if(message == NULL || fd == -1) {
+        perror("Cannot send message!\n");
+        return -1;
+    }
     ssize_t result = write(fd, message, sizeof(message_t));
 
     return result;
 }
 
 ssize_t read_message(message_t *message, int fd) {
-    if (message == NULL) {
+    if (message == NULL || fd == -1) {
+        perror("cannot read to a null message!\n");
         return 0;
     }
     ssize_t result = read(fd, message, sizeof(message_t));
     return result;
 }
 
-int process_message(message_t *message, mess_record_t *record, peer_list_t *list) {
-    if (mess_record_add(record, message) == MESS_PROCESS_SUCCESSFUL) {
+void send_all(message_t *message, peer_list_t *list) {
+    for (int i = 0; i < PEER_LIST_TABLE_SIZE; i++) {
+        pthread_mutex_lock(&list->mutex[i]);
+
+        peer_t *cursor = list->table[i];
+        while (cursor != NULL) {
+            send_message(message, cursor->to_peer);
+            cursor = cursor->next;
+        }
+        pthread_mutex_unlock(&list->mutex[i]);
+    }
+}
+
+int process_message(message_t *message, mess_record_t *record, peer_list_t *list, int from_fd) {
+    if (mess_record_add(record, message) == MESS_RECORD_ADD_SUCCESS) {
         if (message->type == TYPE_NORMAL) {
             /// this is a new message
             /// first we display the message
@@ -228,10 +246,19 @@ int process_message(message_t *message, mess_record_t *record, peer_list_t *list
             }
 
             /// then try adding new peer if I haven't
-            int socket_fd = socket_connect(message->sender_server_name, message->sender_port);
+            int socket_fd = socket_connect(message->sender_server_name, message->sender_port);  // this is different from from_fd.
             if (socket_fd == -1)
                 return MESS_PROCESS_FAIL;
-            peer_list_add_peer(list, socket_fd, message->sender_username);
+            if (peer_list_add_peer(list, socket_fd, message->sender_username) != PEER_LIST_ADD_SUCCESSFUL) {
+                close(socket_fd);
+            }
+
+            /// sending you username back to sender, we would hope that sender could read our name and add it to his peer_list.
+            message_t *my_name_message = message_generate(TYPE_MY_NAME, list->my_username, NULL, NULL, -1);
+            send_message(my_name_message, peer_list_find_peer_fd(list, message->sender_username));
+
+            /// print out the introduction message
+            ui_display(message->sender_username, message->message_content);
 
         } else if (message->type == TYPE_REMOVE_PEER) {
             /// this is a new peer removal request
@@ -249,6 +276,10 @@ int process_message(message_t *message, mess_record_t *record, peer_list_t *list
 
             /// then we try to remove current peer
             peer_list_remove_peer(list, message->sender_username);
+        } else if (message->type == TYPE_MY_NAME) {
+            /// this is a new my name message. For this type of message, we only need the sender username to add the from_fd
+            /// this type of message is sent directly meaning from end to end, no middle man.
+            peer_list_add_peer(list, from_fd, message->sender_username);
         }
         return MESS_PROCESS_SUCCESSFUL;
     } else {

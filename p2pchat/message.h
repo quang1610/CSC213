@@ -28,7 +28,7 @@ typedef struct message {
     char message_content[MESSAGE_LEN];
 
     char sender_server_name[SERVER_NAME_LEN];
-    unsigned sender_port;
+    unsigned short sender_port;
 } message_t;
 
 /**
@@ -104,7 +104,7 @@ void mess_record_clean_up(mess_record_t *record);
  */
 message_t *
 message_generate(int type, const char *sender_username, const char *message_content, const char *sender_server_name,
-                 unsigned port);
+                 unsigned short port);
 
 /**
  * This function would return the type of the message
@@ -120,6 +120,8 @@ int message_type(message_t *message);
  * @return
  */
 ssize_t send_message(message_t *message, int fd);
+
+void send_all(message_t *message, peer_list_t *list);
 
 /**
  * This function would read message from file_descriptor fd
@@ -142,5 +144,5 @@ ssize_t read_message(message_t *message, int fd);
  * @param list
  * @return
  */
-int process_message(message_t *message, mess_record_t *record, peer_list_t *list);
+int process_message(message_t *message, mess_record_t *record, peer_list_t *list, int from_fd);
 
