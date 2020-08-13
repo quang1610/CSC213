@@ -1,0 +1,31 @@
+Quang Nguyen
+
+Demo link: https://grinco-my.sharepoint.com/:v:/g/personal/nguyenqu2_grinnell_edu/EaCO17QoOjxEtWMGPKQqz4QBCSzjQFF0282kWRlosMMeQA
+
+This is my P2PChat Lab. Let me explain my solutions:
+
+	- There are 3 types of messages (all are defined by struct message) (Actually there are 4 types, but for simplicity, I only mention 3):
+
+		+ Type 1: Normal text message
+		+ Type 2: Add Peer message. if A sends B this message, B would connect to A where A is the server role, and B is client role.
+		+ Type 3: Remove Peer message. This message is sent before a person completely leaves the room.
+
+	- Username must be unique although there hasn't a solution to check username yet.
+
+	- Each message has a hashcode and time stamp as a unique id. A person will record these hashcode and time stamp so that if he meets the message again, he would not forward it. This would avoid endless sending message loop in the network. Only new messages are forward.
+
+	- Each person has a list of their peers to whom they will forward new messages. Each person on this list has a unique username!
+
+	- Protocol: I would try to mimic the process by which people make new friends.
+
+		+ First, person A initializes the chat room by simply run the program with his username as the argument. A would constantly listen for new connection via a thread.
+
+		+ B comes and connects to A as a client, then he also sends an Add Peer Message (type 2) to A. I know this message is redundant if there are 2 people in the chatroom, but I have to do it. It would make more sense when there are more people inside the room.
+
+		+ C connects to the network via (without loss of generality) B. C would connect to B like B connected to A. Then, C would send an Add Peer message to B. B would forward this Add Peer to other people in the network (ie A). After this, we have a complete network where everyone is connected to every other person.
+
+		+ D joins. Just like C, in the end, A, B, C, D all connected to one another.
+
+		+ Anyone can leave and the network is still connected.
+
+	- Problem: I haven’t gone hard with high traffic and with lots of people join and leave. Concurrency database might have some bugs. There is a bit of spaghetti code because I was not planning things out carefully enough.

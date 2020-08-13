@@ -3,18 +3,19 @@
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
   <component name="CidrRootsConfiguration">
     <sourceRoots>
-      <file path="$PROJECT_DIR$/hw1" />
-      <file path="$PROJECT_DIR$/hw2" />
-      <file path="$PROJECT_DIR$/hw3" />
-      <file path="$PROJECT_DIR$/hw4" />
-      <file path="$PROJECT_DIR$/hw5" />
+      <file path="$PROJECT_DIR$/Archive-Printer" />
+      <file path="$PROJECT_DIR$/Memory-Allocator" />
+      <file path="$PROJECT_DIR$/Memory-Allocator/malloc" />
+      <file path="$PROJECT_DIR$/Ngram-Generator" />
+      <file path="$PROJECT_DIR$/Parallel-LetterCount" />
+      <file path="$PROJECT_DIR$/Password-Cracker" />
+      <file path="$PROJECT_DIR$/PeerToPeer-Chat" />
+      <file path="$PROJECT_DIR$/Thread-safe-Queue" />
+      <file path="$PROJECT_DIR$/Virtual-Memory" />
       <file path="$PROJECT_DIR$/hw6" />
-      <file path="$PROJECT_DIR$/malloc" />
       <file path="$PROJECT_DIR$/networking" />
-      <file path="$PROJECT_DIR$/p2pchat" />
-      <file path="$PROJECT_DIR$/password-cracker" />
       <file path="$PROJECT_DIR$/shell" />
-      <file path="$PROJECT_DIR$/virtual-address-lab" />
+      <file path="$PROJECT_DIR$/uniquelist_proj" />
       <file path="$PROJECT_DIR$/worm" />
     </sourceRoots>
   </component>
