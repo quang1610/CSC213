@@ -33,7 +33,7 @@ For example:
 would connect Bob to Alice chat room mentioned above.
 
 ## 4. Quit the chat:
-To quit the chat, type **:p** into the chat box.
+To quit the chat, type **:q** into the chat box.
 
 # Demo
 ![Peer to peer chat demo](Quang-P2PChat-Demo.GIF)
