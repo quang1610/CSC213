@@ -23,7 +23,7 @@ The terminal will print out message such as
 to the network via this **port_number** and **chatroom_IP**.
 
 ## 3. Joining the chat:
-> ./p2pchat Username chatroom_IP port_number
+> ./p2pchat Username  chatroom_IP  port_number
 
 The **chatroom_IP** and the **port_number** is the IP and port of **any node** in the chatroom. 
 
