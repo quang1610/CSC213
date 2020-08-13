@@ -18,12 +18,12 @@ The terminal will print out message such as INFO: Alice at address 127.0.0.1 is 
 ## 3. Joining the chat:
 > ./p2pchat <Username> <hosting IP> <port that any node is listening to>
 
-For example: *./p2pchat Bob localhost 55107
+For example: *./p2pchat Bob localhost 55107 would connect Bob with Alice chat room mentioned above.
 
 ## 4. Quit the chat:
-To quit the chat, type: *:p* into the chat box.
+To quit the chat, type **:p** into the chat box.
 
 # Demo
-![](Quang-P2PChat-Demo.GIF)
+![](Quang-P2PChat-Demo.mp4)
 
 
