@@ -12,102 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PeerToPeer-Chat/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PeerToPeer-Chat/p2p_test_file_quang_nguyen.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PeerToPeer-Chat/quang_nguyen_csc213_p2pchat.mp4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/ngram/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Ngram-Generator/ngram/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/ngram/ngram" beforeDir="false" afterPath="$PROJECT_DIR$/Ngram-Generator/ngram/ngram" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/ngram/ngram.c" beforeDir="false" afterPath="$PROJECT_DIR$/Ngram-Generator/ngram/ngram.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw1/ngram/ngram_instruction.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Ngram-Generator/ngram/ngram_instruction.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw2/uniquelist/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw2/uniquelist/main.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw2/uniquelist/testfile.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw2/uniquelist/uniquelist-test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw2/uniquelist/uniquelist.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw2/uniquelist/uniquelist.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/input1.ar" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/input1.ar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/input2.ar" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/input2.ar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/input3.ar" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/input3.ar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/input4.ar" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/input4.ar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/input5.ar" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/input5.ar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/output-test.ar" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/output-test.ar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/output-test2.ar" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/output-test2.ar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/output-test3.ar" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/output-test3.ar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/output-test4.ar" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/output-test4.ar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/test1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/test1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/test2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/test2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/test3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/test3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/inputs/test4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/inputs/test4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/print-archive" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/print-archive" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/print-archive.c" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/print-archive.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw3/print-archive/testfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Archive-Printer/print-archive/testfile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4/queue.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4/queue/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4/queue/queue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw4/queue/queue.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw5/lettercount.tar.gz" beforeDir="false" afterPath="$PROJECT_DIR$/Parallel-LetterCount/lettercount.tar.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw5/lettercount/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Parallel-LetterCount/lettercount/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw5/lettercount/inputs/input1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Parallel-LetterCount/lettercount/inputs/input1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw5/lettercount/inputs/input2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Parallel-LetterCount/lettercount/inputs/input2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw5/lettercount/inputs/input3-license.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Parallel-LetterCount/lettercount/inputs/input3-license.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw5/lettercount/inputs/input3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Parallel-LetterCount/lettercount/inputs/input3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw5/lettercount/lettercount" beforeDir="false" afterPath="$PROJECT_DIR$/Parallel-LetterCount/lettercount/lettercount" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw5/lettercount/lettercount.c" beforeDir="false" afterPath="$PROJECT_DIR$/Parallel-LetterCount/lettercount/lettercount.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hw5/lettercount/testfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Parallel-LetterCount/lettercount/testfile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/malloc.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/malloc/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Memory-Allocator/malloc/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/malloc/allocator.c" beforeDir="false" afterPath="$PROJECT_DIR$/Memory-Allocator/malloc/allocator.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/malloc/gnuwrapper.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Memory-Allocator/malloc/gnuwrapper.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/malloc/malloc-test/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Memory-Allocator/malloc/malloc-test/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/malloc/malloc-test/malloc-test" beforeDir="false" afterPath="$PROJECT_DIR$/Memory-Allocator/malloc/malloc-test/malloc-test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/malloc/malloc-test/malloc-test.c" beforeDir="false" afterPath="$PROJECT_DIR$/Memory-Allocator/malloc/malloc-test/malloc-test.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/malloc/testfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Memory-Allocator/malloc/testfile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/malloc/wrapper.h" beforeDir="false" afterPath="$PROJECT_DIR$/Memory-Allocator/malloc/wrapper.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/networking/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networking/client" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networking/client.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networking/server" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networking/server.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/networking/socket.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/get_ip.c" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/get_ip.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/get_ip.h" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/get_ip.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/hashcode.c" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/hashcode.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/hashcode.h" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/hashcode.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/message.c" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/message.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/message.h" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/message.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/p2p_thread.c" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/p2p_thread.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/p2p_thread.h" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/p2p_thread.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/p2pchat" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/p2pchat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/p2pchat.c" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/p2pchat.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/peer_list.c" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/peer_list.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/peer_list.h" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/peer_list.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/socket.h" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/socket.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/ui.c" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/ui.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/ui.h" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/ui.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat/utility.h" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/utility.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/p2pchat_quang_nguyen.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/password-cracker/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Password-Cracker/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password-cracker/inputs/input1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Password-Cracker/inputs/input1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password-cracker/inputs/input2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Password-Cracker/inputs/input2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password-cracker/inputs/input3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Password-Cracker/inputs/input3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password-cracker/password-cracker" beforeDir="false" afterPath="$PROJECT_DIR$/Password-Cracker/password-cracker" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password-cracker/password-cracker.c" beforeDir="false" afterPath="$PROJECT_DIR$/Password-Cracker/password-cracker.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password-cracker/testfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Password-Cracker/testfile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/password_cracker.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual-address-lab/#lazycopy.h#" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Memory/#lazycopy.h#" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual-address-lab/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Memory/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual-address-lab/lazycopy-test" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Memory/lazycopy-test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual-address-lab/lazycopy-test.c" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Memory/lazycopy-test.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual-address-lab/lazycopy.c" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Memory/lazycopy.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual-address-lab/lazycopy.h" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Memory/lazycopy.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual-address-lab/libetsbefriends.c" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Memory/libetsbefriends.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual-address-lab/segfault-test" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Memory/segfault-test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/virtual-address-lab/segfault-test.c" beforeDir="false" afterPath="$PROJECT_DIR$/Virtual-Memory/segfault-test.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PeerToPeer-Chat/p2pchat" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/p2pchat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +46,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/p2pchat" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/PeerToPeer-Chat" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
@@ -153,6 +60,7 @@
       <recent name="$PROJECT_DIR$/hw5" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/PeerToPeer-Chat" />
       <recent name="$PROJECT_DIR$/p2pchat" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/hw3/print-archive" />
@@ -220,7 +128,7 @@
       <workItem from="1588927362557" duration="6879000" />
       <workItem from="1588972191121" duration="301000" />
       <workItem from="1591991225863" duration="24000" />
-      <workItem from="1597273635246" duration="5575000" />
+      <workItem from="1597273635246" duration="6731000" />
     </task>
     <servers />
   </component>
