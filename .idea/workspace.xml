@@ -12,9 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PeerToPeer-Chat/quang_nguyen_csc213_p2pchat.mp4" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PeerToPeer-Chat/Quang-P2PChat-Demo.GIF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PeerToPeer-Chat/p2pchat" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/p2pchat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PeerToPeer-Chat/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,11 +53,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/PeerToPeer-Chat" />
       <recent name="$PROJECT_DIR$/Memory-Allocator" />
       <recent name="$PROJECT_DIR$/p2pchat" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/hw6" />
-      <recent name="$PROJECT_DIR$/hw5" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/PeerToPeer-Chat" />
@@ -128,7 +128,7 @@
       <workItem from="1588927362557" duration="6879000" />
       <workItem from="1588972191121" duration="301000" />
       <workItem from="1591991225863" duration="24000" />
-      <workItem from="1597273635246" duration="6731000" />
+      <workItem from="1597273635246" duration="9609000" />
     </task>
     <servers />
   </component>
