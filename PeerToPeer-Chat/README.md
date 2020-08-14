@@ -1,5 +1,7 @@
 # Peer-to-Peer Chat program
-In this P2P chat program, there is no server Each node inside acts as both the server and the client. It is implemented using C Socket API, hash algorithm, thread-safe hash table and concurrent programming.
+This is one of my projects in CSC 213 - Operating System. In this P2P chat program, there is no server. Each node inside acts as both the server and the client. It is implemented using C Socket API, hash algorithm, thread-safe hash table and concurrent programming. 
+
+This is a no-guidance project and it is up to me to decide the the solutions and algorithms.
 
 # Demo
 ![Peer to peer chat demo](Quang-P2PChat-Demo.GIF)
