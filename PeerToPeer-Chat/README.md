@@ -28,11 +28,12 @@ The terminal will print out message such as
 to the network via this **port_number** and **chatroom_IP**.
 
 ## 3. Joining the chat:
+New user can join the chat by connecting to any nodes inside the network. All they need is IP and port of that node.
 ```
 $ ./p2pchat (username)  (chatroom_IP)  (port_number)
 ```
 
-The **chatroom_IP** and the **port_number** is the IP and port of **any node** in the chatroom. 
+The **chatroom_IP** and the **port_number** is the IP and port of **a specific node** in the chatroom. 
 
 For example: 
 ```
