@@ -15,11 +15,11 @@ There are 3 main types of messages:
 - Each person has a list of their peers to whom they will forward new messages. Each person on this list has a unique username!
 
 - Protocol: Here is how the network works:
-    + First, person A initializes the chat room by simply run the program with his username as the argument. A would constantly listen for new connection via a thread.
-		+ B comes and connects to A as a client, then he also sends an Add Peer Message (type 2) to A. 
-		+ C connects to the network via any nodes in the network (in this case C choose B). C would connect to B like B connected to A. Then, C would send an Add Peer message to B. B would forward this Add Peer to other people in the network (ie A). After this, we have a complete network where everyone is connected to every other person. 
-		+ D joins, just like C. In the end, A, B, C, D all connected to one another.
-		+ Anyone can leave and the network is still connected. Remove Peer message is sent out automatically as user exit by typing **:q**. 
+	+ First, person A initializes the chat room by simply run the program with his username as the argument. A would constantly listen for new connection via a thread.
+	+ B comes and connects to A as a client, then he also sends an Add Peer Message (type 2) to A. 
+	+ C connects to the network via any nodes in the network (in this case C choose B). C would connect to B like B connected to A. Then, C would send an Add Peer message to B. B would forward this Add Peer to other people in the network (ie A). After this, we have a complete network where everyone is connected to every other person. 
+	+ D joins, just like C. In the end, A, B, C, D all connected to one another.
+	+ Anyone can leave and the network is still connected. Remove Peer message is sent out automatically as user exit by typing **:q**. 
 
 # Instruction
 ## 1. Compilation:
