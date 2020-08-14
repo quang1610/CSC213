@@ -12,9 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/PeerToPeer-Chat/Quang-P2PChat-Demo.GIF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PeerToPeer-Chat/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/PeerToPeer-Chat/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +126,9 @@
       <workItem from="1588927362557" duration="6879000" />
       <workItem from="1588972191121" duration="301000" />
       <workItem from="1591991225863" duration="24000" />
-      <workItem from="1597273635246" duration="9609000" />
+      <workItem from="1597273635246" duration="9898000" />
+      <workItem from="1597347631787" duration="242000" />
+      <workItem from="1597349124135" duration="554000" />
     </task>
     <servers />
   </component>
@@ -149,10 +149,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="430" y="254" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597274024137">
+    <state x="430" y="254" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1597430219038">
       <screen x="0" y="23" width="1440" height="842" />
     </state>
-    <state x="430" y="254" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.842@0.23.1440.842" timestamp="1597274024137" />
+    <state x="430" y="254" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.842@0.23.1440.842" timestamp="1597430219038" />
     <state x="745" y="198" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1597276746757">
       <screen x="0" y="23" width="1440" height="842" />
     </state>

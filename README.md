@@ -28,7 +28,7 @@ to the hash of target passwords.
 and POSIX's signal feature.
 
 ### 8. worm
-- This program implements a process scheduler, which has to deal with graphic update, user input...) and later, applies 
+- This program implements a Round-Robin process scheduler, which has to deal with graphic update, user input...) and later, applies 
 this to the classic worm game.
 
 ### 9. PeerToPeer Chat
