@@ -4,17 +4,21 @@ using C Socket API, hash algorithm, and multi thread programming.
 
 # Instruction
 ## 1. Compilation:
-> rm p2pchat
-
-This command remove the previously compiled p2pchat if there are any.
-
-> make 
+'''
+$ rm p2pchat
+$ make
+'''
+Thess commands remove the previously compiled p2pchat if there are any and recompile the program.
 
 ## 2. Starting the chat:
-> ./p2pchat (username)
+'''
+$ ./p2pchat (username)
+'''
 
 For example: 
-> ./p2pchat Alice
+'''
+$ ./p2pchat Alice
+'''
 
 The terminal will print out message such as 
 >INFO: Alice at address 127.0.0.1 is listening at 55107. 
@@ -23,12 +27,16 @@ The terminal will print out message such as
 to the network via this **port_number** and **chatroom_IP**.
 
 ## 3. Joining the chat:
-> ./p2pchat (username)  (chatroom_IP)  (port_number)
+'''
+$ ./p2pchat (username)  (chatroom_IP)  (port_number)
+'''
 
 The **chatroom_IP** and the **port_number** is the IP and port of **any node** in the chatroom. 
 
 For example: 
->./p2pchat Bob localhost 55107 
+'''
+$ ./p2pchat Bob localhost 55107 
+'''
 
 would connect Bob to Alice chat room mentioned above.
 
