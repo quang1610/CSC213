@@ -7,5 +7,5 @@ all: password-cracker
 clean:
 	rm -f password-cracker
 
-galaxy: password-cracker.cu
+password-cracker: password-cracker.cu
 	$(CC) $(CFLAGS) -o password-cracker password-cracker.cu $(LDFLAGS)
