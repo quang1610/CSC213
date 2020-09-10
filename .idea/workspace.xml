@@ -11,10 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Password-Cracker/CUDA_port/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Password-Cracker/CUDA_port/Makefile" afterDir="false" />
-    </list>
+    <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -134,7 +131,7 @@
       <workItem from="1598222599583" duration="117000" />
       <workItem from="1598253871702" duration="120000" />
       <workItem from="1599753025309" duration="634000" />
-      <workItem from="1599753692355" duration="3324000" />
+      <workItem from="1599753692355" duration="3355000" />
     </task>
     <servers />
   </component>
