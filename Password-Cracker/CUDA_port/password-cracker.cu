@@ -154,10 +154,10 @@ int main(int argc, char **argv) {
 
     if (strcmp(argv[1], "single") == 0) {
         unsigned *input_hash;
-        cudaMallocManaged(input_hash, sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
+        cudaMallocManaged(&input_hash, sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
 
         int *cracked;
-        cudaMallocManaged(cracked, sizeof(int));
+        cudaMallocManaged(&cracked, sizeof(int));
         *cracked = NOT_CRACKED;
 
         // The input MD5 hash is a string in hexadecimal. Convert it to bytes.
