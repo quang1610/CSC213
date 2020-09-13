@@ -1,7 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
-#include math.h
+#include <math.h>
+#include <cuda_runtime.h>
+#include <cuda_runtime_api.h>
+#include <curand_kernel.h>
+#include <device_functions.h>
 
 // C implementation of MD5 from https://rosettacode.org/wiki/MD5#C
 
