@@ -51,7 +51,8 @@ __global__ void single_crack_MD5(unsigned *input_hash, int *cracked, int id_offs
         } 
 
         // generate candidate based on N
-        char candidate_password[] = "aaaaaa";
+        char *candidate_password = (char *) malloc(sizeof(char) * (PASSWORD_LENGTH + 1));
+        strcpy(candidate_password, "aaaaaa");
         for (int j = PASSWORD_LENGTH - 1; j >= 0; j--) {
             candidate_password[j] = (char) ('a' + N % CHAR_NUM);
             N = N / CHAR_NUM;
@@ -59,7 +60,7 @@ __global__ void single_crack_MD5(unsigned *input_hash, int *cracked, int id_offs
 
         // generate candidate hash
         unsigned *candidate_hash = (unsigned*) malloc(sizeof(unsigned) * 4);
-        md5(&candidate_password, PASSWORD_LENGTH, candidate_hash);
+        md5((unsigned char*) candidate_password, PASSWORD_LENGTH, candidate_hash);
 
         // compare candidate hash with input hash
         for (int i = 0; i < 4; i++) {
@@ -86,14 +87,13 @@ void crack_single_password(unsigned *input_hash, char *output, *int cracked) {
             <<<num_block, block_size>>>single_crack_MD5(input_hash, cracked, total_thread);
             cudaDeviceSynchronize();
 
-            total_thread += num_block * num_thread;
+            total_thread += num_block * block_size;
         } else {
             break;
         }
     }
 
-    temp = *cracked;
-
+    int temp = *cracked;
     if (temp != NOT_CRACKED) {
         strcpy(output, "aaaaaa");
         for (int j = PASSWORD_LENGTH - 1; j >= 0; j--) {
