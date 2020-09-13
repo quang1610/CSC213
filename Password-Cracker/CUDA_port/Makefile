@@ -1,5 +1,5 @@
 CC := nvcc
-CFLAGS := -g
+CFLAGS := -g -dc
 LDFLAGS := -lm
 
 all: password-cracker-gpu
