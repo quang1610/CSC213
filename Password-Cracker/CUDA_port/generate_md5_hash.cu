@@ -5,7 +5,7 @@
 #include "gpu_md5.cu"
 
 #define PASSWORD_LENGTH 6
-#define MD5_UNSIGNED_HASH_LEN 4
+#define MD5_UNSIGNED_HASH_LEN 16
 
 // This program take a string and return a hashcode for it. 
 
@@ -24,8 +24,8 @@ int main(int argc, char **argv) {
         exit(1);
     }
 
-    unsigned *hash_code;
-    cudaMallocManaged(&hash_code, sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
+    unsigned char *hash_code;
+    cudaMallocManaged(&hash_code, sizeof(unsigned char) * (MD5_UNSIGNED_HASH_LEN + 1));
 
     char *gpu_password;
     cudaMalloc(&gpu_password, sizeof(char) * (PASSWORD_LENGTH + 1));
@@ -35,12 +35,10 @@ int main(int argc, char **argv) {
     cudaDeviceSynchronize();
 
     // print the pass code
-    for (int i = 0; i < 4; i++) {
-        printf("%u", hash_code[i]);
-    }
-    printf("\n");
+    printf("%u\n", hash_code[i]);
 
     cudaFree(hash_code);
+    cudaFree(gpu_password);
 
     return 0;
 }
