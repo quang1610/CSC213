@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include "gpu_md5.cuh"
 
 
 // C implementation of MD5 from https://rosettacode.org/wiki/MD5#C
