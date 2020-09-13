@@ -173,7 +173,7 @@ int main(int argc, char **argv) {
         // Now call the crack_single_password function
         char *result = (char *) malloc(sizeof(char) * (PASSWORD_LENGTH + 1));
         crack_single_password (input_hash, result, cracked);
-        if (cracked == NOT_CRACKED) {
+        if (*cracked == NOT_CRACKED) {
             printf("No matching password found.\n");
         } else {
             printf("%s\n", result);
