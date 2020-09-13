@@ -7,8 +7,9 @@
 #include <string.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <math.h>
 
-#include "gpu_md5.cuh"
+#include "gpu_md5.cu"
 
 #define MAX_USERNAME_LENGTH 64
 #define PASSWORD_LENGTH 6
@@ -43,6 +44,7 @@ typedef struct password_set {
 } password_set_t;
 
 /******************* Device code **************************/
+
 __global__ void single_crack_MD5(unsigned *input_hash, char* output, int *cracked, int id_offset) {
     if (*cracked == NOT_CRACKED) {
         int N = threadIdx.x + blockIdx.x * blockDim.x;
