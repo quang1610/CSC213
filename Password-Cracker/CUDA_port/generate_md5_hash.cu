@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
 
     char *gpu_password;
     cudaMalloc(&gpu_password, sizeof(char) * (PASSWORD_LENGTH + 1));
-    cudaMemcpy(gpu_password, argv[1], sizeof(char) * (PASSWORD_LENGTH + 1));
+    cudaMemcpy(gpu_password, argv[1], sizeof(char) * (PASSWORD_LENGTH + 1), cudaMemcpyHostToDevice);
 
     get_md5_hashcode<<1,1>>(gpu_password, PASSWORD_LENGTH, hash_code);
     cudaDeviceSynchronize();
