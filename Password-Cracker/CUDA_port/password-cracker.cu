@@ -18,7 +18,6 @@
 #define CHAR_NUM 26
 #define CRACKED 1
 #define NOT_CRACKED -1
-#define MD5_UNSIGNED_HASH_LEN 4
 
 
 /************** SUPPORT STRUCTURE *************************/
@@ -45,7 +44,7 @@ typedef struct password_set {
 
 /******************* Device code **************************/
 
-__global__ void single_crack_MD5(unsigned *input_hash, char* output, int *cracked, int id_offset) {
+__global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked, int id_offset) {
     if (*cracked == NOT_CRACKED) {
         int N = threadIdx.x + blockIdx.x * blockDim.x;
         if (N >= PASSWORD_SPACE_SIZE) {
@@ -62,7 +61,7 @@ __global__ void single_crack_MD5(unsigned *input_hash, char* output, int *cracke
         }
 
         // generate candidate hash
-        unsigned *candidate_hash = (unsigned*) malloc(sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
+        uint8_t *candidate_hash = (uint8_t*) malloc(sizeof(uint8_t) * MD5_UNSIGNED_HASH_LEN);
         md5((unsigned char*) candidate_password, PASSWORD_LENGTH, candidate_hash);
 
         // compare candidate hash with input hash
@@ -85,7 +84,7 @@ __global__ void single_crack_MD5(unsigned *input_hash, char* output, int *cracke
 
 
 /******************** Password crack code *****************/
-void crack_single_password(unsigned *input_hash, char *output, int *cracked) {
+void crack_single_password(uint8_t *input_hash, char *output, int *cracked) {
     int num_block = 10000;
     int block_size = 512;
 
@@ -124,9 +123,9 @@ void crack_single_password(unsigned *input_hash, char *output, int *cracked) {
  * \param bytes       The destination buffer for the converted md5 hash
  * \returns           0 on success, -1 otherwise
  */
-int md5_string_to_unsigned(const char *md5_string, unsigned *hash_code) {
+int md5_string_to_bytes(const char *md5_string, uint8_t *hash_code) {
     // Check for a valid MD5 string
-    if (strlen(md5_string) != 4 * MD5_UNSIGNED_HASH_LEN) return -1;
+    if (strlen(md5_string) != 2 * MD5_UNSIGNED_HASH_LEN) return -1;
 
     // Start our "cursor" at the start of the string
     const char *pos = md5_string;
@@ -134,11 +133,11 @@ int md5_string_to_unsigned(const char *md5_string, unsigned *hash_code) {
     // Loop until we've read enough bytes
     for (size_t i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
         // Read one byte (two characters)
-        int rc = sscanf(pos, "%4hhx", &hash_code[i]);
+        int rc = sscanf(pos, "%2hhx", &hash_code[i]);
         if (rc != 1) return -1;
 
         // Move the "cursor" to the next hexadecimal byte
-        pos += 4;
+        pos += 2;
     }
     return 0;
 }
@@ -156,7 +155,7 @@ int main(int argc, char **argv) {
     }
 
     if (strcmp(argv[1], "single") == 0) {
-        unsigned *input_hash;
+        uint8_t *input_hash;
         cudaMallocManaged(&input_hash, sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
 
         int *cracked;
