@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#define MD5_UNSIGNED_HASH_LEN 16
 
 
 // C implementation of MD5 from https://rosettacode.org/wiki/MD5#C
@@ -128,9 +129,8 @@ __device__ void md5(unsigned char *msg, int mlen, unsigned char *hash_code)
     int hash_code_offset = 0;
     for (offset=0; offset<4; offset++){
         u.w = h[offset];
-        for (byte=0; byte<4; byte++) {
-            sprintf((char *)hash_code[hash_code_offset], "%02x",u.b[byte]);
-            hash_code_offset += 2;
-        }
+        memcpy(hash_code[hash_code_offset], u.b, sizeof(unsigned char) * 4);
+        hash_code_offset += 4;
     }
+    hash_code[MD5_UNSIGNED_HASH_LEN] = '\0';
 }

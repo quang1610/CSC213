@@ -5,7 +5,10 @@
 #include "gpu_md5.cu"
 
 #define PASSWORD_LENGTH 6
-#define MD5_UNSIGNED_HASH_LEN 16
+
+typedef union hcu {
+    unsigned char b[MD5_UNSIGNED_HASH_LEN];
+} HCunion;
 
 // This program take a string and return a hashcode for it. 
 
@@ -34,8 +37,14 @@ int main(int argc, char **argv) {
     get_md5_hashcode<<<1,1>>>((unsigned char *) gpu_password, PASSWORD_LENGTH, hash_code);
     cudaDeviceSynchronize();
 
-    // print the pass code
-    printf("%u\n", hash_code);
+    // print the pass code in hex form
+    HCunion h;
+    memcpy(&(h.b), hash_code, sizeof(unsigned char) * len(hash_code));
+
+    for (int i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
+        printf("%02x", h.b[i]);
+    }
+    printf("\n");
 
     cudaFree(hash_code);
     cudaFree(gpu_password);
