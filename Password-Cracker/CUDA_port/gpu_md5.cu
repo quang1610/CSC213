@@ -125,11 +125,11 @@ __device__ void md5(unsigned char *msg, int mlen, unsigned char *hash_code)
         free( msg2 );
 
     WBunion u;
-    int offset, byte;
+    int offset;
     int hash_code_offset = 0;
     for (offset=0; offset<4; offset++){
         u.w = h[offset];
-        memcpy(hash_code[hash_code_offset], u.b, sizeof(unsigned char) * 4);
+        memcpy(&(hash_code[hash_code_offset]), u.b, sizeof(unsigned char) * 4);
         hash_code_offset += 4;
     }
     hash_code[MD5_UNSIGNED_HASH_LEN] = '\0';
