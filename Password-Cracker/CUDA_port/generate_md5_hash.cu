@@ -12,7 +12,7 @@ typedef union hcu {
 
 // This program take a string and return a hashcode for it. 
 
-__global__ void get_md5_hashcode(unsigned char *password, int password_len, unsigned char *hash_code) {
+__global__ void get_md5_hashcode(unsigned char *password, int password_len, uint8_t *hash_code) {
     md5((unsigned char*) password, PASSWORD_LENGTH, hash_code);
 }
 
@@ -27,8 +27,8 @@ int main(int argc, char **argv) {
         exit(1);
     }
 
-    unsigned char *hash_code;
-    cudaMallocManaged(&hash_code, sizeof(unsigned char) * (MD5_UNSIGNED_HASH_LEN + 1));
+    uint8_t *hash_code;
+    cudaMallocManaged(&hash_code, sizeof(uint8_t) * (MD5_UNSIGNED_HASH_LEN));
 
     char *gpu_password;
     cudaMalloc(&gpu_password, sizeof(char) * (PASSWORD_LENGTH + 1));
@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
 
     // print the pass code in hex form
     HCunion h;
-    memcpy(&(h.b), (char *)hash_code, sizeof(unsigned char) * strlen(hash_code));
+    memcpy(&h, hash_code, sizeof(unsigned char) * strlen(hash_code));
 
     for (int i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
         printf("%02x", h.b[i]);

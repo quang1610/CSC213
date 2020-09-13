@@ -47,7 +47,7 @@ __device__ unsigned rol( unsigned v, short amt )
     return ((v>>(32-amt)) & msk1) | ((v<<amt) & ~msk1);
 }
 
-__device__ void md5(unsigned char *msg, int mlen, unsigned char *hash_code)
+__device__ void md5(unsigned char *msg, int mlen, uint8_t *hash_code)
 {
     static Digest h0 = { 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476 };
 //    static Digest h0 = { 0x01234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210 };
@@ -132,5 +132,4 @@ __device__ void md5(unsigned char *msg, int mlen, unsigned char *hash_code)
         memcpy(&(hash_code[hash_code_offset]), u.b, sizeof(unsigned char) * 4);
         hash_code_offset += 4;
     }
-    hash_code[MD5_UNSIGNED_HASH_LEN] = '\0';
 }
