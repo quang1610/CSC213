@@ -65,28 +65,26 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
         md5((unsigned char*) candidate_password, PASSWORD_LENGTH, candidate_hash);
 
         // compare candidate hash with input hash
-        for (int i = 0; i < 4; i++) {
-            if (candidate_hash[i] != input_hash[i]) {
-                free(candidate_password);
-                free(candidate_hash);
-                return;
-            }
-        }
-        
-        // update cracked
-        atomicAdd(cracked, N + 1);
-        memcpy(output, candidate_password, sizeof(char) * (PASSWORD_LENGTH + 1));
+        if (memcmp(candidate_hash, input_hash, sizeof(uint8_t) * MD5_UNSIGNED_HASH_LEN) != 0) {
+            free(candidate_password);
+            free(candidate_hash);
+            return;
+        } else {
+            // update cracked
+            atomicAdd(cracked, N + 1);
+            memcpy(output, candidate_password, sizeof(char) * (PASSWORD_LENGTH + 1));
 
-        free(candidate_password);
-        free(candidate_hash);
+            free(candidate_password);
+            free(candidate_hash);
+        }
     }
 }
 
 
 /******************** Password crack code *****************/
 void crack_single_password(uint8_t *input_hash, char *output, int *cracked) {
-    int num_block = 10000;
-    int block_size = 512;
+    int num_block = 1000;
+    int block_size = 500;
 
     int total_thread = 0;
 
