@@ -125,10 +125,12 @@ __device__ void md5(unsigned char *msg, int mlen, unsigned *hash_code)
 
     WBunion u;
     int offset, byte;
+    int hash_code_offset = 0;
     for (offset=0; offset<4; offset++){
         u.w = h[offset];
         for (byte=0; byte<4; byte++) {
-            printf("%02x\n",u.b[byte]);
+            sprintf(hash_code[hash_code_offset], "%02x",u.b[byte]);
+            hash_code_offset += 2;
         }
     }
 }
