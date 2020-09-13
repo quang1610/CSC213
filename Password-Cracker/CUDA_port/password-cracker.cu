@@ -43,7 +43,7 @@ typedef struct password_set {
 } password_set_t;
 
 /******************* Device code **************************/
-__global__ void single_crack_MD5(unsigned *input_hash, int *cracked, int id_offset) {
+__global__ void single_crack_MD5(unsigned *input_hash, char* output, int *cracked, int id_offset) {
     if (*cracked == NOT_CRACKED) {
         int N = threadIdx.x + blockIdx.x * blockDim.x;
         if (N >= PASSWORD_SPACE_SIZE) {
@@ -65,12 +65,18 @@ __global__ void single_crack_MD5(unsigned *input_hash, int *cracked, int id_offs
         // compare candidate hash with input hash
         for (int i = 0; i < 4; i++) {
             if (candidate_hash[i] != input_hash[i]) {
+                free(candidate_password);
+                free(candidate_hash);
                 return;
             }
         }
         
         // update cracked
         atomicAdd(cracked, N + 1);
+        strcpy(output, candidate_password);
+
+        free(candidate_password);
+        free(candidate_hash);
     }
 }
 
@@ -84,7 +90,7 @@ void crack_single_password(unsigned *input_hash, char *output, *int cracked) {
 
     while (total_thread < PASSWORD_SPACE_SIZE) {
         if (*cracked == NOT_CRACKED) {
-            <<<num_block, block_size>>>single_crack_MD5(input_hash, cracked, total_thread);
+            <<<num_block, block_size>>>single_crack_MD5(input_hash, output, cracked, total_thread);
             cudaDeviceSynchronize();
 
             total_thread += num_block * block_size;
@@ -147,8 +153,11 @@ int main(int argc, char **argv) {
     }
 
     if (strcmp(argv[1], "single") == 0) {
-        unsigned *input_hash = cudaMallocManaged(sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
-        int *cracked = cudaMallocManaged(sizeof(int));
+        unsigned *input_hash;
+        cudaMallocManaged(input_hash, sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
+
+        int *cracked;
+        cudaMallocManaged(cracked, sizeof(int));
         *cracked = NOT_CRACKED;
 
         // The input MD5 hash is a string in hexadecimal. Convert it to bytes.
@@ -162,7 +171,7 @@ int main(int argc, char **argv) {
         }
 
         // Now call the crack_single_password function
-        char *result = malloc(sizeof(char) * (PASSWORD_LENGTH + 1))
+        char *result = (char *) malloc(sizeof(char) * (PASSWORD_LENGTH + 1))
         crack_single_password (input_hash, result, cracked);
         if (cracked == NOT_CRACKED) {
             printf("No matching password found.\n");
@@ -234,6 +243,6 @@ int main(int argc, char **argv) {
     // } else {
     //     print_usage(argv[0]);
     //     exit(1);
-    // }
+    }
     return 0;
 }
