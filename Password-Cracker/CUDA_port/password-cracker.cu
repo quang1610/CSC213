@@ -163,7 +163,7 @@ int main(int argc, char **argv) {
         *cracked = NOT_CRACKED;
 
         // The input MD5 hash is a string in hexadecimal. Convert it to bytes.
-        if (md5_string_to_unsigned(argv[2], input_hash)) {
+        if (md5_string_to_bytes(argv[2], input_hash)) {
             fprintf(stderr, "Input has value %s is not a valid MD5 hash.\n", argv[2]);
 
             // Free variable
