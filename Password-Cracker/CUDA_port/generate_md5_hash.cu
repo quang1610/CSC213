@@ -24,8 +24,14 @@ int main(int argc, char **argv) {
         exit(1);
     }
 
-    unsigned *hash_code = (unsigned*) malloc(sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
-    get_md5_hashcode<<1,1>>(argv[1], PASSWORD_LENGTH, hash_code);
+    unsigned *hash_code;
+    cudaMallocManaged(&hash_code, sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
+
+    char *gpu_password;
+    cudaMalloc(&gpu_password, sizeof(char) * (PASSWORD_LENGTH + 1));
+    cudaMemcpy(gpu_password, argv[1], sizeof(char) * (PASSWORD_LENGTH + 1));
+
+    get_md5_hashcode<<1,1>>(gpu_password, PASSWORD_LENGTH, hash_code);
     cudaDeviceSynchronize();
 
     // print the pass code
@@ -34,7 +40,7 @@ int main(int argc, char **argv) {
     }
     printf("\n");
 
-    free(hash_code);
+    cudaFree(hash_code);
 
     return 0;
 }
