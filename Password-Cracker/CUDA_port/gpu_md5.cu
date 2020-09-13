@@ -33,7 +33,7 @@ __device__ unsigned *calcKs( unsigned *k)
     pwr = pow(2, 32);
     for (i=0; i<64; i++) {
         double temp = 1 + i;
-        s = fabs(sin(temp);
+        s = abs(sin(temp));
         k[i] = (unsigned)( s * pwr );
     }
     return k;
