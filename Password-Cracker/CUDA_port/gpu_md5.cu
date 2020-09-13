@@ -1,10 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-#include <cuda_runtime.h>
-#include <cuda_runtime_api.h>
-#include <curand_kernel.h>
-#include <device_functions.h>
 
 // C implementation of MD5 from https://rosettacode.org/wiki/MD5#C
 
@@ -36,7 +32,8 @@ __device__ unsigned *calcKs( unsigned *k)
 
     pwr = pow(2, 32);
     for (i=0; i<64; i++) {
-        s = fabs(sin(1+i));
+        double temp = 1 + i;
+        s = fabs(sin(temp);
         k[i] = (unsigned)( s * pwr );
     }
     return k;
@@ -49,7 +46,7 @@ __device__ unsigned rol( unsigned v, short amt )
     return ((v>>(32-amt)) & msk1) | ((v<<amt) & ~msk1);
 }
 
-__device__ unsigned *md5(unsigned char *msg, int mlen, unsigned *a1, unsigned *b1, unsigned *c1, unsigned *d1)
+__device__ void *md5(unsigned char *msg, int mlen, unsigned *a1, unsigned *b1, unsigned *c1, unsigned *d1)
 {
     static Digest h0 = { 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476 };
 //    static Digest h0 = { 0x01234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210 };
