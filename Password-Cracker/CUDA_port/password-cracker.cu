@@ -46,7 +46,7 @@ typedef struct password_set {
 
 __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked, int id_offset) {
     if (*cracked == NOT_CRACKED) {
-        int N = threadIdx.x + blockIdx.x * blockDim.x;
+        int N = threadIdx.x + blockIdx.x * blockDim.x + id_offset;
         if (N >= PASSWORD_SPACE_SIZE) {
             return;
         } 
