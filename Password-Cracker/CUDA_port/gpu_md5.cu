@@ -46,7 +46,7 @@ __device__ unsigned rol( unsigned v, short amt )
     return ((v>>(32-amt)) & msk1) | ((v<<amt) & ~msk1);
 }
 
-__device__ void md5(unsigned char *msg, int mlen, unsigned *candidate_hash)
+__device__ void md5(unsigned char *msg, int mlen, unsigned *hash_code)
 {
     static Digest h0 = { 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476 };
 //    static Digest h0 = { 0x01234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210 };
@@ -123,8 +123,12 @@ __device__ void md5(unsigned char *msg, int mlen, unsigned *candidate_hash)
     if( msg2 )
         free( msg2 );
 
-    candidate_hash[0] = h[0];
-    candidate_hash[1] = h[1];
-    candidate_hash[2] = h[2];
-    candidate_hash[3] = h[3];
+    WBunion u;
+    int offset, byte;
+    for (offset=0; offset<4; offset++){
+        u.w = h[offset];
+        for (byte=0; byte<4; byte++) {
+            printf("%02x\n",u.b[byte]);
+        }
+    }
 }
