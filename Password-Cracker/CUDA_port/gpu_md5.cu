@@ -128,9 +128,3 @@ __device__ unsigned *md5(unsigned char *msg, int mlen, uint32_t *a1, uint32_t *b
     *c1 = h[2];
     *d1 = h[3];
 }
-
-__device__ void GetMD5String(unsigned char *msg, int mlen, uint32_t *a1, uint32_t *b1, uint32_t *c1, uint32_t *d1) {
-    str[0] = '\0';
-    int j;
-    unsigned *d = md5(msg, mlen, a1, a2, a3, a4);
-}
