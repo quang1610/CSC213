@@ -39,7 +39,7 @@ int main(int argc, char **argv) {
 
     // print the pass code in hex form
     HCunion h;
-    memcpy(&h, hash_code, sizeof(unsigned char) * strlen(hash_code));
+    memcpy(&h, hash_code, sizeof(unsigned char) * MD5_UNSIGNED_HASH_LEN);
 
     for (int i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
         printf("%02x", h.b[i]);
