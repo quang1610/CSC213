@@ -81,7 +81,7 @@ __device__ unsigned *md5(unsigned char *msg, int mlen)
 
     {
         grps  = 1 + (mlen+8)/64;
-        msg2 = malloc( 64*grps);
+        msg2 = (unsigned char *) malloc( 64*grps);
         memcpy( msg2, msg, mlen);
         msg2[mlen] = (unsigned char)0x80;
         q = mlen + 1;
@@ -128,14 +128,14 @@ __device__ unsigned *md5(unsigned char *msg, int mlen)
 
 __device__ void GetMD5String(unsigned char *msg, int mlen, unsigned char * str) {
     str[0] = '\0';
-    int j,k;
+    int j;
     unsigned *d = md5(msg, mlen);
     WBunion u;
 
     for (j = 0; j<4; j++) {
 		u.w = d[j];
-		char* s[8];
+		char s[8];
 		sprintf(s, "%02x%02x%02x%02x", u.b[0], u.b[1], u.b[2], u.b[3]);
-		strcat(str, s);
+		strcat((char *)str, s);
     }
 }
