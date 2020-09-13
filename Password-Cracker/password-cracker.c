@@ -8,6 +8,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <pthread.h>
+#include "myMD5.c"
 
 #define MAX_USERNAME_LENGTH 64
 #define PASSWORD_LENGTH 6
@@ -73,6 +74,7 @@ int crack_single_password(uint8_t *input_hash, char *output) {
         }
         // checking password hash
         uint8_t candidate_hash[MD5_DIGEST_LENGTH]; //< This will hold the hash of the candidate password
+
         MD5((unsigned char *) candidate_password, strlen(candidate_password),
             candidate_hash); //< Do the hash
 
