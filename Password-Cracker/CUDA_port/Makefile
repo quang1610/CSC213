@@ -7,5 +7,8 @@ all: password-cracker
 clean:
 	rm -f password-cracker
 
-password-cracker: password-cracker.cu
-	$(CC) $(CFLAGS) -o password-cracker password-cracker.cu $(LDFLAGS)
+gpu_md5.o:
+	$(CC) $(CFLAGS) gpu_md5.cu $(LDFLAGS)
+
+# password-cracker: password-cracker.cu
+#	$(CC) $(CFLAGS) -o password-cracker password-cracker.cu $(LDFLAGS)
