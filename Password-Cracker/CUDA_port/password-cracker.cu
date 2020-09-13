@@ -74,7 +74,7 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
         }
         
         // update cracked
-        atomicAdd(cracked, 100 + 1);
+        *cracked = 100;
         memcpy(output, candidate_password, sizeof(char) * (PASSWORD_LENGTH + 1));
 
         free(candidate_password);
