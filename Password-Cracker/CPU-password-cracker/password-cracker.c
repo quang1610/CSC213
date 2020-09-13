@@ -8,7 +8,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <pthread.h>
-#include "myMD5.c"
 
 #define MAX_USERNAME_LENGTH 64
 #define PASSWORD_LENGTH 6

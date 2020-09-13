@@ -12,7 +12,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfce08be-894c-4646-9ad4-0af02e1dc433" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Password-Cracker/CUDA_port/gpu_md5.cu" beforeDir="false" afterPath="$PROJECT_DIR$/Password-Cracker/CUDA_port/gpu_md5.cu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Password-Cracker/CUDA_port/password-cracker.cu" beforeDir="false" afterPath="$PROJECT_DIR$/Password-Cracker/CUDA_port/password-cracker.cu" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Password-Cracker/Makefile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Password-Cracker/inputs/input1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Password-Cracker/inputs/input2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Password-Cracker/inputs/input3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Password-Cracker/myMD5.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Password-Cracker/password-cracker" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Password-Cracker/password-cracker.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Password-Cracker/testfile.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +142,7 @@
       <workItem from="1598253871702" duration="120000" />
       <workItem from="1599753025309" duration="634000" />
       <workItem from="1599753692355" duration="5503000" />
-      <workItem from="1599974335153" duration="460000" />
+      <workItem from="1599974335153" duration="706000" />
     </task>
     <servers />
   </component>

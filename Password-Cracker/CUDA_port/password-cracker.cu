@@ -1,14 +1,14 @@
 /// @author Quang Nguyen nguyenqu2
 #define _GNU_SOURCE
 
-#include <openssl/md5.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 #include <pthread.h>
-#include <cuda.h>
+
+#include "gpu_md5.cu"
 
 #define MAX_USERNAME_LENGTH 64
 #define PASSWORD_LENGTH 6
@@ -17,6 +17,7 @@
 #define CHAR_NUM 26
 #define CRACKED 1
 #define NOT_CRACKED -1
+#define MD5_UNSIGNED_HASH_LEN 4
 
 
 /************** SUPPORT STRUCTURE *************************/
@@ -25,7 +26,7 @@
  */
 typedef struct user_password {
     char username[MAX_USERNAME_LENGTH];
-    uint8_t password_hash[MD5_DIGEST_LENGTH];
+    unsigned password_hash[4];
     int cracked_password;
 
     struct user_password *next;
@@ -42,30 +43,63 @@ typedef struct password_set {
 } password_set_t;
 
 /******************* Device code **************************/
+__global__ void single_crack_MD5(unsigned *input_hash, int *cracked, int id_offset) {
+    if (cracked == NOT_CRACKED) {
+        N = threadIdx.x + blockIdx.x * blockDim.x;
+        if (N >= PASSWORD_SPACE_SIZE) {
+            return;
+        } 
 
+        unsigned char candidate_password = "aaaaaa";
+        for (int j = PASSWORD_LENGTH - 1; j >= 0; j--) {
+            candidate_password[j] = (char) ('a' + N % CHAR_NUM);
+            N = N / CHAR_NUM;
+        }
+
+        // generate candidate hash
+        unsigned *candidate_hash = malloc(sizeof(unsigned) * 4);
+        md5(candidate_password, PASSWORD_LENGTH, candidate_hash));
+
+        // compare candidate hash with input hash
+        for (int i = 0; i < 4; i++) {
+            if (candidate_hash[i] != input_hash[i]) {
+                return;
+            }
+        }
+        
+        // update cracked
+        atomicAdd(cracked, N + 1);
+    }
+}
 
 
 /******************** Password crack code *****************/
-void crack_single_password(uint8_t *input_hash, char *output, short *cracked) {
+void crack_single_password(unsigned *input_hash, char *output, *int cracked) {
+    int num_block = 10000;
+    int block_size = 512;
 
-    if *cracked != CRACKED {
-        int i = threadIdx.x + blockIdx.x * NUM_THREADS;
+    int total_thread = 0;
+    int *cracked = malloc(sizeof(int)); 
+    *cracked = NOT_CRACKED;
 
-        char candidate_password = "aaaaaa";
-        for (int j = PASSWORD_LENGTH - 1; j >= 0; j--) {
-            candidate_password[j] = (char) ('a' + i % CHAR_NUM);
-            i = i / CHAR_NUM;
+    while total_thread < PASSWORD_SPACE_SIZE {
+        if (*cracked == NOT_CRACKED) {
+            <<<num_block, block_size>>>single_crack_MD5(input_hash, cracked, total_thread);
+            cudaDeviceSynchronize();
+            
+            total_thread += num_block * num_thread;
+        } else {
+            break;
         }
-    
-        // checking password hash
-        uint8_t candidate_hash[MD5_DIGEST_LENGTH]; //< This will hold the hash of the candidate password
-        MD5((unsigned char *) candidate_password, strlen(candidate_password), candidate_hash); //< Do the hash
-    
-        // Now check if the hash of the candidate password matches the input hash
-        if (memcmp(input_hash, candidate_hash, MD5_DIGEST_LENGTH) == 0) {
-            // Match! Copy the password to the output and return 0 (success)
-            memcpy(output, candidate_password, sizeof(char) * (PASSWORD_LENGTH + 1));
-            atomicAdd(*cracked, 0 - *cracked + CRACKED);
+    }
+
+    temp = *cracked;
+
+    if (temp != NOT_CRACKED) {
+        strcpy(output, "aaaaaa");
+        for (int j = PASSWORD_LENGTH - 1; j >= 0; j--) {
+            output[j] = (char) ('a' + temp % CHAR_NUM);
+            temp = temp / CHAR_NUM;
         }
     }
 }
@@ -82,23 +116,22 @@ void crack_single_password(uint8_t *input_hash, char *output, short *cracked) {
  * \param bytes       The destination buffer for the converted md5 hash
  * \returns           0 on success, -1 otherwise
  */
-int md5_string_to_bytes(const char *md5_string, uint8_t *bytes) {
+int md5_string_to_unsigned(const char *md5_string, unsigned *hash_code) {
     // Check for a valid MD5 string
-    if (strlen(md5_string) != 2 * MD5_DIGEST_LENGTH) return -1;
+    if (strlen(md5_string) != 4 * MD5_UNSIGNED_HASH_LEN) return -1;
 
     // Start our "cursor" at the start of the string
     const char *pos = md5_string;
 
     // Loop until we've read enough bytes
-    for (size_t i = 0; i < MD5_DIGEST_LENGTH; i++) {
+    for (size_t i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
         // Read one byte (two characters)
-        int rc = sscanf(pos, "%2hhx", &bytes[i]);
+        int rc = sscanf(pos, "%4hhx", &hash_code[i]);
         if (rc != 1) return -1;
 
         // Move the "cursor" to the next hexadecimal byte
-        pos += 2;
+        pos += 4;
     }
-
     return 0;
 }
 
@@ -115,23 +148,22 @@ int main(int argc, char **argv) {
     }
 
     if (strcmp(argv[1], "single") == 0) {
+        unsigned *input_hash = cudaMallocManaged(sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
+        int *cracked = cudaMallocManaged(sizeof(int));
+        *cracked = NOT_CRACKED;
+
         // The input MD5 hash is a string in hexadecimal. Convert it to bytes.
-        uint8_t *input_hash;
-        cudaMallocManaged(sizeof(uint8_t) * MD5_DIGEST_LENGTH);
-        if (md5_string_to_bytes(argv[2], input_hash)) {
+        if (md5_string_to_unsigned(argv[2], input_hash)) {
             fprintf(stderr, "Input has value %s is not a valid MD5 hash.\n", argv[2]);
+
+            // Free variable
+            free(input_hash);
+            free(cracked);
             exit(1);
         }
 
         // Now call the crack_single_password function
-        char *result;
-        short *cracked;
-        cudaMallocManaged(result, sizeof(char) * (PASSWORD_LENGTH + 1));
-        cudaMallocManaged(cracked, sizeof(short));
-        *cracked = NOT_CRACKED;
-
-        int num_block = PASSWORD_SPACE_SIZE / NUM_THREADS + 1
-        int num_thread = NUM_THREADS
+        char *result = malloc(sizeof(char) * (PASSWORD_LENGTH + 1))
         crack_single_password (input_hash, result, cracked);
         if (cracked == NOT_CRACKED) {
             printf("No matching password found.\n");
@@ -139,9 +171,9 @@ int main(int argc, char **argv) {
             printf("%s\n", result);
         }
 
-        cudaFree(result);
-        cudaFree(input_hash);
-        cudaFree(cracked);
+        // Free variable
+        free(input_hash);
+        free(cracked);
 
     } else if (strcmp(argv[1], "list") == 0) {
         // Make and initialize a password set
@@ -163,10 +195,10 @@ int main(int argc, char **argv) {
             char username[MAX_USERNAME_LENGTH];
 
             // Make space to hold the MD5 string
-            char md5_string[MD5_DIGEST_LENGTH * 2 + 1];
+            char md5_string[MD5_UNSIGNED_HASH_LEN * 4 + 1];
 
             // Make space to hold the MD5 bytes
-            uint8_t password_hash[MD5_DIGEST_LENGTH];
+            unsigned password_hash[MD5_UNSIGNED_HASH_LEN];
 
             // Try to read. The space in the format string is required to eat the newline
             if (fscanf(password_file, "%s %s ", username, md5_string) != 2) {
@@ -175,7 +207,7 @@ int main(int argc, char **argv) {
             }
 
             // Convert the MD5 string to MD5 bytes in our new node
-            if (md5_string_to_bytes(md5_string, password_hash) != 0) {
+            if (md5_string_to_unsigned(md5_string, password_hash) != 0) {
                 fprintf(stderr, "Error reading MD5\n");
                 exit(2);
             }
