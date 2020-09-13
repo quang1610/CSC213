@@ -9,7 +9,7 @@
 
 // This program take a string and return a hashcode for it. 
 
-__global__ void get_md5_hashcode(unsigned char *password, int password_len, unsigned *hash_code) {
+__global__ void get_md5_hashcode(unsigned char *password, int password_len, unsigned char *hash_code) {
     md5((unsigned char*) password, PASSWORD_LENGTH, hash_code);
 }
 
@@ -35,7 +35,7 @@ int main(int argc, char **argv) {
     cudaDeviceSynchronize();
 
     // print the pass code
-    printf("%u\n", hash_code[i]);
+    printf("%u\n", hash_code);
 
     cudaFree(hash_code);
     cudaFree(gpu_password);
