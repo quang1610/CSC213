@@ -46,7 +46,7 @@ __device__ unsigned rol( unsigned v, short amt )
     return ((v>>(32-amt)) & msk1) | ((v<<amt) & ~msk1);
 }
 
-__device__ unsigned *md5(unsigned char *msg, int mlen, uint32_t *a1, uint32_t *b1, uint32_t *c1, uint32_t *d1)
+__device__ unsigned *md5(unsigned char *msg, int mlen, unsigned *a1, unsigned *b1, unsigned *c1, unsigned *d1)
 {
     static Digest h0 = { 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476 };
 //    static Digest h0 = { 0x01234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210 };
