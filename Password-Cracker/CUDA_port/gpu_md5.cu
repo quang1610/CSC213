@@ -3,6 +3,8 @@
 #include <string.h>
 #include <math.h>
 
+// C implementation of MD5 from https://rosettacode.org/wiki/MD5#C
+
 typedef union uwb {
     unsigned w;
     unsigned char b[4];
