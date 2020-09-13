@@ -1,14 +1,14 @@
 CC := nvcc
-CFLAGS := -g $(shell sdl2-config --cflags)
-LDFLAGS := $(shell sdl2-config --libs) -lm
+CFLAGS := -g
+LDFLAGS := -lm
 
-all: password-cracker
+all: password-cracker-gpu
 
 clean:
-	rm -f password-cracker
+	rm -f password-cracker-gpu
 
-gpu_md5.o:
-	$(CC) $(CFLAGS) gpu_md5.cu $(LDFLAGS)
+password-cracker-gpu: password-cracker.cu gpu_md5.cu
+	$(CC) $(CFLAGS) -o password-cracker-gpu password-cracker.cu gpu_md5.cu $(LDFLAGS)
 
 # password-cracker: password-cracker.cu
 #	$(CC) $(CFLAGS) -o password-cracker password-cracker.cu $(LDFLAGS)
