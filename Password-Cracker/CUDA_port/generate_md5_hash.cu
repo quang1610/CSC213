@@ -9,6 +9,10 @@
 
 // This program take a string and return a hashcode for it. 
 
+__global__ void get_md5_hashcode(unsigned char *password, int password_len, unsigned *hash_code) {
+    md5((unsigned char*) argv[1], PASSWORD_LENGTH, hash_code);
+}
+
 int main(int argc, char **argv) {
     if (argc != 2) {
         printf("The program require an argument, a string, to work!\n");
@@ -21,8 +25,10 @@ int main(int argc, char **argv) {
     }
 
     unsigned *hash_code = (unsigned*) malloc(sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
-    md5((unsigned char*) argv[1], PASSWORD_LENGTH, hash_code);
+    get_md5_hashcode <<1,1>>(argv[1], PASSWORD_LENGTH, hash_code);
+    cudaDeviceSynchronize();
 
+    // print the pass code
     for (int i = 0; i < 4; i++) {
         printf("%u", hash_code[i]);
     }
