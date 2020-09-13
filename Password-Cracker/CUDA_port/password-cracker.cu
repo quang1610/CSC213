@@ -16,7 +16,7 @@
 #define NUM_THREADS 512
 #define CHAR_NUM 26
 #define CRACKED 1
-#define NOT_CRACKED 0
+#define NOT_CRACKED -1
 
 
 /************** SUPPORT STRUCTURE *************************/
@@ -41,9 +41,13 @@ typedef struct password_set {
     int user_num;
 } password_set_t;
 
+/******************* Device code **************************/
+
+
 
 /******************** Password crack code *****************/
-__global__ void crack_single_password(uint8_t *input_hash, char *output, short *cracked) {
+void crack_single_password(uint8_t *input_hash, char *output, short *cracked) {
+
     if *cracked != CRACKED {
         int i = threadIdx.x + blockIdx.x * NUM_THREADS;
 
@@ -128,8 +132,8 @@ int main(int argc, char **argv) {
 
         int num_block = PASSWORD_SPACE_SIZE / NUM_THREADS + 1
         int num_thread = NUM_THREADS
-        crack_single_password <<<num_block, num_thread>>>(input_hash, result, cracked);
-        if (cracked != CRACKED) {
+        crack_single_password (input_hash, result, cracked);
+        if (cracked == NOT_CRACKED) {
             printf("No matching password found.\n");
         } else {
             printf("%s\n", result);
