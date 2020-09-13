@@ -26,7 +26,7 @@ __device__ unsigned f3( unsigned abcd[] ){
 
 typedef unsigned (*DgstFctn)(unsigned a[]);
 
-unsigned *calcKs( unsigned *k)
+__device__ unsigned *calcKs( unsigned *k)
 {
     double s, pwr;
     int i;
