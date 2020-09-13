@@ -74,7 +74,7 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
         }
         
         // update cracked
-        atomicAdd(cracked, N + 1);
+        atomicAdd(cracked, 100 + 1);
         memcpy(output, candidate_password, sizeof(char) * (PASSWORD_LENGTH + 1));
 
         free(candidate_password);
@@ -147,7 +147,7 @@ int main(int argc, char **argv) {
 
     if (strcmp(argv[1], "single") == 0) {
         uint8_t *input_hash;
-        cudaMallocManaged(&input_hash, sizeof(unsigned) * MD5_UNSIGNED_HASH_LEN);
+        cudaMallocManaged(&input_hash, sizeof(uint8_t) * MD5_UNSIGNED_HASH_LEN);
 
         int *cracked;
         cudaMallocManaged(&cracked, sizeof(int));
@@ -164,7 +164,9 @@ int main(int argc, char **argv) {
         }
 
         // Now call the crack_single_password function
-        char *result = (char *) malloc(sizeof(char) * (PASSWORD_LENGTH + 1));
+        char *result;
+        cudaMallocManaged(&result, malloc(sizeof(char) * (PASSWORD_LENGTH + 1)));
+        
         crack_single_password (input_hash, result, cracked);
         if (*cracked == NOT_CRACKED) {
             printf("No matching password found.\n");
