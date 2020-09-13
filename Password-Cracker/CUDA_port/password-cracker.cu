@@ -82,7 +82,7 @@ __global__ void single_crack_MD5(unsigned *input_hash, char* output, int *cracke
 
 
 /******************** Password crack code *****************/
-void crack_single_password(unsigned *input_hash, char *output, *int cracked) {
+void crack_single_password(unsigned *input_hash, char *output, int *cracked) {
     int num_block = 10000;
     int block_size = 512;
 
@@ -90,7 +90,7 @@ void crack_single_password(unsigned *input_hash, char *output, *int cracked) {
 
     while (total_thread < PASSWORD_SPACE_SIZE) {
         if (*cracked == NOT_CRACKED) {
-            <<<num_block, block_size>>>single_crack_MD5(input_hash, output, cracked, total_thread);
+            single_crack_MD5<<<num_block, block_size>>>(input_hash, output, cracked, total_thread);
             cudaDeviceSynchronize();
 
             total_thread += num_block * block_size;
@@ -165,13 +165,13 @@ int main(int argc, char **argv) {
             fprintf(stderr, "Input has value %s is not a valid MD5 hash.\n", argv[2]);
 
             // Free variable
-            free(input_hash);
-            free(cracked);
+            cudaFree(input_hash);
+            cudaFree(cracked);
             exit(1);
         }
 
         // Now call the crack_single_password function
-        char *result = (char *) malloc(sizeof(char) * (PASSWORD_LENGTH + 1))
+        char *result = (char *) malloc(sizeof(char) * (PASSWORD_LENGTH + 1));
         crack_single_password (input_hash, result, cracked);
         if (cracked == NOT_CRACKED) {
             printf("No matching password found.\n");
@@ -180,8 +180,8 @@ int main(int argc, char **argv) {
         }
 
         // Free variable
-        free(input_hash);
-        free(cracked);
+        cudaFree(input_hash);
+        cudaFree(cracked);
 
     } else if (strcmp(argv[1], "list") == 0) {
     //     // Make and initialize a password set
