@@ -6,6 +6,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <pthread.h>
+
+#include "gpu_md5.cuh"
 
 #define MAX_USERNAME_LENGTH 64
 #define PASSWORD_LENGTH 6

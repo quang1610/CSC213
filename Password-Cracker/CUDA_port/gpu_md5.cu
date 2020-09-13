@@ -1,15 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include "gpu_md5.cuh"
 
 // C implementation of MD5 from https://rosettacode.org/wiki/MD5#C
-
-typedef union uwb {
-    unsigned w;
-    unsigned char b[4];
-} WBunion;
-
-typedef unsigned Digest[4];
 
 __device__ unsigned f0( unsigned abcd[] ){
     return ( abcd[1] & abcd[2]) | (~abcd[1] & abcd[3]);}
@@ -22,8 +16,6 @@ __device__ unsigned f2( unsigned abcd[] ){
 
 __device__ unsigned f3( unsigned abcd[] ){
     return abcd[2] ^ (abcd[1] |~ abcd[3]);} 
-
-typedef unsigned (*DgstFctn)(unsigned a[]);
 
 __device__ unsigned *calcKs( unsigned *k)
 {
