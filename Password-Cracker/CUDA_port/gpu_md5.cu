@@ -129,7 +129,7 @@ __device__ void md5(unsigned char *msg, int mlen, unsigned char *hash_code)
     for (offset=0; offset<4; offset++){
         u.w = h[offset];
         for (byte=0; byte<4; byte++) {
-            sprintf(hash_code[hash_code_offset], "%02x",u.b[byte]);
+            sprintf((char *)hash_code[hash_code_offset], "%02x",u.b[byte]);
             hash_code_offset += 2;
         }
     }
