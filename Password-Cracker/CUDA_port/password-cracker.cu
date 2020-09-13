@@ -52,7 +52,8 @@ __global__ void single_crack_MD5(unsigned *input_hash, char* output, int *cracke
 
         // generate candidate based on N
         char *candidate_password = (char *) malloc(sizeof(char) * (PASSWORD_LENGTH + 1));
-        strcpy(candidate_password, "aaaaaa");
+        char temp[] = "aaaaaa";
+        memcpy(candidate_password, temp, sizeof(char) * (PASSWORD_LENGTH + 1));
         for (int j = PASSWORD_LENGTH - 1; j >= 0; j--) {
             candidate_password[j] = (char) ('a' + N % CHAR_NUM);
             N = N / CHAR_NUM;
@@ -73,7 +74,7 @@ __global__ void single_crack_MD5(unsigned *input_hash, char* output, int *cracke
         
         // update cracked
         atomicAdd(cracked, N + 1);
-        strcpy(output, candidate_password);
+        memcpy(output, candidate_password, sizeof(char) * (PASSWORD_LENGTH + 1));
 
         free(candidate_password);
         free(candidate_hash);
