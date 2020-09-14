@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "gpu_md5.cu"
+#include "gpu-md5.cu"
 
 #define PASSWORD_LENGTH 6
 

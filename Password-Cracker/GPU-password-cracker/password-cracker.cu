@@ -9,7 +9,7 @@
 #include <pthread.h>
 #include <math.h>
 
-#include "gpu_md5.cu"
+#include "gpu-md5.cu"
 
 #define MAX_USERNAME_LENGTH 64
 #define PASSWORD_LENGTH 6
