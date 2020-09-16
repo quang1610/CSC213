@@ -129,4 +129,5 @@ __device__ void md5(unsigned char *msg, int mlen, uint8_t *hash_code) {
         memcpy(&(hash_code[hash_code_offset]), u.b, sizeof(unsigned char) * 4);
         hash_code_offset += 4;
     }
+    printf("%s - %d\n", msg, hash_code[0]);
 }
