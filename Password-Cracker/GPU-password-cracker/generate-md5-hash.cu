@@ -72,7 +72,7 @@ int main(int argc, char **argv) {
     // print the pass code in hex form
     HCunion h;
     memcpy(&h, hash_code, sizeof(unsigned char) * MD5_UNSIGNED_HASH_LEN);
-    char *temp_str = malloc(sizeof(char) * 33);
+    char *temp_str = (char *)malloc(sizeof(char) * 33);
     for (int i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
         sprintf(&(temp_str[i*2]), "%02x", h.b[i]);
     }
