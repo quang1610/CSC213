@@ -11,5 +11,5 @@ clean:
 password-cracker-gpu:
 	$(CC) $(CFLAGS) -o password-cracker-gpu password-cracker.cu $(LDFLAGS)
 
-generate_md5_hash:
+generate-md5-hash:
 	$(CC) $(CFLAGS) -o generate-md5-hash generate-md5-hash.cu $(LDFLAGS)
