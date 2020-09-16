@@ -88,7 +88,7 @@ void crack_single_password(uint8_t *input_hash, char *output, int *cracked) {
     int tested_passwords = 0;
 
     // testing the each password
-    while (total_thread < PASSWORD_SPACE_SIZE) {
+    while (tested_passwords < PASSWORD_SPACE_SIZE) {
         if (*cracked == NOT_CRACKED) {
             printf("cracked = %d\n", *cracked);
             printf("total+thread = %d\n", total_thread);
