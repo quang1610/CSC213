@@ -57,7 +57,7 @@ __device__ void md5(unsigned char *msg, int mlen, uint8_t *hash_code) {
     static short rot3[] = { 6,10,15,21};
     static short *rots[] = {rot0, rot1, rot2, rot3 };
     unsigned kspace[64];
-    unsigned *k;
+    unsigned *k; k = NULL;
 
     Digest h;
     Digest abcd;
