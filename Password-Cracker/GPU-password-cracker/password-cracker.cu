@@ -48,7 +48,6 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
             candidate_password[j] = (char) ('a' + N % CHAR_NUM);
             N = N / CHAR_NUM;
         }
-        printf("Candidate password %s\n", candidate_password);
 
         // generate candidate hash
         uint8_t *candidate_hash = (uint8_t*) malloc(sizeof(uint8_t) * MD5_UNSIGNED_HASH_LEN);
@@ -56,6 +55,9 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
 
         // compare candidate hash with input hash
         for (int i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
+            printf("candidate %02x", candidate_hash[i]);
+            printf("input %02x", input_hash[i]);
+            
             if (input_hash[i] != candidate_hash[i]) {
                 free(candidate_password);
                 free(candidate_hash);
@@ -84,12 +86,12 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
  */
 void crack_single_password(uint8_t *input_hash, char *output, int *cracked) {
     int num_block = 1;
-    int block_size = 5;
+    int block_size = 1;
 
     int tested_passwords = 0;
 
     // testing the each password
-    while (tested_passwords < 10) {
+    while (tested_passwords < 1) {
         if (*cracked == NOT_CRACKED) {
             printf("cracked = %d\n", *cracked);
             printf("total+thread = %d\n", tested_passwords);
