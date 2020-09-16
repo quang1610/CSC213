@@ -19,33 +19,22 @@
 #define CRACKED 1
 #define NOT_CRACKED -1
 
-
-/************** SUPPORT STRUCTURE *************************/
-/**
- * This is a node in password_set_t that contains information about a user and their password.
- */
-typedef struct user_password {
-    char username[MAX_USERNAME_LENGTH];
-    unsigned password_hash[4];
-    int cracked_password;
-
-    struct user_password *next;
-} user_password_t;
-
-/**
- * This struct is the root of the data structure that will hold users and hashed passwords.
- * This could be any type of data structure you choose: list, array, tree, hash table, etc.
- * Implement this data structure for part B of the lab.
- */
-typedef struct password_set {
-    user_password_t *head;
-    int user_num;
-} password_set_t;
-
 /******************* Device code **************************/
-
+/**
+ * This cuntion run on device to crack the code. The idea is that it generate a candidate password,
+ * find its hashcode and compare it with input_hash. If we find out, we print the result to output,
+ * set the cracked variable.
+ * \param input_hash the given hash, belong to the password we need to crack.
+ * \param output the correct password. We need to print value into this string
+ * \param cracked the number to indicate whether we crack the code.
+ * \param id_offset this is the number of passwords we check, act as an offset for N.
+ *      this decides the candidate password.
+ */
 __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked, int id_offset) {
     if (*cracked == NOT_CRACKED) {
+        // get N based on the number id of block. This is used to construct to candidate password.
+        // N = 0 would give us "aaaaaa"
+        // N = 1 would give us "aaaaab" so on.
         int N = threadIdx.x + blockIdx.x * blockDim.x + id_offset;
         if (N >= PASSWORD_SPACE_SIZE) {
             return;
@@ -74,7 +63,8 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
         }
         
         // update cracked
-        *cracked = 100;
+        printf("we found password!");
+        *cracked = CRACKED;
         memcpy(output, candidate_password, sizeof(char) * (PASSWORD_LENGTH + 1));
 
         free(candidate_password);
@@ -84,18 +74,30 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
 
 
 /******************** Password crack code *****************/
+/**
+ * This function call the gpu function to crack code. Each time, we test 1000 * 500 passwords until
+ * we check all the password space.
+ * \param input_hash the given hash, belong to the password we need to crack.
+ * \param output the correct password. We need to print value into this string
+ * \param cracked the number to indicate whether we crack the code.
+ */
 void crack_single_password(uint8_t *input_hash, char *output, int *cracked) {
     int num_block = 1000;
     int block_size = 500;
 
-    int total_thread = 0;
+    int tested_passwords = 0;
 
+    // testing the each password
     while (total_thread < PASSWORD_SPACE_SIZE) {
         if (*cracked == NOT_CRACKED) {
-            single_crack_MD5<<<num_block, block_size>>>(input_hash, output, cracked, total_thread);
+            printf("cracked = %d\n", *cracked);
+            printf("total+thread = %d\n", total_thread);
+
+            // call the gpu function
+            single_crack_MD5<<<num_block, block_size>>>(input_hash, output, cracked, tested_passwords);
             cudaDeviceSynchronize();
 
-            total_thread += num_block * block_size;
+            tested_passwords += num_block * block_size;
         } else {
             break;
         }
@@ -140,12 +142,14 @@ void print_usage(const char *exec_name) {
 }
 
 int main(int argc, char **argv) {
+    // check the input arguments' correctness
     if (argc != 3) {
         print_usage(argv[0]);
         exit(1);
     }
 
     if (strcmp(argv[1], "single") == 0) {
+        // allocate variable to use on device and host
         uint8_t *input_hash;
         cudaMallocManaged(&input_hash, sizeof(uint8_t) * MD5_UNSIGNED_HASH_LEN);
 
@@ -157,17 +161,21 @@ int main(int argc, char **argv) {
         if (md5_string_to_bytes(argv[2], input_hash)) {
             fprintf(stderr, "Input has value %s is not a valid MD5 hash.\n", argv[2]);
 
-            // Free variable
+            // Early exit. Free variable
             cudaFree(input_hash);
             cudaFree(cracked);
             exit(1);
         }
 
         // Now call the crack_single_password function
+        // result hold the correct password.
         char *result;
         cudaMallocManaged(&result, sizeof(char) * (PASSWORD_LENGTH + 1));
 
+        // call crack single password
         crack_single_password (input_hash, result, cracked);
+
+        // check if we successfully cracked the password
         if (*cracked == NOT_CRACKED) {
             printf("No matching password found.\n");
         } else {
@@ -175,6 +183,7 @@ int main(int argc, char **argv) {
         }
 
         // Free variable
+        cudaFree(result);
         cudaFree(input_hash);
         cudaFree(cracked);
 
