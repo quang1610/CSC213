@@ -26,8 +26,7 @@ __device__ unsigned f2( unsigned abcd[] ){
 __device__ unsigned f3( unsigned abcd[] ){
     return abcd[2] ^ (abcd[1] |~ abcd[3]);} 
 
-__device__ unsigned *calcKs( unsigned *k)
-{
+__device__ unsigned *calcKs( unsigned *k) {
     double s, pwr;
     int i;
 
@@ -41,14 +40,12 @@ __device__ unsigned *calcKs( unsigned *k)
 }
 
 // ROtate v Left by amt bits
-__device__ unsigned rol( unsigned v, short amt )
-{
+__device__ unsigned rol( unsigned v, short amt ) {
     unsigned  msk1 = (1<<amt) -1;
     return ((v>>(32-amt)) & msk1) | ((v<<amt) & ~msk1);
 }
 
-__device__ void md5(unsigned char *msg, int mlen, uint8_t *hash_code)
-{
+__device__ void md5(unsigned char *msg, int mlen, uint8_t *hash_code) {
     static Digest h0 = { 0x67452301, 0xEFCDAB89, 0x98BADCFE, 0x10325476 };
 //    static Digest h0 = { 0x01234567, 0x89ABCDEF, 0xFEDCBA98, 0x76543210 };
     static DgstFctn ff[] = { &f0, &f1, &f2, &f3 };

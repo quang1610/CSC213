@@ -56,6 +56,9 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
         // compare candidate hash with input hash
         for (int i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
             if (input_hash[i] != candidate_hash[i]) {
+                printf("input_hash %d\n", input_hash[i]);
+                printf("candidate_hash %d\n", candidate_hash[i]);
+                
                 free(candidate_password);
                 free(candidate_hash);
                 return;
