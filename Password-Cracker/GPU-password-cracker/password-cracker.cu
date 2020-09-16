@@ -48,6 +48,7 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
             candidate_password[j] = (char) ('a' + N % CHAR_NUM);
             N = N / CHAR_NUM;
         }
+        printf("Candidate password %s\n", candidate_password);
 
         // generate candidate hash
         uint8_t *candidate_hash = (uint8_t*) malloc(sizeof(uint8_t) * MD5_UNSIGNED_HASH_LEN);
@@ -82,8 +83,8 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
  * \param cracked the number to indicate whether we crack the code.
  */
 void crack_single_password(uint8_t *input_hash, char *output, int *cracked) {
-    int num_block = 1000;
-    int block_size = 500;
+    int num_block = 1;
+    int block_size = 5;
 
     int tested_passwords = 0;
 
