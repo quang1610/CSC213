@@ -85,7 +85,7 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
  */
 void crack_single_password(uint8_t *input_hash, char *output, int *cracked) {
     int num_block = 1;
-    int block_size = 1;
+    int block_size = 5;
 
     int tested_passwords = 0;
 
