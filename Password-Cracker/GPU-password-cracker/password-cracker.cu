@@ -91,7 +91,7 @@ void crack_single_password(uint8_t *input_hash, char *output, int *cracked) {
     while (tested_passwords < PASSWORD_SPACE_SIZE) {
         if (*cracked == NOT_CRACKED) {
             printf("cracked = %d\n", *cracked);
-            printf("total+thread = %d\n", total_thread);
+            printf("total+thread = %d\n", tested_passwords);
 
             // call the gpu function
             single_crack_MD5<<<num_block, block_size>>>(input_hash, output, cracked, tested_passwords);
