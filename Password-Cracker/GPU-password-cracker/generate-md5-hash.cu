@@ -86,7 +86,7 @@ int main(int argc, char **argv) {
     // compare candidate hash with input hash
     for (int i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
         if (hashcode[i] != test_hash[i]) {
-            return;
+            return 0;
         }
     }
     printf("success!\n");
