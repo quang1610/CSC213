@@ -82,12 +82,14 @@ int main(int argc, char **argv) {
     cudaMallocManaged(&test_hash, sizeof(uint8_t) * MD5_UNSIGNED_HASH_LEN);
     md5_string_to_bytes(temp_str, test_hash);
 
-    if (memcmp(test_hash, hash_code, MD5_UNSIGNED_HASH_LEN) == 0) {
-        printf("Correct!\n");
-    } else {
-        printf("Incorrect!\n");
+    
+    // compare candidate hash with input hash
+    for (int i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
+        if (hashcode[i] != test_hash[i]) {
+            return;
+        }
     }
-
+    printf("success!\n");
 
     cudaFree(hash_code);
     cudaFree(gpu_password);
