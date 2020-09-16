@@ -70,27 +70,13 @@ int main(int argc, char **argv) {
     cudaDeviceSynchronize();
 
     // print the pass code in hex form
-    HCunion h;
-    memcpy(&h, hash_code, sizeof(unsigned char) * MD5_UNSIGNED_HASH_LEN);
     char *temp_str = (char *)malloc(sizeof(char) * 33);
     for (int i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
-        sprintf(&(temp_str[i*2]), "%02x", h.b[i]);
+        sprintf(&(temp_str[i*2]), "%02x", hash_code[i]);
     }
     printf("%s\n", temp_str);
 
-    uint8_t *test_hash;
-    cudaMallocManaged(&test_hash, sizeof(uint8_t) * MD5_UNSIGNED_HASH_LEN);
-    md5_string_to_bytes(temp_str, test_hash);
-
-    
-    // compare candidate hash with input hash
-    for (int i = 0; i < MD5_UNSIGNED_HASH_LEN; i++) {
-        if (hash_code[i] != test_hash[i]) {
-            return 0;
-        }
-    }
-    printf("success!\n");
-
+    free(temp_str);
     cudaFree(hash_code);
     cudaFree(gpu_password);
 
