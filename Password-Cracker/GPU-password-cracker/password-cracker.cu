@@ -82,8 +82,8 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
  * \param cracked the number to indicate whether we crack the code.
  */
 void crack_single_password(uint8_t *input_hash, char *output, int *cracked) {
-    int num_block = 1;
-    int block_size = 10;
+    int num_block = 10000;
+    int block_size = 500;
 
     int tested_passwords = 0;
 
