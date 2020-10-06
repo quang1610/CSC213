@@ -31,7 +31,7 @@
  *      this decides the candidate password.
  */
 __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked, int id_offset) {
-    __share__ 8uint_t s_input_hash[MD5_UNSIGNED_HASH_LEN];
+    __shared__ 8uint_t s_input_hash[MD5_UNSIGNED_HASH_LEN];
 
     // get N based on the number id of block. This is used to construct to candidate password.
     // N = 0 would give us "aaaaaa" 
