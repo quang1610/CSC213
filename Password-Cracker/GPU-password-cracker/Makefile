@@ -1,5 +1,5 @@
 CC := nvcc
-CFLAGS := --std=c++03
+CFLAGS :=
 LDFLAGS := -lm
 
 all: password-cracker-gpu generate-md5-hash
