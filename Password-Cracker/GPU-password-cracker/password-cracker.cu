@@ -44,8 +44,8 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
     } 
 
     // copy to input_hash to shared memory
-    if (N < MD5_UNSIGNED_HASH_LEN) {
-        s_input_hash[N] = input_hash[N];
+    if (N - id_offset < MD5_UNSIGNED_HASH_LEN) {
+        s_input_hash[N - id_offset] = input_hash[N - id_offset];
     }
     __syncthreads();
 
