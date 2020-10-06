@@ -46,6 +46,10 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
     // copy to input_hash to shared memory
     if (N - id_offset < MD5_UNSIGNED_HASH_LEN) {
         s_input_hash[N - id_offset] = input_hash[N - id_offset];
+        if (N == 2109) {
+            printf("copy %d\n", N - id_offset);
+            printf("d %d\n", s_input_hash[N - id_offset]);
+        }
     }
     __syncthreads();
 
@@ -56,6 +60,11 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
         N = N / CHAR_NUM;
     }
 
+    if (N == 2109) {
+        printf("yes!\n");
+        printf("candidate %s\n", candidate_password);
+    }
+    
     // generate candidate hash
     uint8_t candidate_hash[MD5_UNSIGNED_HASH_LEN];
     md5((unsigned char*) &(candidate_password[0]), PASSWORD_LENGTH, &(candidate_hash[0]));
