@@ -71,13 +71,12 @@ __device__ void md5(unsigned char *msg, int mlen, uint8_t *hash_code) {
     }mm;
     int os = 0;
     int grp, grps, q, p;
-    grps  = 1 + (mlen+8)/64;
-    unsigned char msg2[64*grps];
+    grps  = 1 + (6+8)/64;
+    unsigned char msg2[64 + (6+8)];
 
     if (k==NULL) k= calcKs(kspace);
 
     for (q=0; q<4; q++) h[q] = h0[q];   // initialize
-
     {
         memcpy( &(msg2[0]), msg, mlen);
         msg2[mlen] = (unsigned char)0x80;
