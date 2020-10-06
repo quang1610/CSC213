@@ -1,6 +1,8 @@
 # GPU Password Cracker
 
-This project contains 2 CUDA programs, one generates hashcode from an input password and the other uses GPU parallel computing to find the password from input hashcode. A version MD5 hash algorithm is ported to CUDA.
+This project contains 2 CUDA programs, one generates hashcode from an input password and the other uses GPU parallel computing to find the password from input hashcode. A version MD5 hash algorithm is ported to CUDA.  
+
+The password used in this program has 6 lower-case alphabetical character.
 
 ## Installation:
 
@@ -10,12 +12,12 @@ $ rm password-cracker-gpu
 $ rm generate-md5-hash
 ```  
 
-2. Compile two programs.
+2. Compile two programs. Besure you have nvcc Cuda Compiler installed.
 ```
 $ make
 ```  
 
-3. Generate the hashcode. The input password is limited to 6 charaters.
+3. Generate the hashcode. The input password is limited to 6 lowrer-case alphabetical charaters.
 ```
 $ ./generate-md5-hash [password]
 ```  

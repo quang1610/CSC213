@@ -2,7 +2,7 @@
 
 This project cracks passwords using C and multithreaded programming. Given a hashcode of the password, the algorithm will brute force every possible string to find the string with similar hashcode.  
 
-The hashcode is generated using MD5 algorimth. The length of password is limited to 6 characters.
+The hashcode is generated using MD5 algorimth. The length of password is limited to 6 lower-case alphabetical characters.
 
 ## Installation:
 
