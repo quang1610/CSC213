@@ -49,7 +49,6 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
     }
     __syncthreads();
 
-    int temp_N = N;
     // generate candidate based on N
     char candidate_password[] = "aaaaaa";
     for (int j = PASSWORD_LENGTH - 1; j >= 0; j--) {
