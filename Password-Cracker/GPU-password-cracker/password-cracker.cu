@@ -31,6 +31,7 @@
  *      this decides the candidate password.
  */
 __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked, int id_offset) {
+
     __shared__ 8uint_t s_input_hash[MD5_UNSIGNED_HASH_LEN];
 
     // get N based on the number id of block. This is used to construct to candidate password.
@@ -43,8 +44,8 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
     } 
 
     // copy to input_hash to shared memory
-    if (N == 1) {
-        memcpy(&(s_input_hash[0]), input_hash, sizeof(uint8_t) * MD5_UNSIGNED_HASH_LEN);
+    if (N < MD5_UNSIGNED_HASH_LEN) {
+        s_input_hash[N] = input_hash[N];
     }
     __syncthreads();
 
