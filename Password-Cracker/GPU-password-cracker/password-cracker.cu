@@ -36,6 +36,7 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
     // get N based on the number id of block. This is used to construct to candidate password.
     // N = 0 would give us "aaaaaa" 
     // N = 1 would give us "aaaaab" so on.
+
     int N = threadIdx.x + blockIdx.x * blockDim.x + id_offset;
     if (N >= PASSWORD_SPACE_SIZE) {
         return;
