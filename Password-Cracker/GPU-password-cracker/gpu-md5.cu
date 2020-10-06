@@ -71,16 +71,15 @@ __device__ void md5(unsigned char *msg, int mlen, uint8_t *hash_code) {
     }mm;
     int os = 0;
     int grp, grps, q, p;
-    unsigned char *msg2;
+    grps  = 1 + (mlen+8)/64;
+    unsigned char msg2[64*grps];
 
     if (k==NULL) k= calcKs(kspace);
 
     for (q=0; q<4; q++) h[q] = h0[q];   // initialize
 
     {
-        grps  = 1 + (mlen+8)/64;
-        msg2 = (unsigned char *) malloc( 64*grps);
-        memcpy( msg2, msg, mlen);
+        memcpy( &(msg2[0]), msg, mlen);
         msg2[mlen] = (unsigned char)0x80;
         q = mlen + 1;
         while (q < 64*grps){ msg2[q] = 0; q++ ; }
@@ -91,13 +90,13 @@ __device__ void md5(unsigned char *msg, int mlen, uint8_t *hash_code) {
 //            t = u.b[0]; u.b[0] = u.b[3]; u.b[3] = t;
 //            t = u.b[1]; u.b[1] = u.b[2]; u.b[2] = t;
             q -= 8;
-            memcpy(msg2+q, &u.w, 4 );
+            memcpy(&(msg2[q]), &u.w, 4 );
         }
     }
 
     for (grp=0; grp<grps; grp++)
     {
-        memcpy( mm.b, msg2+os, 64);
+        memcpy( mm.b, &(msg2[os]), 64);
         for(q=0;q<4;q++) abcd[q] = h[q];
         for (p = 0; p<4; p++) {
             fctn = ff[p];
@@ -117,9 +116,6 @@ __device__ void md5(unsigned char *msg, int mlen, uint8_t *hash_code) {
             h[p] += abcd[p];
         os += 64;
     }
-
-    if( msg2 )
-        free( msg2 );
 
     WBunion u;
     int offset;
