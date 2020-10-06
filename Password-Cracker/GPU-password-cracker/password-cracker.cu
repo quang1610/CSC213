@@ -57,7 +57,7 @@ __global__ void single_crack_MD5(uint8_t *input_hash, char* output, int *cracked
     }
 
     // generate candidate hash
-    uint8_t candidate_hash[MD5_UNSIGNED_HASH_LEN]
+    uint8_t candidate_hash[MD5_UNSIGNED_HASH_LEN];
     md5((unsigned char*) &(candidate_password[0]), PASSWORD_LENGTH, &(candidate_hash[0]));
 
     // compare candidate hash with input hash
